@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administradores-rol-admin',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AdministradoresRolAdminComponent {
 
+  constructor(private router: Router){}
+
+  agregar_admin(){
+    this.router.navigateByUrl(`/add-administrador`);
+  }
 }
