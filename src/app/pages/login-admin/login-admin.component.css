@@ -1,0 +1,43 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.card {
+    text-align: center;
+    color: white;
+    width: 350px;
+    height: auto;
+    border-radius: 15px;
+    background-color: #001a23;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card label {
+    margin-top: 20px;
+    display: block;
+    text-align: left;
+}
+
+body {
+    background: color #e8f1f2;
+    ;
+}
+
+.boton-login {
+    margin-top: 20px;
+    background-color: #7a9e7e;
+    color: white;
+}
+
+.card-title{
+    font-size: 30px;
+    
+}
+
+.logo{
+    width: 20%;
+}
