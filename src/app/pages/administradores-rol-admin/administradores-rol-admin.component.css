@@ -1,0 +1,45 @@
+.titulo-principal {
+    font-size: 35px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.button1,
+.button2 {
+    padding: 4px 8px;
+    margin-right: 5%;
+}
+
+.button1 {
+    border-color:  #d28f00;
+    color: #d28f00;
+    border: 1px solid ;
+}
+
+.button1:hover {
+    background-color: #f6a700;
+    color: #fff;
+  }
+
+.button2 {
+    border-color: #b50217;
+    color: #b50217;
+    border: 1px solid ;
+}
+
+.button2:hover {
+    background-color: #e3001b;
+    color: #fff;
+  }
+
+
+.opciones {
+    text-align: center;
+}
+
+.opciones-botones {
+    padding: 8px;
+    position: relative;
+    text-align: center;
+}
+
