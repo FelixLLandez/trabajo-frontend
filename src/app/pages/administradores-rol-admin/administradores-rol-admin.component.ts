@@ -13,4 +13,8 @@ export class AdministradoresRolAdminComponent {
   agregar_admin(){
     this.router.navigateByUrl(`/add-administrador`);
   }
+
+  modificar_admin(){
+    this.router.navigateByUrl(`/edit-administrador`);
+  }
 }
