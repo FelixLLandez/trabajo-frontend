@@ -9,6 +9,7 @@ import { AdministradoresRolAdminComponent } from './pages/administradores-rol-ad
 import { AddAdminRolAdminComponent } from './pages/add-admin-rol-admin/add-admin-rol-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditAdminRolAdminComponent } from './pages/edit-admin-rol-admin/edit-admin-rol-admin.component';
+import { SolicitantesRolAdminComponent } from './pages/solicitantes-rol-admin/solicitantes-rol-admin.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EditAdminRolAdminComponent } from './pages/edit-admin-rol-admin/edit-ad
     SidenavComponent,
     AdministradoresRolAdminComponent,
     AddAdminRolAdminComponent,
-    EditAdminRolAdminComponent
+    EditAdminRolAdminComponent,
+    SolicitantesRolAdminComponent
   ],
   imports: [
     BrowserModule,
