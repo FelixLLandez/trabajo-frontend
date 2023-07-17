@@ -8,6 +8,7 @@ import { SidenavComponent } from './Sidebar/sidenav/sidenav.component';
 import { AdministradoresRolAdminComponent } from './pages/administradores-rol-admin/administradores-rol-admin.component';
 import { AddAdminRolAdminComponent } from './pages/add-admin-rol-admin/add-admin-rol-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditAdminRolAdminComponent } from './pages/edit-admin-rol-admin/edit-admin-rol-admin.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BodyComponent,
     SidenavComponent,
     AdministradoresRolAdminComponent,
-    AddAdminRolAdminComponent
+    AddAdminRolAdminComponent,
+    EditAdminRolAdminComponent
   ],
   imports: [
     BrowserModule,
