@@ -7,7 +7,7 @@ export const navbarData=[
         
     },
     {
-        routeLink:'solicitantes',
+        routeLink:'ver-solicitantes',
         icon: 'fal fa-newspaper',
         label:'Solicitantes',
         title:'Solicitantes'
