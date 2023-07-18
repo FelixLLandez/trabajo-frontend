@@ -30,8 +30,8 @@ export class SolicitantesRolAdminComponent {
     this.router.navigateByUrl(`/add-solicitante`);
   }
 
-  modificar_admin(){
-    this.router.navigateByUrl(`/edit-administrador`);
+  modificar_solicitante(){
+    this.router.navigateByUrl(`/edit-solicitante`);
   }
 
   eliminar_admin(){
