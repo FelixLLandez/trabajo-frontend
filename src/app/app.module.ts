@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditAdminRolAdminComponent } from './pages/edit-admin-rol-admin/edit-admin-rol-admin.component';
 import { SolicitantesRolAdminComponent } from './pages/solicitantes-rol-admin/solicitantes-rol-admin.component';
 import { DataTablesModule } from 'angular-datatables';
+import { AddSolicitanteRolAdminComponent } from './pages/add-solicitante-rol-admin/add-solicitante-rol-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DataTablesModule } from 'angular-datatables';
     AdministradoresRolAdminComponent,
     AddAdminRolAdminComponent,
     EditAdminRolAdminComponent,
-    SolicitantesRolAdminComponent
+    SolicitantesRolAdminComponent,
+    AddSolicitanteRolAdminComponent
   ],
   imports: [
     BrowserModule,

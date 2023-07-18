@@ -26,8 +26,8 @@ export class SolicitantesRolAdminComponent {
     }, 1);
   }
 
-  agregar_admin(){
-    this.router.navigateByUrl(`/add-administrador`);
+  agregar_solicitante(){
+    this.router.navigateByUrl(`/add-solicitante`);
   }
 
   modificar_admin(){
