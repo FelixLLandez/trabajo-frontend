@@ -6,12 +6,14 @@ import { EditAdminRolAdminComponent } from './pages/edit-admin-rol-admin/edit-ad
 import { SolicitantesRolAdminComponent } from './pages/solicitantes-rol-admin/solicitantes-rol-admin.component';
 import { AddSolicitanteRolAdminComponent } from './pages/add-solicitante-rol-admin/add-solicitante-rol-admin.component';
 
+
 const routes: Routes = [
   {path: 'ver-administradores', component:AdministradoresRolAdminComponent},
   {path: 'add-administrador', component:AddAdminRolAdminComponent},
   {path: 'edit-administrador', component:EditAdminRolAdminComponent},
   {path: 'ver-solicitantes', component:SolicitantesRolAdminComponent},
-  {path: 'add-solicitante', component:AddSolicitanteRolAdminComponent}
+  {path: 'add-solicitante', component:AddSolicitanteRolAdminComponent},
+  
 ];
 
 @NgModule({
