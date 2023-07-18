@@ -13,20 +13,22 @@
         <div class="col-sm-12">
             <div class="d-flex align-items-center justify-content-between">
                 <h4 class="titulo-principal">ADMINISTRADORES</h4>
-                <button title="Salir" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</button>
+                <button title="Salir" class="btn boton-salir"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Salir</button>
             </div>
         </div>
     </div>
     <hr>
 </header>
 
-<div style="margin: 1%;">
-    <button (click)="agregar_admin()" class="btn btn-success"><i class="fa fa-user-plus"></i>  Agregar</button>
+<div class="div-btn-agregar">
+    <button (click)="agregar_admin()" class="btn boton-agregar"><i class="fa fa-user-plus"></i> Agregar</button>
 </div>
-<body> 
+
+<body style="background-color: transparent;">
     <div>
-        <table  class="table table-hover table-bordered" style="border: #000;">
-            <thead style="background-color: #7a9e7e; color:#fff;">
+        <table id="datatableexample" class="table table-bordered table-hove">
+            <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
@@ -48,8 +50,10 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td class="opciones-botones">
-                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button" class="btn button1"><i class="fa-solid fa-user-pen"></i>   Modificar</button>
-                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button" class="btn button2"><i class="fa fa-trash"></i>  Inhabilitar</button>
+                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
+                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
+                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -61,8 +65,10 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td class="opciones-botones">
-                        <button title="Modificar a un administrador" type="button" class="btn button1"><i class="fa-solid fa-user-pen"></i>   Modificar</button>
-                        <button title="Inhabilitar a un administrador" type="button" class="btn button2"><i class="fa fa-trash"></i>  Inhabilitar</button>
+                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
+                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
+                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -74,8 +80,10 @@
                     <td>@mdo</td>
                     <td>Mark</td>
                     <td class="opciones-botones">
-                        <button title="Modificar a un administrador" type="button" class="btn button1"><i class="fa-solid fa-user-pen"></i>   Modificar</button>
-                        <button title="Inhabilitar a un administrador" type="button" class="btn button2"><i class="fa fa-trash"></i>  Inhabilitar</button>
+                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
+                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
+                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>
             </tbody>

@@ -21,14 +21,14 @@
     <hr>
 </header>
 
-<div style="margin: 1%;">
+<div class="div-btn-agregar">
     <button (click)="agregar_admin()" class="btn boton-agregar"><i class="fa fa-user-plus"></i> Agregar</button>
 </div>
 
-<body>
+<body style="background-color: transparent;">
     <div>
-        <table class="table">
-            <thead style="background-color: #7a9e7e; color:#fff;">
+        <table id="datatableexample" class="table table-bordered table-hove">
+            <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
@@ -51,11 +51,11 @@
                     <td>@mdo</td>
                     <td class="opciones-botones">
                         <button type="button" title="Ver información" class="btn boton-ver"><i
-                                class="fa-regular fa-eye"></i> Ver</button>
+                                class="fa-regular fa-eye"></i></button>
                         <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
-                            class="btn boton-modificar"><i class="fa-solid fa-user-pen"></i> Modificar</button>
+                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
                         <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
-                            class="btn boton-eliminar"><i class="fa-solid fa-trash"></i> Inhabilitar</button>
+                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -68,11 +68,11 @@
                     <td>@mdo</td>
                     <td class="opciones-botones">
                         <button type="button" title="Ver información" class="btn boton-ver"><i
-                                class="fa-regular fa-eye"></i> Ver</button>
+                                class="fa-regular fa-eye"></i></button>
                         <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
-                            class="btn boton-modificar"><i class="fa-solid fa-user-pen"></i> Modificar</button>
+                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
                         <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
-                            class="btn boton-eliminar"><i class="fa-solid fa-trash"></i> Inhabilitar</button>
+                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -85,11 +85,11 @@
                     <td>Mark</td>
                     <td class="opciones-botones">
                         <button type="button" title="Ver información" class="btn boton-ver"><i
-                                class="fa-regular fa-eye"></i> Ver</button>
+                                class="fa-regular fa-eye"></i></button>
                         <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
-                            class="btn boton-modificar"><i class="fa-solid fa-user-pen"></i> Modificar</button>
+                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
                         <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
-                            class="btn boton-eliminar"><i class="fa-solid fa-trash"></i> Inhabilitar</button>
+                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>
             </tbody>

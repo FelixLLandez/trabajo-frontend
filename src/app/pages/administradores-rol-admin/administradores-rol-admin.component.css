@@ -1,45 +1,85 @@
 .titulo-principal {
     font-size: 35px;
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-.button1,
-.button2 {
+.boton-ver,
+.boton-modificar,
+.boton-eliminar {
     padding: 4px 8px;
     margin-right: 5%;
 }
 
-.button1 {
-    border-color:  #d28f00;
-    color: #d28f00;
-    border: 1px solid ;
+.boton-ver {
+    background-color: #09d;
+    color: #fff;
 }
 
-.button1:hover {
-    background-color: #f6a700;
-    color: #fff;
-  }
-
-.button2 {
-    border-color: #b50217;
-    color: #b50217;
-    border: 1px solid ;
+.boton-ver:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
 }
 
-.button2:hover {
-    background-color: #e3001b;
+.boton-modificar {
+    background-color: #fe7f0c;
     color: #fff;
-  }
+}
 
+.boton-modificar:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+}
+
+.boton-eliminar {
+    background-color: #1d3c50;
+    color: #fff;
+}
+
+.boton-eliminar:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+}
+
+.boton-agregar {
+    background-color: #00b05d;
+    color: #fff;
+
+}
+
+.boton-agregar:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+}
+
+.div-btn-agregar {
+    margin: 1%;
+}
+
+.boton-salir {
+    background-color: #e03625;
+    color: #fff;
+}
+
+.boton-salir:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+}
 
 .opciones {
     text-align: center;
 }
 
 .opciones-botones {
-    padding: 8px;
     position: relative;
     text-align: center;
 }
 
+.table-hove tbody tr:hover {
+    background-color: #b3efb2a4;
+    cursor: pointer;
+}
+
+table thead {
+    background-color: #31493c;
+    color: #fff;
+}
+
+table tbody {
+    background-color: #fff;
+}
