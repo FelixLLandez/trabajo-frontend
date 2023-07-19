@@ -49,9 +49,10 @@ label {
     cursor: pointer;
     border-radius: 5%;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);   
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.356); 
+     
 }
 
 .card-trabajo:hover{
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.489);
 }
