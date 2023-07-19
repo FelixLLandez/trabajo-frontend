@@ -34,6 +34,10 @@ export class SolicitantesRolAdminComponent {
     this.router.navigateByUrl(`/edit-solicitante`);
   }
 
+  ver_solicitante(){
+    this.router.navigateByUrl(`/ver-solicitante`)
+  }
+
   eliminar_solicitante(){
     Swal.fire({
       title: 'Estás seguro de desactivar este solicitante?',
