@@ -76,70 +76,51 @@
                 </div>
             </div>
         </div>
-        <hr class="division">
-        <div class="row" style="padding: 1%;">
-            <label class="text-center titulo-datos-personales" style="font-size: 28px;;">TRABAJOS PUBLICADOS</label>
-        </div>
-        <div class="row div-datos-personales" style="justify-content: end;">
-            <div class="col-sm-3 col-md-5" style="display: flex;
-            align-items: center; 
-            margin-bottom: 10px;">
-                    <label for="" style="flex: 1; 
-                    margin-right: 10px;">Buscar:</label>
-                    <input class="form-control me-2" type="search" name="" placeholder="Nombre del trabajo">                   
-            </div>
-            
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4 div-datos-personales">
-            <div class="col">
-                <div class="card-trabajo">
-                    <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top img-trabajo" alt="...">
-                    <div class="card-body card-body-trabajo">
-                        <label for="" style="font-size: 16px;">Nombre:</label>
-                        <p>Limpieza de casa</p>
-                        <label for="" style="font-size: 16px;">Descripción:</label>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, quasi molestiae.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card-trabajo">
-                    <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top img-trabajo" alt="...">
-                    <div class="card-body">
-                        <p>Nombre: </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card-trabajo">
-                    <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top img-trabajo" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card-trabajo">
-                    <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top img-trabajo" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
     </div>
 
-     
-
-    <div class=" mb-3">
-        
-        
-    </div> 
+    <hr class="division">
+    <div class="row" style="padding: 1%;">
+        <label class="text-center titulo-datos-personales" style="font-size: 28px;;">TRABAJOS PUBLICADOS</label>
+    </div>
+    <div class="row div-datos-personales" style="justify-content: end;">
+        <div class="col-md-5" style="display: flex;
+        align-items: center; 
+        margin-bottom: 10px;">
+            <label for="" style="flex: 1; 
+                margin-right: 10px;">Buscar:</label>
+            <input class="form-control me-2" type="search" name="" placeholder="Nombre del trabajo">
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 10px;">
+        <div class="col" *ngFor="let item of items">
+            <div class="card card-trabajo">
+                <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">Nombre:</label>
+                            <p>Limpieza de hogar</p>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="">Descripción:</label>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, praesentium nisi. Tenetur
+                                quae quasi dolore</p>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: end;">
+                        <button class="btn btn-outline-danger">
+                            <i class="fa-solid fa-ban"></i> Banear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<button id="btnUp" class="btn" title="Subir"><i class="fa-solid fa-arrow-up" ></i></button>
+
+
 
 </html>
