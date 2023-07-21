@@ -8,12 +8,11 @@
     <title>Document</title>
 </head>
 
-
 <header>
     <div class="row">
         <div class="col-sm-12">
             <div class="d-flex align-items-center justify-content-between">
-                <h4 class="titulo-principal">INFORMACIÓN DEL SOLICITANTE</h4>
+                <h4 class="titulo-principal">INFORMACIÓN DEL POSTULANTE</h4>
                 <button onclick="history.back()" title="Regresar" class="btn btn-primary"><i
                         class="fa fa-reply"></i></button>
             </div>
@@ -76,13 +75,12 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <hr class="division">
-    <div class="row div-segundo-titulo" >
-        <label class="text-center titulo-trabajos-publicados">TRABAJOS PUBLICADOS</label>
+
+    <div class="row div-segundo-titulo">
+        <label class="text-center titulo-historial-laboral">HISTORIAL LABORAL</label>
     </div>
 
     <div class="row div-buscador">
@@ -92,31 +90,78 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 div-cards">
-        <div class="col" *ngFor="let item of items">
-            <div class="card card-trabajo">
-                <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
+    <div class="card-trabajo mb-3" *ngFor="let item of items">
+        <div class="row g-0 ">
+            <div class="col-sm-12" >
+                <div class="row titulos-card">
+                    <label class="text-center">DETALLES DEL TRABAJO</label>
+                </div>
+                <div class="card-body-trabajo">
                     <div class="row">
-                        <div class="col-md-12">
-                            <label for="">Nombre:</label>
-                            <p>Limpieza de hogar</p>
+                        <div class="col-sm-12 col-md-2">
+                            <label for="input1">ID</label>
+                            <p class="datos-personales">1</p>
                         </div>
-                        <div class="col-md-12">
-                            <label for="">Descripción:</label>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, praesentium nisi. Tenetur
-                                quae quasi dolore</p>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Nombre</label>
+                            <p class="datos-personales">Limpieza de casa</p>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <label for="input1">Precio</label>
+                            <p class="datos-personales">$1,700</p>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <label for="input1">Status</label>
+                            <p class="datos-personales">Finalizado</p>
                         </div>
                     </div>
-                    <div class="row" >
-                        <button class="btn btn-outline-danger">
-                            <i class="fa-solid fa-ban"></i> Banear
-                        </button>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <label for="input1">Descripción</label>
+                            <p class="datos-personales">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Laudantium perferendis sunt totam libero expedita ipsam. Et obcaecati esse cum, nisi,
+                                reiciendis sit praesentium est sint, optio adipisci aperiam unde provident?</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Dirección</label>
+                            <p class="datos-personales">C. Marcelino Carrizosa #607,
+                                Barrio San Juan</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Municipio</label>
+                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Localidad</label>
+                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row titulos-card">
+                    <label class="text-center">DETALLES DEL SOLICITANTE</label>
+                </div>
+                <div class="card-body-trabajo">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Nombre</label>
+                            <p class="datos-personales">Isidro Noé</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Apelldios</label>
+                            <p class="datos-personales">Salvador Jiménez</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Teléfono</label>
+                            <p class="datos-personales">9513645268</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </body>
-<button id="btnUp" class="btn" title="Subir"><i class="fa-solid fa-arrow-up" ></i></button>
+
 </html>

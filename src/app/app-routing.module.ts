@@ -10,19 +10,26 @@ import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solic
 import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/postulantes-rol-admin/postulantes-rol-admin.component';
 import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
 import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
+import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/info-postulantes-rol-admin/info-postulantes-rol-admin.component';
 
 
 const routes: Routes = [
+  //Rutas del administrador
   {path: 'ver-administradores', component:AdministradoresRolAdminComponent},
   {path: 'add-administrador', component:AddAdminRolAdminComponent},
   {path: 'edit-administrador', component:EditAdminRolAdminComponent},
+
+  //Rutas del solicitante
   {path: 'ver-solicitantes', component:SolicitantesRolAdminComponent},
   {path: 'add-solicitante', component:AddSolicitanteRolAdminComponent},
   {path: 'edit-solicitante', component:EditSolicitanteRolAdminComponent},
   {path: 'ver-solicitante', component:VerSolicitanteRolAdminComponent},
+
+  //Rutas del postulante
   {path: 'ver-postulantes', component: PostulantesRolAdminComponent},
   {path: 'add-postulante', component:AddPostulantesRolAdminComponent},
-  {path: 'edit-postulante', component:EditPostulanteRolAdminComponent}
+  {path: 'edit-postulante', component:EditPostulanteRolAdminComponent},
+  {path: 'informacion-postulante', component:InfoPostulantesRolAdminComponent}
 ];
 
 @NgModule({

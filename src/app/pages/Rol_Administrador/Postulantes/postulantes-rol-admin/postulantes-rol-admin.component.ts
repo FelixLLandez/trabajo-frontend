@@ -32,7 +32,7 @@ export class PostulantesRolAdminComponent {
   }
 
   ver_postulante() {
-
+    this.router.navigateByUrl('/informacion-postulante');
   }
 
   modificar_postulante() {
