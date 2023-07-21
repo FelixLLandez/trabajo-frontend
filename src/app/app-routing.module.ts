@@ -9,6 +9,7 @@ import { EditSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Soli
 import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/ver-solicitante-rol-admin/ver-solicitante-rol-admin.component';
 import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/postulantes-rol-admin/postulantes-rol-admin.component';
 import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
+import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'edit-solicitante', component:EditSolicitanteRolAdminComponent},
   {path: 'ver-solicitante', component:VerSolicitanteRolAdminComponent},
   {path: 'ver-postulantes', component: PostulantesRolAdminComponent},
-  {path: 'add-postulante', component:AddPostulantesRolAdminComponent}
+  {path: 'add-postulante', component:AddPostulantesRolAdminComponent},
+  {path: 'edit-postulante', component:EditPostulanteRolAdminComponent}
 ];
 
 @NgModule({

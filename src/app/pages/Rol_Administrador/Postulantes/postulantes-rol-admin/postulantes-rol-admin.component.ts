@@ -35,7 +35,7 @@ export class PostulantesRolAdminComponent {
   }
 
   modificar_postulante() {
-
+    this.router.navigateByUrl('/edit-postulante');
   }
 
   eliminar_postulante() {
