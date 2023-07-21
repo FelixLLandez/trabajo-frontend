@@ -14,6 +14,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { AddSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/add-solicitante-rol-admin/add-solicitante-rol-admin.component';
 import { EditSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/edit-solicitante-rol-admin/edit-solicitante-rol-admin.component';
 import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/ver-solicitante-rol-admin/ver-solicitante-rol-admin.component';
+import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/postulantes-rol-admin/postulantes-rol-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solic
     SolicitantesRolAdminComponent,
     AddSolicitanteRolAdminComponent,
     EditSolicitanteRolAdminComponent,
-    VerSolicitanteRolAdminComponent
+    VerSolicitanteRolAdminComponent,
+    PostulantesRolAdminComponent
   ],
   imports: [
     BrowserModule,

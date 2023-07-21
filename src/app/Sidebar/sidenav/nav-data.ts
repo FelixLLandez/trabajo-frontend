@@ -14,7 +14,7 @@ export const navbarData=[
         
     },
     {
-        routeLink:'postulantes',
+        routeLink:'ver-postulantes',
         icon: 'fal fa-magnifying-glass-dollar',
         label:'Postulanes',
         title:'Postulantes'
