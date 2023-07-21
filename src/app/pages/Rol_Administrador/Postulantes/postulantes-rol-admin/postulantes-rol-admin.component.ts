@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-postulantes-rol-admin',
@@ -9,7 +10,7 @@ export class PostulantesRolAdminComponent {
 
   postulantes = Array(100).fill(0);
 
-  constructor(){
+  constructor(private router: Router) {
     setTimeout(() => {
       $('#tabla-postulantes').DataTable({
         language: {
@@ -20,24 +21,24 @@ export class PostulantesRolAdminComponent {
         processing: true,
         lengthMenu: [5, 10, 25],
         responsive: true
-  
+
       });
     }, 1);
   }
 
-  agregar_postulante(){
+  agregar_postulante() {
+    this.router.navigateByUrl('/add-postulante');
+  }
+
+  ver_postulante() {
 
   }
 
-  ver_postulante(){
+  modificar_postulante() {
 
   }
 
-  modificar_postulante(){
-
-  }
-
-  eliminar_postulante(){
+  eliminar_postulante() {
 
   }
 }
