@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { Router } from '@angular/router';
 
 interface SideNavToggle{
   screenWidth: number;
@@ -12,6 +13,8 @@ interface SideNavToggle{
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
+
+  constructor(private router:Router){}
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle>=new EventEmitter();
   collapsed=false;
@@ -39,5 +42,9 @@ export class SidenavComponent {
   closeSidenav(): void{
     this.collapsed=false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+
+  home(){
+    this.router.navigateByUrl('/ver-administradores')
   }
 }

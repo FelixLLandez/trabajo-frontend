@@ -1,4 +1,4 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''" >
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''">
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()"><i class="fal fa-bars"></i></button>
         <div class="logo-text" *ngIf="collapsed">Admin</div>
@@ -7,7 +7,7 @@
         </button>
     </div>
     
-    <ul class="sidenav-nav">
+    <ul class="sidenav-nav" >
         <li class="sidenav-nav-item" *ngFor="let data of navData">
             <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact: true}" title="{{data.title}}">
@@ -17,11 +17,23 @@
             
         </li>
         <li class="sidenav-nav-item">
-            <a class="sidenav-nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            <a class="sidenav-nav-link" [routerLink]="['/mi-perfil']" routerLinkActive="router-link-active"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                 title="Mi perfil">
                 <i class="sidenav-link-icon fal fa-circle-user"></i>
                 <span class="sidenav-link-text" *ngIf="collapsed">Mi perfil</span>
             </a>
         </li>
+        <li   style="margin-top: auto;">
+            <a class="sidenav-nav-link" *ngIf="!collapsed"  (click)="home()" title="Home">
+                <img src="/assets/logo3.png" style="width: 100%;">
+            </a>
+            <a class="sidenav-nav-link" *ngIf="collapsed" (click)="home()"  title="Home" >
+                <img src="/assets/logo.png" style="width: 80%;">
+            </a>
+        </li>
+        
     </ul>
+    
+   
+    
 </div>

@@ -13,7 +13,7 @@ export class ArchivadosRolAdminComponent {
 
   constructor() {
     setTimeout(() => {
-      $('#tabla-archivados').DataTable({
+      $('#tabla-administradores').DataTable({
         language: {
           url: "//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
         },
@@ -29,7 +29,7 @@ export class ArchivadosRolAdminComponent {
 
   
 
-  Tabla_Administradores = false;
+  Tabla_Administradores = true;
   Tabla_Solicitantes = false;
   Tabla_Postulantes = false;
 
