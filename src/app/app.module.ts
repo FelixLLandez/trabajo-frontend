@@ -18,6 +18,7 @@ import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulan
 import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
 import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
 import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/info-postulantes-rol-admin/info-postulantes-rol-admin.component';
+import { ArchivadosRolAdminComponent } from './pages/Rol_Administrador/Archivados/archivados-rol-admin/archivados-rol-admin.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Post
     PostulantesRolAdminComponent,
     AddPostulantesRolAdminComponent,
     EditPostulanteRolAdminComponent,
-    InfoPostulantesRolAdminComponent
+    InfoPostulantesRolAdminComponent,
+    ArchivadosRolAdminComponent
   ],
   imports: [
     BrowserModule,

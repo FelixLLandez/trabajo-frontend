@@ -11,6 +11,7 @@ import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulan
 import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
 import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
 import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/info-postulantes-rol-admin/info-postulantes-rol-admin.component';
+import { ArchivadosRolAdminComponent } from './pages/Rol_Administrador/Archivados/archivados-rol-admin/archivados-rol-admin.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,10 @@ const routes: Routes = [
   {path: 'ver-postulantes', component: PostulantesRolAdminComponent},
   {path: 'add-postulante', component:AddPostulantesRolAdminComponent},
   {path: 'edit-postulante', component:EditPostulanteRolAdminComponent},
-  {path: 'informacion-postulante', component:InfoPostulantesRolAdminComponent}
+  {path: 'informacion-postulante', component:InfoPostulantesRolAdminComponent},
+
+  //Ruta de usaurios archivados
+  {path: 'usuarios-archivados', component:ArchivadosRolAdminComponent}
 ];
 
 @NgModule({

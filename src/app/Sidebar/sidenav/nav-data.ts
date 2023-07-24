@@ -20,6 +20,13 @@ export const navbarData=[
         title:'Postulantes'
    
     },
+    {
+        routeLink:'usuarios-archivados',
+        icon: 'fal fa-box-archive',
+        label:'Archivados',
+        title:'Archivados'
+   
+    }
     
 
 ]
