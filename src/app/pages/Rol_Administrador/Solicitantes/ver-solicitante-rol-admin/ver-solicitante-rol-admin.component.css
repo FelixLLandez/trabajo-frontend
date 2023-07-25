@@ -1,0 +1,102 @@
+.titulo-principal {
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.card {
+    width: 100%;
+    background-color: #fafafa;
+
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+label {
+    font-weight: bold;
+}
+
+.div-datos-personales {
+    padding: 1%;
+}
+
+.titulo-datos-personales {
+    font-size: 22px;
+}
+
+.datos-personales {
+    border-bottom: 1px solid black;
+    text-align: justify;
+}
+
+.division {
+    border: 1px solid black;
+    margin-top: 3%;
+}
+
+
+.card-trabajo:hover {
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.327);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.div-segundo-titulo {
+    padding: 1%;
+}
+
+.titulo-trabajos-publicados {
+    font-size: 28px;
+}
+
+.div-buscador {
+    justify-content: end;
+    margin-top: 2%;
+}
+
+.input-buscar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-buscar {
+    margin-right: 10px;
+}
+
+.div-cards{
+    margin: 10px;
+}
+
+/* styles.css (o coloca estos estilos dentro de la etiqueta <style> en tu archivo HTML) */
+#btnUp {
+    display: none;
+    /* Oculta el botón por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    background-color: #989899b2;
+    color: #fff;
+
+}
+
+#btnUp:hover {
+    background-color: #767677;
+}
+
+#btnUp.show {
+    display: block;
+    /* Muestra el botón cuando se agrega la clase .show */
+}

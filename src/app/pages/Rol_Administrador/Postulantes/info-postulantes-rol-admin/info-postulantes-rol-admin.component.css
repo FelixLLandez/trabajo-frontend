@@ -1,0 +1,78 @@
+.titulo-principal {
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+
+.card {
+    width: 100%;
+    background-color: #f2f2f2;
+
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+label {
+    font-weight: bold;
+}
+
+.div-datos-personales {
+    padding: 1%;
+}
+
+.titulo-datos-personales {
+    font-size: 22px;
+}
+
+.datos-personales {
+    border-bottom: 1px solid black;
+    text-align: justify;
+}
+
+.division {
+    border: 1px solid black;
+    margin-top: 3%;
+}
+
+.div-segundo-titulo {
+    padding: 1%;
+}
+
+.titulo-historial-laboral {
+    font-size: 28px;
+}
+
+.div-buscador {
+    justify-content: start;
+    margin-top: 2%;
+}
+
+.input-buscar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-buscar {
+    margin-right: 10px;
+}
+
+.card-trabajo {
+    background-color: #fff;
+    margin-top: 5%;
+    border: 2px solid black;
+}
+
+.titulos-card {
+    background-color: #d2d2d2;
+    margin: 0;
+    border-bottom: 1px solid #aeadad;
+}
+
+.card-body-trabajo{
+    padding: 20px;
+    background-color: #fff;
+}

@@ -26,12 +26,22 @@
             ],
             "styles": [
 <<<<<<< HEAD
+<<<<<<< HEAD
               "@angular/material/prebuilt-themes/indigo-pink.css",
 =======
 >>>>>>> origin/Login-admin
               "src/styles.css"
+=======
+              "src/styles.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css"
+>>>>>>> origin/Dashboard-admin
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js",
+              "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"
+            ]
           },
           "configurations": {
             "production": {

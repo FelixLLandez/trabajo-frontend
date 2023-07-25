@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<header>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="d-flex align-items-center justify-content-between">
+                <h4 class="titulo-principal">INFORMACIÓN DEL POSTULANTE</h4>
+                <button onclick="history.back()" title="Regresar" class="btn btn-primary"><i
+                        class="fa fa-reply"></i></button>
+            </div>
+        </div>
+    </div>
+    <hr>
+</header>
+
+<body>
+    <div class="card mb-3">
+        <div class="row g-0 div-datos-personales">
+            <div class="col-md-4 col-sm-4">
+                <img src="/assets/perfil.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <label class="text-center titulo-datos-personales">DATOS PERSONALES</label>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Nombre</label>
+                            <p class="datos-personales">Isidro Noé</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Apellidos</label>
+                            <p class="datos-personales">Salvador Jiménez</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Sexo</label>
+                            <p class="datos-personales">Masculino</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Teléfono</label>
+                            <p class="datos-personales">9513545268</p>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <label for="input1">Edad</label>
+                            <p class="datos-personales">21</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="input1">Correo</label>
+                            <p class="datos-personales">
+                                isidronoesalvadorjimene9@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <label for="input1">Dirección</label>
+                            <p class="datos-personales">C. Marcelino Carrizosa #607,
+                                Barrio San Juan</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="input1">Municipio</label>
+                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="division">
+
+    <div class="row div-segundo-titulo">
+        <label class="text-center titulo-historial-laboral">HISTORIAL LABORAL</label>
+    </div>
+
+    <div class="row div-buscador">
+        <div class="col-md-5 input-buscar">
+            <label for="" class="text-buscar">Buscar:</label>
+            <input class="form-control me-2" type="search" name="" placeholder="Nombre del trabajo">
+        </div>
+    </div>
+
+    <div class="card-trabajo mb-3" *ngFor="let item of items">
+        <div class="row g-0 ">
+            <div class="col-sm-12" >
+                <div class="row titulos-card">
+                    <label class="text-center">DETALLES DEL TRABAJO</label>
+                </div>
+                <div class="card-body-trabajo">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-2">
+                            <label for="input1">ID</label>
+                            <p class="datos-personales">1</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Nombre</label>
+                            <p class="datos-personales">Limpieza de casa</p>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <label for="input1">Precio</label>
+                            <p class="datos-personales">$1,700</p>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <label for="input1">Status</label>
+                            <p class="datos-personales">Finalizado</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <label for="input1">Descripción</label>
+                            <p class="datos-personales">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Laudantium perferendis sunt totam libero expedita ipsam. Et obcaecati esse cum, nisi,
+                                reiciendis sit praesentium est sint, optio adipisci aperiam unde provident?</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Dirección</label>
+                            <p class="datos-personales">C. Marcelino Carrizosa #607,
+                                Barrio San Juan</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Municipio</label>
+                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Localidad</label>
+                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row titulos-card">
+                    <label class="text-center">DETALLES DEL SOLICITANTE</label>
+                </div>
+                <div class="card-body-trabajo">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Nombre</label>
+                            <p class="datos-personales">Isidro Noé</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Apelldios</label>
+                            <p class="datos-personales">Salvador Jiménez</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Teléfono</label>
+                            <p class="datos-personales">9513645268</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
