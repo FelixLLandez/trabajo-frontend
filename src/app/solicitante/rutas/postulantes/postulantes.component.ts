@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { VerPostulanteComponent } from '../../acciones/ver-postulante/ver-postulante.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-postulantes',
@@ -9,10 +10,9 @@ import { VerPostulanteComponent } from '../../acciones/ver-postulante/ver-postul
 })
 export class PostulantesComponent {
 
-    // Inicializamos modalRef con undefined
-    modalRef: BsModalRef<any> | undefined;
+  modalRef: BsModalRef<any> | undefined;
 
-  constructor(private modalService: BsModalService){
+  constructor(private modalService: BsModalService) {
     setTimeout(() => {
       $('#datatablepostulantes').DataTable({
         language: {
@@ -30,6 +30,46 @@ export class PostulantesComponent {
   openModal() {
     const initialState = {};
     this.modalRef = this.modalService.show(VerPostulanteComponent, { initialState });
+  }
+
+  aceptarPostulante() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Se aceptará un nuevo postulante!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Aceptado!',
+          'El postulante ha sido aceptado correctamente.',
+          'success'
+        )
+      }
+    })
+  }
+
+  rechazarPostulante() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Se rechazará a un nuevo postulante!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Rechazado!',
+          'El postulante ha sido rechazado correctamente.',
+          'success'
+        )
+      }
+    })
   }
 
 }

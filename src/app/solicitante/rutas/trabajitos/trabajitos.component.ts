@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { VerTrabajoComponent } from '../../acciones/ver-trabajo/ver-trabajo.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trabajitos',
@@ -9,7 +10,7 @@ import { VerTrabajoComponent } from '../../acciones/ver-trabajo/ver-trabajo.comp
   styleUrls: ['./trabajitos.component.css']
 })
 export class TrabajitosComponent {
-  
+
   // Inicializamos modalRef con undefined
   modalRef: BsModalRef<any> | undefined;
 
@@ -39,5 +40,25 @@ export class TrabajitosComponent {
 
   ir_a_editar_trabajo() {
     this.router.navigateByUrl(`/editar-trabajo`);
+  }
+
+  eliminarTrabajo() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "El trabajo permanecerá archivado!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'El trabajo ha sido inhabilitado correctamente.',
+          'success',
+        )
+      }
+    })
   }
 }

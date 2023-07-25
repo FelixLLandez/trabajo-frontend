@@ -1,7 +1,7 @@
 <div class="container">
   <header>
     <h1>Mi Información</h1>
-    <a class="close-button" href="#"><b><i class="fas fa-sign-out-alt"></i> Cerrar sesión</b></a>
+    <a class="back-button" href="/trabajitos"><b><i class="fas fa-arrow-left"></i> Regresar </b></a>
   </header>
 
   <div class="profile-info">
@@ -74,7 +74,7 @@
         </div>
 
         <div>
-          <button type="submit" class="btn btn-save"><b><i class="fas fa-save"></i> Guardar</b></button>
+          <button type="submit" class="btn btn-save" (click)="editarPerfil()"><b><i class="fas fa-save"></i> Guardar cambios</b></button>
         </div>
       </form>
     </div>
