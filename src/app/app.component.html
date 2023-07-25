@@ -1,7 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <router-outlet></router-outlet>
 =======
 <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
 <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth">
 </app-body>
 >>>>>>> origin/Dashboard-admin
+=======
+<div *ngIf="!isExcludedRoute(); else contenidoAlternativo">
+    <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+    <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body>
+</div>>
+
+<ng-template #contenidoAlternativo>
+    <router-outlet></router-outlet>
+</ng-template>
+>>>>>>> origin/dashboard_Solicitante
