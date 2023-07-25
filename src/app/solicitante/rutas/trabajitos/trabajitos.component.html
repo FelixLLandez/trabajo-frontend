@@ -1,33 +1,58 @@
 <header>
-    MIS TRABAJITOS
+    <span><b>MIS TRABAJOS</b></span>
+    <a class="close-button" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
 </header>
+<hr>
 <div>
-    <button><i class="fa fa-user-plus"></i>Agregar trabajo</button>
+    <button class="add-button" (click)="ir_a_add_trabajo()"><i class="fas fa-plus"></i> Agregar trabajo</button>
 </div>
 
-<body>
-    <div>
-        <table class= id="datatableexample table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Job Title</th>
-                    <th scope="col">Job DFDF</th>
-                    <th scope="col">Job TiDSFDStle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>MARK</td>
-                    <td>OTTO</td>
-                    <td>DSDdsfF</td>
-                    <td>DdfSDF</td>
-                    <td>ds</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
+<div>
+    <br>
+    <table id="datatabletrabajitos" class="table table-bordered table-hover">
+        <thead>
+            <br>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Status</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">1</td>
+                <td>Mecanico</td>
+                <td>Se solicita un buen mecanico</td>
+                <td>123 Calle Principal</td>
+                <td>$ 12500</td>
+                <td>Disponible</td>
+                <td class="options">
+                    <button class="btn btn-info" (click)="openModal()"><i class="fas fa-eye"></i>Ver</button>
+                    <button class="btn btn-warning" (click)="ir_a_editar_trabajo()"><i
+                            class="fas fa-edit"></i>Modificar</button>
+                    <button class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Inhabilitar</button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">2</td>
+                <td>Programador jr</td>
+                <td>Se solicita un programador que domine angular, nestjs y tenga conocimientos sobre otras áreas</td>
+                <td>456 Calle Secundaria</td>
+                <td>$ 11210</td>
+                <td>Disponible</td>
+                <td class="options">
+                    <button class="btn btn-info" (click)="openModal()"><i class="fas fa-eye"></i>Ver</button>
+                    <button class="btn btn-warning" (click)="ir_a_editar_trabajo()"><i
+                            class="fas fa-edit"></i>Modificar</button>
+                    <button class="btn btn-secondary"><i class="fas fa-trash-alt"></i>Inhabilitar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>

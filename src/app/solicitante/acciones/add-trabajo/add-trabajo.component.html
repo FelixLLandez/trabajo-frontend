@@ -1,0 +1,42 @@
+<header>
+    <span><b>Agregar un trabajo</b></span>
+    <a class="back-button" href="/trabajitos"><b><i class="fas fa-arrow-left"></i> Regresar</b></a>
+</header>
+
+<hr>
+
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control"
+                placeholder="Ingrese el nombre del trabajo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" class="form-control"
+                placeholder="Ingrese la dirección del trabajo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" class="form-control"
+                placeholder="Ingrese la descripción del trabajo" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" class="form-control" placeholder="$" required>
+        </div>
+
+        <div class="form-group">
+            <label for="imagen">Imagen:</label>
+            <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control" required>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+</div>

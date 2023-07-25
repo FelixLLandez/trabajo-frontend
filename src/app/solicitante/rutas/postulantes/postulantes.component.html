@@ -1,86 +1,55 @@
-<br>
-<h1 class="table-title"><b>POSTULANTES</b></h1>
-<div class="add-button-container">
-    <button class="add-button">Agregar postulante</button>
-</div>
-<table class="dashboard-table">
-    <thead>
+<header>
+    <span><b>POSTULANTES</b></span>
+    <a class="close-button" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+  </header>
+  <hr>
+  
+  <div>
+    <br>
+    <table id="datatablepostulantes" class="table table-bordered table-hover">
+      <thead>
+        <br>
         <tr>
-            <th>#</th>
-            <th>Nombre completo</th>
-            <th>Dirección</th>
-            <th>Correo</th>
-            <th>Acciones</th>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Trabajo de Postulación</th>
+          <th scope="col">Opciones</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <tr>
-            <td>1</td>
-            <td>Nombre postulante1</td>
-            <td>Dirección 1</td>
-            <td>Correo 1</td>
-            <td>
-                <button class="action-button color-button" title="Ver información">Ver
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="action-button color-button" title="Editar información"> Editar
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-button color-button" title="Eliminar postulante">Eliminar
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Nombre postulante 2</td>
-            <td>Dirección 2</td>
-            <td>Correo 2</td>
-            <td>
-                <button class="action-button color-button" title="Ver información">Ver
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="action-button color-button" title="Editar información"> Editar
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-button color-button" title="Eliminar postulante">Eliminar
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
+          <td scope="row">1</td>
+          <td>John</td>
+          <td>Doe</td>
+          <td>johndoe@example.com</td>
+          <td>1234567890</td>
+          <td>30</td>
+          <td>Mecanico</td>
+          <td class="options">
+            <button class="btn btn-info" (click)="openModal()"><i class="fas fa-eye"></i>Ver</button>
+            <button class="btn btn-success"><i class="fas fa-check"></i>Aceptar</button>
+            <button class="btn btn-secondary"><i class="fas fa-times"></i>Rechazar</button>
+          </td>
         </tr>
         <tr>
-            <td>3</td>
-            <td>Nombre postulante 3</td>
-            <td>Dirección 3</td>
-            <td>Correo 3</td>
-            <td>
-                <button class="action-button color-button" title="Ver información">Ver
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="action-button color-button" title="Editar información"> Editar
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-button color-button" title="Eliminar postulante">Eliminar
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
+          <td scope="row">2</td>
+          <td>Jane</td>
+          <td>Smith</td>
+          <td>janesmith@example.com</td>
+          <td>9876543210</td>
+          <td>24</td>
+          <td>Programador jr</td>
+          <td class="options">
+            <button class="btn btn-info" (click)="openModal()"><i class="fas fa-eye"></i>Ver</button>
+            <button class="btn btn-success"><i class="fas fa-check"></i>Aceptar</button>
+            <button class="btn btn-secondary"><i class="fas fa-times"></i>Rechazar</button>
+          </td>
         </tr>
-        <tr>
-            <td>4</td>
-            <td>Nombre postulante 4</td>
-            <td>Dirección 4</td>
-            <td>Correo 4</td>
-            <td>
-                <button class="action-button color-button" title="Ver información">Ver
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="action-button color-button" title="Editar información"> Editar
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-button color-button" title="Eliminar postulante">Eliminar
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+  
