@@ -25,7 +25,10 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "@angular/material/prebuilt-themes/indigo-pink.css",
+=======
+>>>>>>> origin/Login-admin
               "src/styles.css"
             ],
             "scripts": []
@@ -88,7 +91,10 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "@angular/material/prebuilt-themes/indigo-pink.css",
+=======
+>>>>>>> origin/Login-admin
               "src/styles.css"
             ],
             "scripts": []
@@ -96,8 +102,11 @@
         }
       }
     }
+<<<<<<< HEAD
   },
   "cli": {
     "analytics": false
+=======
+>>>>>>> origin/Login-admin
   }
 }
