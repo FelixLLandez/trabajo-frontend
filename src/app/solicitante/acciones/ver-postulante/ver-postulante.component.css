@@ -1,0 +1,40 @@
+/* Estilos para el cuerpo del modal */
+.modal-body {
+    padding: 20px;
+    background-color: #e8f1f2;
+  }
+  
+  /* Estilos para el título del modal */
+  .modal-title {
+    font-size: 20px;
+    color: black;
+  }
+  
+  /* Estilos para el botón "Cerrar" del modal */
+  .modal-footer {
+    justify-content: flex-end;
+  }
+  
+  /* Estilos para los campos de información */
+  strong {
+    margin-right: 5px;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la disposición de las columnas en el cuerpo del modal */
+  .row {
+    margin-bottom: 15px;
+  }
+  
+  /* Estilos para la imagen de perfil */
+  .profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Sombra para la imagen */
+  }
+  

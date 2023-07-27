@@ -1,0 +1,55 @@
+<header>
+    <span><b>POSTULANTES</b></span>
+    <a class="close-button" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+  </header>
+  <hr>
+  
+  <div>
+    <br>
+    <table id="datatablepostulantes" class="table table-bordered table-hover">
+      <thead>
+        <br>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Trabajo de Postulación</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">1</td>
+          <td>John</td>
+          <td>Doe</td>
+          <td>johndoe@example.com</td>
+          <td>1234567890</td>
+          <td>30</td>
+          <td>Mecanico</td>
+          <td class="options">
+            <button class="btn btn-info" (click)="openModal()"><i class="fas fa-eye"></i>Ver</button>
+            <button class="btn btn-success" (click)="aceptarPostulante()"><i class="fas fa-check"></i>Aceptar</button>
+            <button class="btn btn-secondary" (click)="rechazarPostulante()"><i class="fas fa-times"></i>Rechazar</button>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row">2</td>
+          <td>Jane</td>
+          <td>Smith</td>
+          <td>janesmith@example.com</td>
+          <td>9876543210</td>
+          <td>24</td>
+          <td>Programador jr</td>
+          <td class="options">
+            <button class="btn btn-info" (click)="openModal()"><i class="fas fa-eye"></i>Ver</button>
+            <button class="btn btn-success" (click)="aceptarPostulante()"><i class="fas fa-check"></i>Aceptar</button>
+            <button class="btn btn-secondary" (click)="rechazarPostulante()"><i class="fas fa-times"></i>Rechazar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
