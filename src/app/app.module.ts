@@ -1,19 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< HEAD
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
-=======
 import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
->>>>>>> origin/Login-admin
-=======
 import { BodyComponent } from './Sidebar/body/body.component';
 import { SidenavComponent } from './Sidebar/sidenav/sidenav.component';
 import { AdministradoresRolAdminComponent } from './pages/Rol_Administrador/Administrador/administradores-rol-admin/administradores-rol-admin.component';
@@ -32,50 +25,23 @@ import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Post
 import { ArchivadosRolAdminComponent } from './pages/Rol_Administrador/Archivados/archivados-rol-admin/archivados-rol-admin.component';
 import { PerfilRolAdminComponent } from './pages/Rol_Administrador/Perfil/perfil-rol-admin/perfil-rol-admin.component';
 
->>>>>>> origin/Dashboard-admin
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RegistroComponent } from './Auth/registro/registro.component';
-import { LoginComponent } from './Auth/login/login.component';
-import { BodyComponent } from './solicitante/sidenav-estructura/body/body.component';
-import { SidenavComponent } from './solicitante/sidenav-estructura/sidenav/sidenav.component';
 import { PerfilComponent } from './solicitante/rutas/perfil/perfil.component';
 import { TrabajitosComponent } from './solicitante/rutas/trabajitos/trabajitos.component';
 import { PostulantesComponent } from './solicitante/rutas/postulantes/postulantes.component';
-import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
 import { AddTrabajoComponent } from './solicitante/acciones/add-trabajo/add-trabajo.component';
 import { EditarTrabajoComponent } from './solicitante/acciones/editar-trabajo/editar-trabajo.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trabajo.component';
 import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
->>>>>>> origin/dashboard_Solicitante
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     RegistroComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-=======
-    LoginAdminComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
->>>>>>> origin/Login-admin
-=======
+    LoginComponent,
     BodyComponent,
     SidenavComponent,
     AdministradoresRolAdminComponent,
@@ -90,8 +56,7 @@ import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ve
     EditPostulanteRolAdminComponent,
     InfoPostulantesRolAdminComponent,
     ArchivadosRolAdminComponent,
-    PerfilRolAdminComponent
-=======
+    PerfilRolAdminComponent,
     RegistroComponent,
     LoginComponent,
     BodyComponent,
@@ -102,24 +67,19 @@ import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ve
     AddTrabajoComponent,
     EditarTrabajoComponent,
     VerTrabajoComponent,
-    VerPostulanteComponent  
->>>>>>> origin/dashboard_Solicitante
+    VerPostulanteComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule
-    
->>>>>>> origin/Dashboard-admin
-=======
+    DataTablesModule,
     BrowserAnimationsModule,
     DataTablesModule,
     HttpClientModule,
     ModalModule.forRoot()
->>>>>>> origin/dashboard_Solicitante
   ],
   providers: [],
   bootstrap: [AppComponent]

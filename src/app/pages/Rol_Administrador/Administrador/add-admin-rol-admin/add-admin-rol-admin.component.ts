@@ -1,87 +1,87 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-@Component({
-  selector: 'app-add-admin-rol-admin',
-  templateUrl: './add-admin-rol-admin.component.html',
-  styleUrls: ['./add-admin-rol-admin.component.css']
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RegistroComponent } from './auth/registro/registro.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
+import { BodyComponent } from './Sidebar/body/body.component';
+import { SidenavComponent } from './Sidebar/sidenav/sidenav.component';
+import { AdministradoresRolAdminComponent } from './pages/Rol_Administrador/Administrador/administradores-rol-admin/administradores-rol-admin.component';
+import { AddAdminRolAdminComponent } from './pages/Rol_Administrador/Administrador/add-admin-rol-admin/add-admin-rol-admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditAdminRolAdminComponent } from './pages/Rol_Administrador/Administrador/edit-admin-rol-admin/edit-admin-rol-admin.component';
+import { SolicitantesRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/solicitantes-rol-admin/solicitantes-rol-admin.component';
+import { DataTablesModule } from 'angular-datatables';
+import { AddSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/add-solicitante-rol-admin/add-solicitante-rol-admin.component';
+import { EditSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/edit-solicitante-rol-admin/edit-solicitante-rol-admin.component';
+import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/ver-solicitante-rol-admin/ver-solicitante-rol-admin.component';
+import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/postulantes-rol-admin/postulantes-rol-admin.component';
+import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
+import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
+import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/info-postulantes-rol-admin/info-postulantes-rol-admin.component';
+import { ArchivadosRolAdminComponent } from './pages/Rol_Administrador/Archivados/archivados-rol-admin/archivados-rol-admin.component';
+import { PerfilRolAdminComponent } from './pages/Rol_Administrador/Perfil/perfil-rol-admin/perfil-rol-admin.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { PerfilComponent } from './solicitante/rutas/perfil/perfil.component';
+import { TrabajitosComponent } from './solicitante/rutas/trabajitos/trabajitos.component';
+import { PostulantesComponent } from './solicitante/rutas/postulantes/postulantes.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AddTrabajoComponent } from './solicitante/acciones/add-trabajo/add-trabajo.component';
+import { EditarTrabajoComponent } from './solicitante/acciones/editar-trabajo/editar-trabajo.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trabajo.component';
+import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    RegistroComponent,
+    LoginComponent,
+    BodyComponent,
+    SidenavComponent,
+    AdministradoresRolAdminComponent,
+    AddAdminRolAdminComponent,
+    EditAdminRolAdminComponent,
+    SolicitantesRolAdminComponent,
+    AddSolicitanteRolAdminComponent,
+    EditSolicitanteRolAdminComponent,
+    VerSolicitanteRolAdminComponent,
+    PostulantesRolAdminComponent,
+    AddPostulantesRolAdminComponent,
+    EditPostulanteRolAdminComponent,
+    InfoPostulantesRolAdminComponent,
+    ArchivadosRolAdminComponent,
+    PerfilRolAdminComponent,
+    RegistroComponent,
+    LoginComponent,
+    BodyComponent,
+    SidenavComponent,
+    TrabajitosComponent,
+    PerfilComponent,
+    PostulantesComponent,
+    AddTrabajoComponent,
+    EditarTrabajoComponent,
+    VerTrabajoComponent,
+    VerPostulanteComponent,
+    LoginAdminComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTablesModule,
+    BrowserAnimationsModule,
+    DataTablesModule,
+    HttpClientModule,
+    ModalModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AddAdminRolAdminComponent {
-
-  constructor(private fb: FormBuilder) { }
-
-  camposIguales(control1: string, control2: string) {
-    return (fg: AbstractControl): ValidationErrors | null => {
-      const pass1 = fg.get(control1)?.value;
-      const pass2 = fg.get(control2)?.value;
-
-      if (pass1 !== pass2) {
-        fg.get(control2)?.setErrors({
-          noIguales: true
-        });
-        return {
-          noIguales: true
-        }
-      }
-      fg.get(control2)?.setErrors(null);
-      return null;
-    }
-  };
-
-  nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
-  edadynumero= '[0-9]+';
-  correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-
-  Addadmin: FormGroup = this.fb.group({
-
-    nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
-    apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
-    genero: ['', [Validators.required]],
-    edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
-    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
-    correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
-    password2: ['', [Validators.required,]]
-  }, {
-    validators: [this.camposIguales('password', 'password2')]
-  }
-  );
-
-  nombrevalido(){
-    return this.Addadmin.controls?.['nombre']?.errors && this.Addadmin.controls?.['nombre']?.touched
-  }
-
-  apellidosvalido(){
-    return this.Addadmin.controls?.['apellidos']?.errors && this.Addadmin.controls?.['apellidos']?.touched
-  }
-
-  sexovalido(){
-    return this.Addadmin.controls?.['genero']?.touched && this.Addadmin.controls?.['genero'].errors
-  }
-
-  edadvalida(){
-    return this.Addadmin.controls?.['edad']?.errors && this.Addadmin.controls?.['edad']?.touched
-  }
-
-  telefonovalido(){
-    return this.Addadmin.controls?.['telefono']?.errors && this.Addadmin.controls?.['telefono']?.touched
-  }
-
-  correovalido(){
-    return this.Addadmin.controls?.['correo']?.errors && this.Addadmin.controls?.['correo']?.touched
-  }
-
-
-  contrasenavalida() {
-    return this.Addadmin.controls?.['password']?.errors && this.Addadmin.controls?.['password']?.touched
-  }
-
-  contrasena2valida() {
-    return this.Addadmin.controls?.['password2']?.errors && this.Addadmin.controls?.['password2']?.touched
-  }
-
-  guardar() {
-    console.log(this.Addadmin.value);
-
-  }
-}
+export class AppModule { }
