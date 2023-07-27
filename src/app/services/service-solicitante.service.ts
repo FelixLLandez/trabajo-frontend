@@ -18,7 +18,6 @@ export class ServiceSolicitanteService {
       this.id_rol = this.user_solicitante.rol.id;
     }catch (error){
       console.log('error');
-      
     }
 
     if (this.token_solicitante === null || this.user_solicitante === null || this.id_rol !== 1) {
