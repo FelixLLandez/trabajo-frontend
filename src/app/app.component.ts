@@ -1,10 +1,32 @@
-<div *ngIf="!isExcludedRoute(); else contenidoAlternativo">
-  
-    <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
-    <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth">
-    </app-body>
-  </div>
-  
-  <ng-template #contenidoAlternativo>
-    <router-outlet></router-outlet>
-  </ng-template>
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+interface SideNavToggle{
+  screenWidth: number;
+  collapsed: boolean;
+}
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'trabajitos-angular';
+
+  constructor(private router:Router){}
+
+  isSideNavCollapsed=false;
+  screenWidth=0;
+
+
+  onToggleSideNav(data:SideNavToggle):void{
+    this.screenWidth= data.screenWidth;
+    this.isSideNavCollapsed=data.collapsed;
+  }
+
+  isExcludedRoute(): boolean {
+    const currentRoute = this.router.url; 
+    return currentRoute === '/login-administrador' || currentRoute==='/login'; 
+  }
+}

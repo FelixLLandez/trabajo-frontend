@@ -1,26 +1,41 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceSolicitanteService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  token_solicitante:any="";
-  user_solicitante:any={};
-  id_rol:any={};
+  token_solicitante: any = "";
+  user_solicitante: any = {};
+  id_rol: any = {};
 
-  isAuth_solicitante():boolean{
+  login_solicitante(data: any): Observable<Request> {
+    return this.http.post<Request>(' http://localhost:3000/api/users/login', data);
+  }
+
+  guardarToken_solicitante(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  guardaruser_solicitante(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  isAuth_solicitante(): boolean {
     this.token_solicitante = localStorage.getItem('token') || null;
     this.user_solicitante = JSON.parse(localStorage.getItem('user') || 'null') || null;
-    try{
+    try {
       this.id_rol = this.user_solicitante.rol.id;
-    }catch (error){
+    } catch (error) {
       console.log('error');
+
     }
 
-    if (this.token_solicitante === null || this.user_solicitante === null || this.id_rol !== 1) {
+    if (this.token_solicitante === null || this.user_solicitante === null || this.id_rol !== 2) {
       return false;
     } else {
       return true;

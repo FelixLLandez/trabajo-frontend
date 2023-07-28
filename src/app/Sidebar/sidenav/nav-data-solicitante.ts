@@ -1,23 +1,27 @@
-export const navbarData = [
+export const navbarData_solicitante = [
     {
       routeLink: 'trabajitos',
       icon: 'fal fa-book',
-      label: 'Trabajitos'
+      label: 'Trabajitos',
+      title:'Trabajitos'
     },
     {
       routeLink: 'perfil',
       icon: 'fal fa-user',
-      label: 'Mi perfil'
+      label: 'Mi perfil',
+      title:'Mi perfil'
     },
     {
       routeLink: 'postulantes',
       icon: 'fal fa-users',
-      label: 'Postulantes'
+      label: 'Postulantes',
+      title:'Postulantes'
     },
     {
       routeLink: 'login',
       icon: 'fal fa-home',
-      label: 'Salir'
+      label: 'Salir',
+      title:'Salir'
     }
   ];
   

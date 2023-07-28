@@ -1,6 +1,8 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { navbarData_solicitante } from './nav-data-solicitante';
 import { Router } from '@angular/router';
+import { ServiceAdministradorService } from '../../services/service-administrador.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -16,13 +18,26 @@ interface SideNavToggle {
 })
 export class SidenavComponent {
 
-  constructor(private router: Router) {
+  rol_user:any="";
+  user_admin: any = {};
+  id_rol: any = {};
+
+  constructor(private router: Router, private serviceAdmin:ServiceAdministradorService) {
+    this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
+    try{
+      this.id_rol = this.user_admin.rol.id;
+      this.rol_user=this.id_rol;
+    }catch (error){
+      console.log('error');
+    }
+   
   }
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  navbarData_solicitante=navbarData_solicitante;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -47,11 +62,17 @@ export class SidenavComponent {
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
 
-  home() {
+  home_admin() {
     this.router.navigateByUrl('/ver-administradores')
   }
+
+  home_solicitante() {
+    this.router.navigateByUrl('/trabajitos')
+  }
+
+
+ 
 
 
 
 }
-

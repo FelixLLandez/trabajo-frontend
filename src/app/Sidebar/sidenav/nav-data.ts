@@ -26,7 +26,14 @@ export const navbarData=[
         label:'Archivados',
         title:'Archivados'
    
-    }
+    },
+    {
+        routeLink:'/mi-perfil',
+        icon: 'fal fa-circle-user',
+        label:'Mi perfil',
+        title:'Mi perfil'
+   
+    },
     
 
 ]

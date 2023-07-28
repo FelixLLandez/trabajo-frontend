@@ -46,4 +46,17 @@ export class ServiceAdministradorService {
       return true;
     }
   }
+
+  rol_usuario(){
+    this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
+    try{
+      this.id_rol = this.user_admin.rol.id;
+    }catch (error){
+      console.log('error');
+    }
+    console.log(this.id_rol);
+    return this.id_rol;
+    
+    
+  }
 }

@@ -6,34 +6,50 @@
             <i class="fal f-times close-icon"></i>
         </button>
     </div>
-    
-    <ul class="sidenav-nav" >
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}" title="{{data.title}}">
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
-                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
-            </a>
-            
-        </li>
-        <li class="sidenav-nav-item">
-            <a class="sidenav-nav-link" [routerLink]="['/mi-perfil']" routerLinkActive="router-link-active"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-                title="Mi perfil">
-                <i class="sidenav-link-icon fal fa-circle-user"></i>
-                <span class="sidenav-link-text" *ngIf="collapsed">Mi perfil</span>
-            </a>
-        </li>
-        <li   style="margin-top: auto;">
-            <a class="sidenav-nav-link" *ngIf="!collapsed"  (click)="home()" title="Home">
+
+    <ul class="sidenav-nav">
+        <ng-container *ngIf="rol_user===1">
+            <li class="sidenav-nav-item" *ngFor="let data of navData">
+                <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}" title="{{data.title}}">
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+                </a>
+
+            </li>
+        </ng-container>
+        <ng-container *ngIf="rol_user===2">
+            <li class="sidenav-nav-item" *ngFor="let data of navbarData_solicitante">
+                <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}" title="{{data.title}}">
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+                </a>
+
+            </li>
+        </ng-container>
+
+
+        <li *ngIf="rol_user===1" style="margin-top: auto;">
+            <a class="sidenav-nav-link" *ngIf="!collapsed" (click)="home_admin()" title="Home">
                 <img src="/assets/logo3.png" style="width: 100%;">
             </a>
-            <a class="sidenav-nav-link" *ngIf="collapsed" (click)="home()"  title="Home" >
+            <a class="sidenav-nav-link" *ngIf="collapsed" (click)="home_admin()" title="Home">
                 <img src="/assets/logo.png" style="width: 80%;">
             </a>
         </li>
-        
+
+        <li *ngIf="rol_user===2" style="margin-top: auto;">
+            <a class="sidenav-nav-link" *ngIf="!collapsed" (click)="home_solicitante()" title="Home">
+                <img src="/assets/logo3.png" style="width: 100%;">
+            </a>
+            <a class="sidenav-nav-link" *ngIf="collapsed" (click)="home_solicitante()" title="Home">
+                <img src="/assets/logo.png" style="width: 80%;">
+            </a>
+        </li>
+
     </ul>
-    
-   
-    
+
+
+
 </div>

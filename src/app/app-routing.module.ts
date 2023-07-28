@@ -25,43 +25,32 @@ import { AuthGuard_admin } from './guards/auth-admin.guard';
 import { AuthGuard_solicitante } from './guards/auth-solicitante.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige a '/login' cuando la URL raíz está vacía
-  { path: 'registro', component: RegistroComponent }, //registro de solicitante y postulante
-  { path: 'login', component: LoginComponent }, //login de solicitante y postulante
+  //Rutas para el usuario con Rol de Solicitante
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: 'registro', component: RegistroComponent },
+  { path: 'login', component: LoginComponent }, 
   { path: 'trabajitos', component: TrabajitosComponent, canActivate:[AuthGuard_solicitante] },
   { path: 'perfil', component: PerfilComponent ,canActivate:[AuthGuard_solicitante]},
   { path: 'postulantes', component: PostulantesComponent ,canActivate:[AuthGuard_solicitante]},
   { path: 'add-trabajo', component: AddTrabajoComponent,canActivate:[AuthGuard_solicitante] },
   { path: 'editar-trabajo', component: EditarTrabajoComponent,canActivate:[AuthGuard_solicitante] },
 
-  //Ruta de login para el administrador
+  
+  //Ruta para el usuario con Rol de Administrador
   {path: 'login-administrador', component:LoginAdminComponent},
-
-  //Rutas del administrador
   {path: 'ver-administradores', component:AdministradoresRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'add-administrador', component:AddAdminRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'edit-administrador', component:EditAdminRolAdminComponent, canActivate:[AuthGuard_admin]},
-
-  //Rutas del solicitante
   {path: 'ver-solicitantes', component:SolicitantesRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'add-solicitante', component:AddSolicitanteRolAdminComponent,canActivate:[AuthGuard_admin]},
   {path: 'edit-solicitante', component:EditSolicitanteRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'ver-solicitante', component:VerSolicitanteRolAdminComponent,canActivate:[AuthGuard_admin]},
-
-  //Rutas del postulante
   {path: 'ver-postulantes', component: PostulantesRolAdminComponent,canActivate:[AuthGuard_admin]},
   {path: 'add-postulante', component:AddPostulantesRolAdminComponent,canActivate:[AuthGuard_admin]},
   {path: 'edit-postulante', component:EditPostulanteRolAdminComponent,canActivate:[AuthGuard_admin]},
   {path: 'informacion-postulante', component:InfoPostulantesRolAdminComponent,canActivate:[AuthGuard_admin]},
-
-  //Ruta de usaurios archivados
   {path: 'usuarios-archivados', component:ArchivadosRolAdminComponent,canActivate:[AuthGuard_admin]},
-
-  //Ruta de perfil del administrador
   {path: 'mi-perfil', component:PerfilRolAdminComponent,canActivate:[AuthGuard_admin]},
-
-  
-  
 
 ];
 

@@ -16,9 +16,11 @@
             <img src="assets/trabajitos-logotipo.jpg">
         </div>
         <div class="registro-form">
-            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
-            <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+            <form [formGroup]="Formulario_login" (ngSubmit)="login()">
+            <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required formControlName="email">
+            <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required formControlName="password">
             <button class="registro-button" (click)="login()" >Iniciar sesión</button>
+            </form>
             <p class="registro-link">¿Aún no tienes una cuenta? <a href="/registro">Crear una cuenta</a></p>
         </div>
     </div>
