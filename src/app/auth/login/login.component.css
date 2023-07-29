@@ -72,3 +72,13 @@
     color: #7A9E7E;
     text-decoration: underline;
 }
+
+.navbar-brand {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #ffffff;
+    text-decoration: none;
+}

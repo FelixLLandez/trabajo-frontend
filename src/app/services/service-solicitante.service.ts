@@ -28,17 +28,12 @@ export class ServiceSolicitanteService {
   isAuth_solicitante(): boolean {
     this.token_solicitante = localStorage.getItem('token') || null;
     this.user_solicitante = JSON.parse(localStorage.getItem('user') || 'null') || null;
-    try {
-      this.id_rol = this.user_solicitante.rol.id;
-    } catch (error) {
-      console.log('error');
-
-    }
-
-    if (this.token_solicitante === null || this.user_solicitante === null || this.id_rol !== 2) {
+  
+    if (this.token_solicitante === null || this.user_solicitante === null || !this.user_solicitante.rol || this.user_solicitante.rol.id !== 2) {
       return false;
     } else {
       return true;
     }
   }
+  
 }
