@@ -38,7 +38,7 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group">
                             <label for="input1">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre">
+                            <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" value="{{datos_admin.nombre}}">
                             <div *ngIf="nombrevalido()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label for="input2">Apellidos</label>
                             <input type="text" class="form-control" id="apellidos" name="apellidos"
-                                formControlName="apellidos">
+                                formControlName="apellidos" value="{{datos_admin.apellidos}}">
                             <div *ngIf="apellidosvalido()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -73,7 +73,7 @@
                             <label for="input1">Sexo</label>
                             <select class="form-select" required aria-label="Default select example"  id="genero" name="genero"
                                 formControlName="genero">
-                                <option value="">Seleccionar...</option>
+                                <option value="{{datos_admin.sexo}}">{{datos_admin.sexo}}</option>
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
                             </select>
@@ -91,7 +91,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input2">Edad</label>
-                            <input type="text" class="form-control" id="edad" name="edad" formControlName="edad">
+                            <input type="text" class="form-control" id="edad" name="edad" formControlName="edad" value="{{datos_admin.edad}}">
                             <div *ngIf="edadvalida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -107,7 +107,7 @@
                         <div class="form-group">
                             <label for="input3">Teléfono</label>
                             <input type="text" class="form-control" id="telefono" name="telefono"
-                                formControlName="telefono">
+                                formControlName="telefono" value="{{datos_admin.telefono}}">
                             <div *ngIf="telefonovalido()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -124,7 +124,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input1">Correo</label>
-                            <input type="email" class="form-control" id="correo" name="correo" formControlName="correo">
+                            <input type="email" class="form-control" id="correo" name="correo" formControlName="correo" value="{{datos_admin.email}}">
                             <div *ngIf="correovalido()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -140,7 +140,7 @@
                         <div class="form-group">
                             <label for="input2">Contraseña</label>
                             <input type="password" class="form-control" id="password" name="password"
-                                formControlName="password">
+                                formControlName="password" value="{{datos_admin.password}}">
                             <div *ngIf="contrasenavalida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -156,7 +156,7 @@
                         <div class="form-group">
                             <label for="input3">Confirmar constraseña</label>
                             <input type="password" class="form-control" id="password2" name="password2"
-                                formControlName="password2">
+                                formControlName="password2" value="{{datos_admin.password}}">
                             <div *ngIf="contrasena2valida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">

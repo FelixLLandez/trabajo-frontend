@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,17 @@ export class ServiceAdministradorService {
     return this.http.post<Request>('http://localhost:3000/api/users/register', data);
   }
 
-  login_administrador(data: any): Observable<Request> {
-    return this.http.post<Request>(' http://localhost:3000/api/users/login', data);
+  login_administrador(data: any) {
+    return this.http.post('http://localhost:3000/api/users/login', data).pipe(
+      catchError(error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Correo y/o contraseñas incorrectas',
+          showConfirmButton: true,
+        });
+        return throwError('Ha ocurrido un error en la petición.');
+      })
+    );
   }
 
   guardarToken_admistrador(token: string) {
@@ -33,13 +43,12 @@ export class ServiceAdministradorService {
   isAuth_admin(): boolean {
     this.token_admin = localStorage.getItem('token') || null;
     this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
-    try{
+    try {
       this.id_rol = this.user_admin.rol.id;
-    }catch (error){
+    } catch (error) {
       console.log('error');
-      
-    }
 
+    }
     if (this.token_admin === null || this.user_admin === null || this.id_rol !== 1) {
       return false;
     } else {
@@ -47,16 +56,33 @@ export class ServiceAdministradorService {
     }
   }
 
-  rol_usuario(){
+  rol_usuario() {
     this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
-    try{
+    try {
       this.id_rol = this.user_admin.rol.id;
-    }catch (error){
+    } catch (error) {
       console.log('error');
     }
     console.log(this.id_rol);
     return this.id_rol;
-    
-    
+  }
+
+  get_administradores() {
+    return this.http.get('http://localhost:3000/api/users/administradores');
+  }
+
+  get_admin(id: any) {
+    return this.http.get(`http://localhost:3000/api/users/administrador/${id}`);
+  }
+
+  modificar_administrador(data: any): Observable<Request> {
+    return this.http.patch<Request>('http://localhost:3000/api/users/modificar/', data);
+  }
+
+  desactivar_administrador(data: any) {
+    return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
+    //   const url = `http://localhost:3000/api/users/desactivar_user/${data}`;
+    //   return this.http.patch(url, {});
+    // }
   }
 }

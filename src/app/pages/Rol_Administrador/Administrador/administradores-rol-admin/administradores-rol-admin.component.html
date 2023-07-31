@@ -26,8 +26,8 @@
 </div>
 
 <body style="background-color: transparent;">
-    <div>
-        <table id="table-data-administradores" class="table table-bordered table-hove table-striped">
+    <div class="table-responsive">
+        <table  class="table table-bordered table-hove table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -36,53 +36,23 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Teléfono</th>
                     <th scope="col">Edad</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Sexo</th>
                     <th scope="col" class="opciones">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                <tr *ngFor="let item of all_administradores; let i=index ">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.edad}}</td>
+                    <td>{{item.sexo}}</td>
                     <td class="opciones-botones">
-                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
+                        <button (click)="modificar_admin(item.id)" title="Modificar a un administrador" type="button"
                             class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
-                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td class="opciones-botones">
-                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
-                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
-                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td class="opciones-botones">
-                        <button (click)="modificar_admin()" title="Modificar a un administrador" type="button"
-                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button (click)="eliminar_admin()" title="Inhabilitar a un administrador" type="button"
+                        <button (click)="eliminar_admin(item.id)" title="Inhabilitar a un administrador" type="button"
                             class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>

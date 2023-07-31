@@ -29,8 +29,13 @@ body {
 
 .boton-login {
     margin-top: 20px;
-    background-color: #7a9e7e;
+    
+    border: 1px solid #7a9e7e;
     color: white;
+}
+
+.boton-login:hover{
+    box-shadow: 0 0 13px rgba(255, 255, 255, 0.483);
 }
 
 .card-title{

@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ServiceAdministradorService } from '../../../../services/service-administrador.service';
 
 @Component({
   selector: 'app-edit-admin-rol-admin',
   templateUrl: './edit-admin-rol-admin.component.html',
   styleUrls: ['./edit-admin-rol-admin.component.css']
 })
-export class EditAdminRolAdminComponent {
+export class EditAdminRolAdminComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private route:ActivatedRoute, private serviceAdmin: ServiceAdministradorService) { }
+
+  id_user:any;
+  datos_admin:any=[];
+
+  ngOnInit(): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+    this.id_user = id;
+    console.log(this.id_user);
+    this.obtener_datos();
+  }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -29,7 +41,7 @@ export class EditAdminRolAdminComponent {
   };
 
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
-  edadynumero= '[0-9]+';
+  edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
   Editadmin: FormGroup = this.fb.group({
@@ -40,34 +52,34 @@ export class EditAdminRolAdminComponent {
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]]
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
   );
 
-  nombrevalido(){
+  nombrevalido() {
     return this.Editadmin.controls?.['nombre']?.errors && this.Editadmin.controls?.['nombre']?.touched
   }
 
-  apellidosvalido(){
+  apellidosvalido() {
     return this.Editadmin.controls?.['apellidos']?.errors && this.Editadmin.controls?.['apellidos']?.touched
   }
 
-  sexovalido(){
+  sexovalido() {
     return this.Editadmin.controls?.['genero']?.touched && this.Editadmin.controls?.['genero'].errors
   }
 
-  edadvalida(){
+  edadvalida() {
     return this.Editadmin.controls?.['edad']?.errors && this.Editadmin.controls?.['edad']?.touched
   }
 
-  telefonovalido(){
+  telefonovalido() {
     return this.Editadmin.controls?.['telefono']?.errors && this.Editadmin.controls?.['telefono']?.touched
   }
 
-  correovalido(){
+  correovalido() {
     return this.Editadmin.controls?.['correo']?.errors && this.Editadmin.controls?.['correo']?.touched
   }
 
@@ -83,6 +95,14 @@ export class EditAdminRolAdminComponent {
   modificar() {
     console.log(this.Editadmin.value);
 
+  }
+
+  obtener_datos(){
+    this.serviceAdmin.get_admin(this.id_user).subscribe((data:any)=>{
+      this.datos_admin=data;
+      console.log(this.datos_admin);
+      
+    })
   }
 
 }
