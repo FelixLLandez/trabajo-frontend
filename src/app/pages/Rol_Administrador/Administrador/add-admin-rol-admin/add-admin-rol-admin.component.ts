@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ServiceAdministradorService } from '../../../../services/service-administrador.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-admin-rol-admin',
@@ -9,7 +11,7 @@ import { ServiceAdministradorService } from '../../../../services/service-admini
 })
 export class AddAdminRolAdminComponent {
 
-  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService) { }
+  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private router: Router) { }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -30,7 +32,7 @@ export class AddAdminRolAdminComponent {
   };
 
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
-  edadynumero= '[0-9]+';
+  edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
   Addadmin: FormGroup = this.fb.group({
@@ -41,35 +43,35 @@ export class AddAdminRolAdminComponent {
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]],
-    rolId:[1]
+    rolId: [1]
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
   );
 
-  nombrevalido(){
+  nombrevalido() {
     return this.Addadmin.controls?.['nombre']?.errors && this.Addadmin.controls?.['nombre']?.touched
   }
 
-  apellidosvalido(){
+  apellidosvalido() {
     return this.Addadmin.controls?.['apellidos']?.errors && this.Addadmin.controls?.['apellidos']?.touched
   }
 
-  sexovalido(){
+  sexovalido() {
     return this.Addadmin.controls?.['sexo']?.touched && this.Addadmin.controls?.['sexo'].errors
   }
 
-  edadvalida(){
+  edadvalida() {
     return this.Addadmin.controls?.['edad']?.errors && this.Addadmin.controls?.['edad']?.touched
   }
 
-  telefonovalido(){
+  telefonovalido() {
     return this.Addadmin.controls?.['telefono']?.errors && this.Addadmin.controls?.['telefono']?.touched
   }
 
-  correovalido(){
+  correovalido() {
     return this.Addadmin.controls?.['email']?.errors && this.Addadmin.controls?.['email']?.touched
   }
 
@@ -83,13 +85,19 @@ export class AddAdminRolAdminComponent {
   }
 
   guardar() {
-    this.serviceAdmin.agregar_administrador(this.Addadmin.value).subscribe((datos:any)=>{
-      if(datos){
-        console.log("Agregado correctamente");  
+    console.log(this.Addadmin.value);
+
+    this.serviceAdmin.agregar_administrador(this.Addadmin.value).subscribe((datos: any) => {
+      if (datos) {
+        Swal.fire({
+          title: 'Administrador agregado correctamente',
+          icon: 'success',
+          showCancelButton: false,
+          showConfirmButton: true
+        })
         this.Addadmin.reset();
-      }else{
-        console.log("Sucedio algun error");
-        
+        this.router.navigateByUrl('/ver-administradores');
+
       }
     })
 

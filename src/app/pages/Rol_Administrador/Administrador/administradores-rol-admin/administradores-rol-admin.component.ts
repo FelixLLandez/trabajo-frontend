@@ -10,12 +10,20 @@ declare var $: any;
   templateUrl: './administradores-rol-admin.component.html',
   styleUrls: ['./administradores-rol-admin.component.css']
 })
-export class AdministradoresRolAdminComponent {
+export class AdministradoresRolAdminComponent implements OnInit, OnDestroy {
 
-  all_administradores: any = [];
+  all_administradores: any[] = [];
+  dtOptions: DataTables.Settings = {};
 
   constructor(private router: Router, private serviceAdmin: ServiceAdministradorService) {
+  }
+
+  ngOnInit(): void {
     this.get_administradores();
+  }
+
+  ngOnDestroy(): void {
+    $('#table-data-administradores').DataTable().destroy();
   }
 
   agregar_admin() {
@@ -40,14 +48,14 @@ export class AdministradoresRolAdminComponent {
       if (result.isConfirmed) {
 
         this.serviceAdmin.desactivar_administrador(id).subscribe((data: any) => {
-          if(data){
+          if (data) {
 
             Swal.fire({
               icon: 'success',
               title: 'Desactivado exitosamente!',
             });
             this.get_administradores();
-          }else{
+          } else {
             Swal.fire({
               icon: 'error',
               title: 'Sucedio un problema al desactivar al usuario!',
@@ -78,7 +86,7 @@ export class AdministradoresRolAdminComponent {
           showConfirmButton: false,
           timer: 1500,
         });
-  
+
         setTimeout(() => {
           this.router.navigateByUrl(`/login-administrador`);
         }, 1500);
@@ -89,6 +97,9 @@ export class AdministradoresRolAdminComponent {
   get_administradores() {
     this.serviceAdmin.get_administradores().subscribe((data: any) => {
       this.all_administradores = data;
+      console.log(this.all_administradores);
+      
+      $('#table-data-administradores').DataTable().destroy();
       setTimeout(() => {
         $('#table-data-administradores').DataTable({
           language: {
@@ -103,5 +114,7 @@ export class AdministradoresRolAdminComponent {
       }, 1);
     })
   }
+
+ 
 
 }
