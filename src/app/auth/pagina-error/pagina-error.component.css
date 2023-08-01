@@ -470,7 +470,7 @@ button {
 }
 
 .e-nav__link:after {
-  content: "Home Page";
+  content: "Volver";
 }
 
 .e-nav__link:hover:before {
