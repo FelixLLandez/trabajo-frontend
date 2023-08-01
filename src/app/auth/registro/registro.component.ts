@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,9 +9,14 @@ import { AuthService } from 'src/app/services/authSolicitante/auth-solicitante.s
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.getRoles();
+  }
 
   registroForm: FormGroup;
+  selectedRol: string = '';
 
   constructor(
     private authS: AuthService,
@@ -32,10 +37,23 @@ export class RegistroComponent {
 
   registrarse() {
     if (this.registroForm.valid) {
-      this.authS.registro(this.registroForm.value).subscribe(
+      if (!this.selectedRol) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Por favor, seleccione un rol válido.'
+        });
+        return;
+      }
+
+      // Obtener los valores del formulario
+      const formData = this.registroForm.value;
+
+      // Llamar al servicio AuthService para registrar el usuario con ambos argumentos
+      this.authS.registro(formData, this.selectedRol).subscribe(
         (data) => {
           console.log(data);
-          this.router.navigate(['/trabajitos']);
+          this.router.navigate(['/login']);
           Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',
@@ -44,10 +62,16 @@ export class RegistroComponent {
         },
         (error) => {
           console.log(error);
+          let errorMessage = 'Ocurrió un error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.';
+          if (error.status === 409) {
+            errorMessage = 'El correo electrónico ya está registrado. Por favor, utiliza otro correo.';
+          } else if (error.status === 500) {
+            errorMessage = 'Error interno del servidor. Por favor, contacta al administrador.';
+          }
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'No se pudo registrar el usuario. Inténtalo de nuevo más tarde.'
+            text: errorMessage
           });
         }
       );
@@ -58,51 +82,65 @@ export class RegistroComponent {
         text: 'Por favor, completa todos los campos correctamente.'
       });
     }
-  } // FIN DE LA FUNCION DE REGISTRO :D
+  } //FIN FUNCION DE REGISTRO  
 
-    isNombreInvalid() {
-      const campoNombre = this.registroForm.get('nombre');
-      return campoNombre?.invalid && campoNombre?.touched;
-    }
-  
-    isApellidosInvalid() {
-      const campoApellidos = this.registroForm.get('apellidos');
-      return campoApellidos?.invalid && campoApellidos?.touched;
-    }
-  
-    isSexoInvalid() {
-      const campoSexo = this.registroForm.get('sexo');
-      return campoSexo?.invalid && campoSexo?.touched;
-    }
 
-    isEdadInvalid(){
-      const campoEdad = this.registroForm.get('edad');
-      return campoEdad?.invalid && campoEdad?.touched;
-    }
 
-    isTelefonoInvalid() {
-      const campoTelefono = this.registroForm.get('telefono');
-      return campoTelefono?.invalid && campoTelefono?.touched;
-    }
-    
-    isEmailInvalid() {
-      const campoEmail = this.registroForm.get('email');
-      return campoEmail?.invalid && campoEmail?.touched;
-    }
-    
-    isPasswordInvalid() {
-      const campoPassword = this.registroForm.get('password');
-      return campoPassword?.invalid && campoPassword?.touched;
-    }
+  roles: any[] = [];
+  getRoles() {
+    this.authS.getRoles().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.roles = data; // Asignar los datos a la variable roles
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
 
-    isRolInvalid() {
-      const campoRol = this.registroForm.get('rol');
-      return campoRol?.invalid && campoRol?.touched;
-    }
+  rolSeleccionado(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.selectedRol = target.value; // Guardar el ID del rol seleccionado en la variable selectedRol
+  }
 
-    selectedRol: string = '';
-    rolSeleccionado(event: Event) {
-      const target = event.target as HTMLSelectElement;
-      this.selectedRol = target.value; // Guardar el ID de la opción seleccionada en la variable
-    }
+  isNombreInvalid() {
+    const campoNombre = this.registroForm.get('nombre');
+    return campoNombre?.invalid && campoNombre?.touched;
+  }
+
+  isApellidosInvalid() {
+    const campoApellidos = this.registroForm.get('apellidos');
+    return campoApellidos?.invalid && campoApellidos?.touched;
+  }
+
+  isSexoInvalid() {
+    const campoSexo = this.registroForm.get('sexo');
+    return campoSexo?.invalid && campoSexo?.touched;
+  }
+
+  isEdadInvalid() {
+    const campoEdad = this.registroForm.get('edad');
+    return campoEdad?.invalid && campoEdad?.touched;
+  }
+
+  isTelefonoInvalid() {
+    const campoTelefono = this.registroForm.get('telefono');
+    return campoTelefono?.invalid && campoTelefono?.touched;
+  }
+
+  isEmailInvalid() {
+    const campoEmail = this.registroForm.get('email');
+    return campoEmail?.invalid && campoEmail?.touched;
+  }
+
+  isPasswordInvalid() {
+    const campoPassword = this.registroForm.get('password');
+    return campoPassword?.invalid && campoPassword?.touched;
+  }
+
+  isRolInvalid() {
+    const campoRol = this.registroForm.get('rol');
+    return campoRol?.invalid && campoRol?.touched;
+  }
 }

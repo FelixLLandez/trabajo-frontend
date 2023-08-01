@@ -28,7 +28,7 @@
 }
 
 .registro-image img {
-  width: 230px;
+  width: 130px;
   height: auto;
   border-radius: 50%;
 }
@@ -65,7 +65,7 @@
 }
 
 .registro-button {
-  background-color: #2ba613;
+  background-color: #7A9E7E;
   color: #ffffff;
   padding: 10px;
   border: none;
@@ -82,7 +82,7 @@
 }
 
 .btn-iniciar-sesion {
-  background-color: #2ba613;
+  background-color: #7A9E7E;
   color: #ffffff;
   padding: 1px;
   border: none;

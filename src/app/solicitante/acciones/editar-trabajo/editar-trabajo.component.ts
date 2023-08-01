@@ -26,7 +26,8 @@ export class EditarTrabajoComponent {
           'Actualizado!',
           'El trabajo ha sido actualizado correctamente.',
           'success'
-        )
+        );
+        this.router.navigateByUrl('/trabajitos');
       }
     })
   }
