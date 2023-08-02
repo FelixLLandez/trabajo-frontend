@@ -41,9 +41,9 @@ export class ServiceSolicitanteService {
     }
   }
 
-  addTrabajo(data: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/task/createTask', data);
-  }
+  addTrabajo(data: any, userId: number): Observable<any> {
+    return this.http.post<any>(`http://localhost:3000/api/task/createTask?usuario=${userId}`, data);
+  }  
 
   getAllTrabajos(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/api/task/allTasks');

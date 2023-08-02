@@ -23,9 +23,11 @@ export class AddTrabajoComponent {
   
   agregarTrabajo() {
     if (this.trabajoForm.invalid) {
-      console.log('Formulario no válido'); // Movido fuera del return
+      console.log('Formulario no válido'); 
+      return;
     }
     const nuevoTrabajo = this.trabajoForm.value;
+    const solicitanteId = this.soliSer.getLoggedInUserId(); // Obtener el ID del usuario autenticado
 
     Swal.fire({
       title: '¿Estás seguro?',
@@ -37,7 +39,7 @@ export class AddTrabajoComponent {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.soliSer.addTrabajo(nuevoTrabajo).subscribe(
+        this.soliSer.addTrabajo(nuevoTrabajo, solicitanteId).subscribe(
           () => {
             Swal.fire(
               'Agregado!',
