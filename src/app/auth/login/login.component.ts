@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceSolicitanteService } from '../../services/service-solicitante.service';
 
@@ -11,42 +11,43 @@ import { ServiceSolicitanteService } from '../../services/service-solicitante.se
 })
 export class LoginComponent {
 
-  constructor(private fb: FormBuilder, private serviceSolicitante: ServiceSolicitanteService, private router:Router) { }
-  
+  constructor(private fb: FormBuilder, private serviceSolicitante: ServiceSolicitanteService, private router: Router) { }
+
   Formulario_login: FormGroup = this.fb.group({
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
-  }
-  );
+  });
 
-  login(){
+  login() {
     console.log(this.Formulario_login.value);
-    this.serviceSolicitante.login_solicitante(this.Formulario_login.value).subscribe((datos:any)=>{
-      if(datos){
-        this.serviceSolicitante.guardarToken_solicitante(datos.token);
-        this.serviceSolicitante.guardaruser_solicitante(datos); 
-        this.router.navigateByUrl('/trabajitos');
-
-      }else{
-        console.log("Error");
-        
+    this.serviceSolicitante.login_solicitante(this.Formulario_login.value).subscribe(
+      (datos: any) => {
+        if (datos) {
+          this.serviceSolicitante.guardarToken_solicitante(datos.token);
+          this.serviceSolicitante.guardaruser_solicitante(datos);
+          Swal.fire(
+            'Hola!',
+            'Bienvenido...',
+            'success'
+          );
+          this.router.navigateByUrl('/trabajitos');
+        } else {
+          console.log("Error");
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, verifica la información.'
+          });
+        }
+      },
+      (error: any) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un error en el inicio de sesión. Por favor, intenta nuevamente más tarde.'
+        });
       }
-    })  
+    );
   }
-
-//   login() {
-// /*     Swal.fire({
-//       icon: 'error',
-//       title: 'Oops...',
-//       text: 'Something went wrong!'
-//     }),  */
-//     Swal.fire({
-//       position: 'center',
-//       icon: 'success',
-//       title: 'Bienvenido...',
-//       showConfirmButton: false,
-//       timer: 1500,
-//     })
-//     //this.router.navigateByUrl('/trabajitos');
-//   }
 }

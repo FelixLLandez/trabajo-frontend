@@ -4,39 +4,51 @@
 </header>
 
 <hr>
-
 <div class="container">
-    <form>
+    <form [formGroup]="trabajoForm" (ngSubmit)="agregarTrabajo()">
         <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" class="form-control"
-                placeholder="Ingrese el nombre del trabajo" required>
+                placeholder="Ingrese el nombre del trabajo" required formControlName="nombre">
+            <div *ngIf="nombreTocado() && !nombreValido()" class="text-danger">
+                El nombre es obligatorio.
+            </div>
         </div>
 
         <div class="form-group">
             <label for="direccion">Dirección:</label>
             <input type="text" id="direccion" name="direccion" class="form-control"
-                placeholder="Ingrese la dirección del trabajo" required>
+                placeholder="Ingrese la dirección del trabajo" required formControlName="direccion">
+            <div *ngIf="direccionTocada() && !direccionValida()" class="text-danger">
+                La dirección es obligatoria.
+            </div>
         </div>
 
         <div class="form-group">
             <label for="descripcion">Descripción:</label>
             <textarea id="descripcion" name="descripcion" class="form-control"
-                placeholder="Ingrese la descripción del trabajo" required></textarea>
+                placeholder="Ingrese la descripción del trabajo" required formControlName="descripcion"></textarea>
+            <div *ngIf="descripcionTocada() && !descripcionValida()" class="text-danger">
+                La descripción es obligatoria.
+            </div>
         </div>
 
         <div class="form-group">
             <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" class="form-control" placeholder="$" required>
+            <input type="number" id="precio" name="precio" class="form-control" placeholder="$" required
+                formControlName="precio">
+            <div *ngIf="precioTocado() && !precioValido()" class="text-danger">
+                El precio es obligatorio.
+            </div>
         </div>
 
-        <div class="form-group">
+        <!--div class="form-group">
             <label for="imagen">Imagen:</label>
             <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control" required>
-        </div>
+        </div-->
 
         <div class="submit-container">
-            <button type="submit" class="btn btn-primary" (click)="agregarTrabajo()">Agregar trabajo</button>
+            <button type="submit" class="btn btn-primary" [disabled]="trabajoForm.invalid">Agregar trabajo</button>
         </div>
     </form>
 </div>

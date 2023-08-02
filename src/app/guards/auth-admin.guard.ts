@@ -9,7 +9,7 @@ import { ServiceAdministradorService } from '../services/service-administrador.s
 })
 export class AuthGuard_admin  {
 
-  constructor(private route: Router,
+   constructor(private route: Router,
     private serviceAdmin: ServiceAdministradorService) {
   }
 
@@ -23,6 +23,6 @@ export class AuthGuard_admin  {
       this.route.navigateByUrl('/login-administrador');
     }
     return true;
-  }
+  } 
 
 }

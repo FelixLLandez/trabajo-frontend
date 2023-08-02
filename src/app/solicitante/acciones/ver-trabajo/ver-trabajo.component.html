@@ -2,44 +2,36 @@
     <h5 class="modal-title"><b>Detalles del trabajo</b></h5>
     <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
 </div>
-<div class="modal-body">
+<div class="modal-body" *ngIf="trabajo">
     <div class="row">
-        <div class="col-md-4">
-            <img src="assets/trabajitos-logotipo.jpg" alt="Imagen del trabajo" class="img-fluid">
+        <div class="col-md-6">
+            <p><strong>#:</strong>{{trabajo.id}}</p>
         </div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><strong>#</strong>1</p>
-                </div>
-                <div class="col-md-6">
-                    <strong>Nombre:</strong>
-                    <p>Softworld</p>
-                </div>
-            </div>
+        <div class="col-md-6">
+            <strong>Nombre:</strong>
+            <p>{{ trabajo.nombre }}</p>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <strong>Dirección:</strong>
-                    <p>Avenida Universidad, Oaxaca.</p>
-                </div>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Dirección:</strong>
+            <p>{{ trabajo.direccion }}</p>
+        </div>
+        <div class="col-md-6">
+            <strong>Descripción:</strong>
+            <p>{{ trabajo.descripcion }}</p>
+        </div>
+    </div>
 
-                <div class="col-md-6">
-                    <strong>Descripción:</strong>
-                    <p>Se solicita a una persona con mucho entusiasmo.</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <strong>Precio:</strong>
-                    <p>$ 23000</p>
-                </div>
-                <div class="col-md-6">
-                    <strong>Status:</strong>
-                    <p>Disponible</p>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Precio:</strong>
+            <p>{{ trabajo.precio }}</p>
+        </div>
+        <div class="col-md-6">
+            <strong>Status:</strong>
+            <p>{{ getEstadoInfo(trabajo.estado) }}</p>
         </div>
     </div>
 </div>

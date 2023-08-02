@@ -14,10 +14,5 @@ export const navbarData_solicitante = [
       icon: 'fal fa-users',
       label: 'Postulantes'
     },
-    {
-      routeLink: 'login',
-      icon: 'fal fa-home',
-      label: 'Salir'
-    }
   ];
   

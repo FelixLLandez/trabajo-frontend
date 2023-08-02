@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,13 @@ export class ServiceSolicitanteService {
   id_rol: any = {};
 
   login_solicitante(data: any): Observable<Request> {
-    return this.http.post<Request>(' http://localhost:3000/api/users/login', data);
+    return this.http.post<Request>('http://localhost:3000/api/users/login', data);
   }
 
   guardarToken_solicitante(token: string) {
     localStorage.setItem('token', token);
   }
-
+  
   guardaruser_solicitante(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
   }
@@ -34,11 +34,36 @@ export class ServiceSolicitanteService {
       console.log('error');
 
     }
-
     if (this.token_solicitante === null || this.user_solicitante === null || this.id_rol !== 2) {
       return false;
     } else {
       return true;
     }
   }
+
+  addTrabajo(data: any, userId: number): Observable<any> {
+    return this.http.post<any>(`http://localhost:3000/api/task/createTask?usuario=${userId}`, data);
+  }  
+
+  getAllTrabajos(): Observable<any> {
+    return this.http.get<any>('http://localhost:3000/api/task/allTasks');
+  }  
+
+  eliminarTrabajo(id: number): Observable<any> {
+    return this.http.delete<any>(`http://localhost:3000/api/task/${id}`);
+  }  
+
+  getTrabajoByID(id: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/task/${id}`)
+  }
+
+  getLoggedInUserId(): number {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? user.id : 0; // Si no está logueado, retorna 0 o el valor adecuado
+  }
+
+  getTrabajosBySolicitanteId(solicitanteId: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/users/${solicitanteId}`);
+  }
+    
 }

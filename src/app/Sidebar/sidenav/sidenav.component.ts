@@ -9,8 +9,6 @@ interface SideNavToggle {
   collapsed: boolean;
 }
 
-
-
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
