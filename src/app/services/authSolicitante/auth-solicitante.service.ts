@@ -11,9 +11,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  registro(data: any, rolId: string): Observable<any> {
+  registro(formData: any): Observable<any> {
     const url = `${this.apiurl}/users/register`;
-    const formData = { ...data, rolId }; // Incluir el ID del rol en el formData
     return this.http.post<any>(url, formData);
   }  
 

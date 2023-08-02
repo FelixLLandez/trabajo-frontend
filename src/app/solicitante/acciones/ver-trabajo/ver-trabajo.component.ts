@@ -8,12 +8,12 @@ import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.
   styleUrls: ['./ver-trabajo.component.css']
 })
 export class VerTrabajoComponent implements OnInit {
-  trabajoId!: number; 
-  trabajo: any; 
-
+  trabajoId!: number;
+  trabajo: any;
+  
   constructor(public modalRef: BsModalRef, private soliSer: ServiceSolicitanteService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.getTrabajoDetails();
   }
 
@@ -25,13 +25,16 @@ export class VerTrabajoComponent implements OnInit {
     if (this.trabajoId) {
       this.soliSer.getTrabajoByID(this.trabajoId).subscribe(
         (data: any) => {
-          console.log(data);
-          this.trabajo = data; 
+          this.trabajo = data;
         },
         (error: any) => {
           console.error(error);
         }
       );
     }
+  }
+
+  getEstadoInfo(estado: boolean): string {
+    return estado ? "Ocupado" : "Disponible";
   }
 }

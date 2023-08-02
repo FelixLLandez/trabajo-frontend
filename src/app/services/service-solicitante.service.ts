@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -56,4 +56,14 @@ export class ServiceSolicitanteService {
   getTrabajoByID(id: number): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/api/task/${id}`)
   }
+
+  getLoggedInUserId(): number {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? user.id : 0; // Si no está logueado, retorna 0 o el valor adecuado
+  }
+
+  getTrabajosBySolicitanteId(solicitanteId: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/users/${solicitanteId}`);
+  }
+    
 }

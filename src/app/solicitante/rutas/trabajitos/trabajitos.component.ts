@@ -23,6 +23,16 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
+      },
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true,
+      lengthMenu: [5, 10, 25],
+      responsive: true
+    };
     this.getTrabajos();
   }
 
@@ -30,10 +40,13 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
     $('#datatabletrabajitos').DataTable().destroy();
   }
 
-  openModal() {
-    const initialState = {};
+  openModal(trabajoId: number) {
+    const initialState = {
+      trabajoId: trabajoId
+    };
     this.modalRef = this.modalService.show(VerTrabajoComponent, { initialState });
   }
+
 
   ir_a_add_trabajo() {
     this.router.navigateByUrl(`/add-trabajo`);
@@ -79,14 +92,12 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
     });
   }
 
-
   getTrabajos() {
-    this.soliService.getAllTrabajos().subscribe(
+    const solicitanteId = this.soliService.getLoggedInUserId();
+    this.soliService.getTrabajosBySolicitanteId(solicitanteId).subscribe(
       (data: any) => {
         console.log(data);
-        this.trabajos = data; // Asignar los datos a la variable trabajos
-
-        // Destruir el DataTable antes de reinstanciarlo con los nuevos datos
+        this.trabajos = data.task;
         $('#datatabletrabajitos').DataTable().destroy();
         setTimeout(() => {
           $('#datatabletrabajitos').DataTable(this.dtOptions);
@@ -97,6 +108,7 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       }
     );
   }
+
 
   getEstadoInfo(estado: boolean): string {
     return estado ? "Ocupado" : "Disponible";

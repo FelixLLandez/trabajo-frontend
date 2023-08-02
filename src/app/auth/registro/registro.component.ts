@@ -24,10 +24,10 @@ export class RegistroComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.registroForm = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
-      apellidos: ['', [Validators.required, Validators.minLength(3)]],
-      sexo: ['', [Validators.required, Validators.minLength(3)]],
-      edad: ['', [Validators.required, Validators.min(1), Validators.max(100)]],
+      nombre: ['', [Validators.required, Validators.minLength(5)]],
+      apellidos: ['', [Validators.required, Validators.minLength(5)]],
+      sexo: ['', [Validators.required]],
+      edad: ['', [Validators.required, Validators.min(1), Validators.max(100), Validators.maxLength(100), Validators.minLength(1)]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -46,11 +46,15 @@ export class RegistroComponent implements OnInit {
         return;
       }
 
-      // Obtener los valores del formulario
       const formData = this.registroForm.value;
+      if (this.selectedRol === '1') {
+        delete formData.rol;
+      } else {
+        formData.rolId = this.selectedRol; 
+        delete formData.rol; 
+      }
 
-      // Llamar al servicio AuthService para registrar el usuario con ambos argumentos
-      this.authS.registro(formData, this.selectedRol).subscribe(
+      this.authS.registro(formData).subscribe(
         (data) => {
           console.log(data);
           this.router.navigate(['/login']);
@@ -62,17 +66,6 @@ export class RegistroComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-          let errorMessage = 'Ocurrió un error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.';
-          if (error.status === 409) {
-            errorMessage = 'El correo electrónico ya está registrado. Por favor, utiliza otro correo.';
-          } else if (error.status === 500) {
-            errorMessage = 'Error interno del servidor. Por favor, contacta al administrador.';
-          }
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: errorMessage
-          });
         }
       );
     } else {
@@ -82,22 +75,21 @@ export class RegistroComponent implements OnInit {
         text: 'Por favor, completa todos los campos correctamente.'
       });
     }
-  } //FIN FUNCION DE REGISTRO  
-
-
+  }
 
   roles: any[] = [];
   getRoles() {
     this.authS.getRoles().subscribe(
       (data: any) => {
-        console.log(data);
-        this.roles = data; // Asignar los datos a la variable roles
+        // En este caso filtre los roles para eliminar el rol del administrador (ID: 1) y solo mostrar los dos restantes
+        this.roles = data.filter((rol: any) => rol.id !== 1);
       },
       (error: any) => {
         console.error(error);
       }
     );
   }
+
 
   rolSeleccionado(event: Event) {
     const target = event.target as HTMLSelectElement;
