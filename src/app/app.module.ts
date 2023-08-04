@@ -36,6 +36,7 @@ import { EditarTrabajoComponent } from './solicitante/acciones/editar-trabajo/ed
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trabajo.component';
 import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
+import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ve
     EditarTrabajoComponent,
     VerTrabajoComponent,
     VerPostulanteComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    PaginaErrorComponent
   ],
   imports: [
     BrowserModule,
