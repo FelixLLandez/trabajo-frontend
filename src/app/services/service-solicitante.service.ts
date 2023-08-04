@@ -65,5 +65,9 @@ export class ServiceSolicitanteService {
   getTrabajosBySolicitanteId(solicitanteId: number): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/api/users/${solicitanteId}`);
   }
+
+  desactivar_trabajo(id: number) {
+    return this.http.delete(`http://localhost:3000/api/task/${id}`);
+  }
     
 }

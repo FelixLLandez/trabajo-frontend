@@ -56,7 +56,7 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(`/editar-trabajo`);
   }
 
-  eliminarTrabajo(id: number) {
+  /* eliminarTrabajo(id: number) {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Se desactivará este trabajo!',
@@ -90,7 +90,46 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
         console.log('El trabajo no se ha desactivado.');
       }
     });
+  } */
+
+  eliminar_trabajo(id: number) {
+    Swal.fire({
+      title: '¿Estás seguro de desactivar este trabajo?',
+      text: "Al realizar esta acción, se archivará el trabajo.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.soliService.desactivar_trabajo(id).subscribe(
+          (data: any) => {
+            if (data && data.message === 'Tarea desactivada correctamente') {
+              Swal.fire({
+                icon: 'success',
+                title: 'Trabajo desactivado correctamente!',
+              });
+              this.getTrabajos();
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Ocurrió un problema al desactivar el trabajo!',
+              });
+            }
+          },
+          (error: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Ocurrió un problema al desactivar el trabajo!',
+            });
+          }
+        );
+      }
+    });
   }
+  
 
   getTrabajos() {
     const solicitanteId = this.soliService.getLoggedInUserId();

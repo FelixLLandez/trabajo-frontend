@@ -91,8 +91,5 @@ export class ServiceAdministradorService {
 
   desactivar_administrador(data: any) {
     return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
-    //   const url = `http://localhost:3000/api/users/desactivar_user/${data}`;
-    //   return this.http.patch(url, {});
-    // }
   }
 }
