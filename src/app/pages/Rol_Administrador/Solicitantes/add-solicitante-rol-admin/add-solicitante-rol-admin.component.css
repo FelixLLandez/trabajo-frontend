@@ -45,4 +45,8 @@ body{
     height:240px;
   }
 
+  .file-input-wrapper input[type="file"] {
+    display: none;
+  }
+
   

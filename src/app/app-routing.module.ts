@@ -43,7 +43,7 @@ const routes: Routes = [
   {path: 'edit-administrador/:id', component:EditAdminRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'ver-solicitantes', component:SolicitantesRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'add-solicitante', component:AddSolicitanteRolAdminComponent,canActivate:[AuthGuard_admin]},
-  {path: 'edit-solicitante', component:EditSolicitanteRolAdminComponent, canActivate:[AuthGuard_admin]},
+  {path: 'edit-solicitante/:id', component:EditSolicitanteRolAdminComponent, canActivate:[AuthGuard_admin]},
   {path: 'ver-solicitante', component:VerSolicitanteRolAdminComponent,canActivate:[AuthGuard_admin]},
   {path: 'ver-postulantes', component: PostulantesRolAdminComponent,canActivate:[AuthGuard_admin]},
   {path: 'add-postulante', component:AddPostulantesRolAdminComponent,canActivate:[AuthGuard_admin]},

@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class AddSolicitanteRolAdminComponent {
 
-  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private router:Router) { }
+  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private router:Router) { 
+    
+  }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -39,16 +41,20 @@ export class AddSolicitanteRolAdminComponent {
 
     nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-    genero: ['', [Validators.required]],
-    direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45)]],
+    sexo: ['', [Validators.required]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
-    correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
+    email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]],
-    foto: ['', [Validators.required,]]
+    foto: ['', [Validators.required,]],
+    calle:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    estado:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    numero:['',[Validators.pattern(this.edadynumero)]],
+    rolId:2
+
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
@@ -66,9 +72,7 @@ export class AddSolicitanteRolAdminComponent {
     return this.Addsolicitante.controls?.['sexo']?.touched && this.Addsolicitante.controls?.['sexo'].errors
   }
 
-  direccionvalida() {
-    return this.Addsolicitante.controls?.['direccion']?.errors && this.Addsolicitante.controls?.['direccion']?.touched
-  }
+  
 
   municipiovalido() {
     return this.Addsolicitante.controls?.['municipio']?.errors && this.Addsolicitante.controls?.['municipio']?.touched
@@ -103,11 +107,25 @@ export class AddSolicitanteRolAdminComponent {
     return this.Addsolicitante.controls?.['foto']?.touched && this.Addsolicitante.controls?.['foto'].errors
   }
 
+  callevalida(){
+    return this.Addsolicitante.controls?.['calle']?.errors && this.Addsolicitante.controls?.['calle']?.touched
+  }
+
+  estadovalido(){
+    return this.Addsolicitante.controls?.['estado']?.errors && this.Addsolicitante.controls?.['estado']?.touched
+  }
+
+  numerovalido(){
+    return this.Addsolicitante.controls?.['numero']?.errors && this.Addsolicitante.controls?.['numero']?.touched
+  }
+
   guardar() {
+    console.log(this.Addsolicitante.value);
+    
     this.serviceAdmin.agregar_solicitante(this.Addsolicitante.value).subscribe((datos: any) => {
       if (datos) {
         Swal.fire({
-          title: 'Administrador agregado correctamente',
+          title: 'Solicitante agregado correctamente',
           icon: 'success',
           showCancelButton: false,
           showConfirmButton: true
@@ -119,5 +137,8 @@ export class AddSolicitanteRolAdminComponent {
     })
 
   }
+  
+
+  
 
 }

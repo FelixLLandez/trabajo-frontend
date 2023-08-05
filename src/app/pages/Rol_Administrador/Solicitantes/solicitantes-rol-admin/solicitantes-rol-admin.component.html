@@ -27,7 +27,7 @@
 
 <body style="background-color: transparent;">
     <div>
-        <table id="datatableexample" class="table table-bordered table-striped table-hove">
+        <table id="tabla-solicitantes" class="table table-bordered table-striped table-hove">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -36,59 +36,25 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Teléfono</th>
                     <th scope="col">Edad</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Sexo</th>
                     <th scope="col" class="opciones">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                <tr *ngFor="let item of all_solicitantes; let i=index ">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.edad}}</td>
+                    <td>{{item.sexo}}</td>
                     <td class="opciones-botones">
                         <button (click)="ver_solicitante()" type="button" title="Ver información"
                             class="btn boton-ver"><i class="fa-regular fa-eye"></i></button>
-                        <button (click)="modificar_solicitante()" title="Modificar" type="button"
+                        <button (click)="modificar_solicitante(item.id)" title="Modificar" type="button"
                             class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button (click)="eliminar_solicitante()" title="Desactivar" type="button"
-                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td class="opciones-botones">
-                        <button (click)="ver_solicitante()" type="button" title="Ver información"
-                            class="btn boton-ver"><i class="fa-regular fa-eye"></i></button>
-                        <button (click)="modificar_solicitante()" title="Modificar" type="button"
-                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button (click)="eliminar_solicitante()" title="Desactivar" type="button"
-                            class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td class="opciones-botones">
-                        <button (click)="ver_solicitante()" type="button" title="Ver información"
-                            class="btn boton-ver"><i class="fa-regular fa-eye"></i></button>
-                        <button (click)="modificar_solicitante()" title="Modificar" type="button"
-                            class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button (click)="eliminar_solicitante()" title="Desactivar" type="button"
+                        <button (click)="eliminar_solicitante(item.id)" title="Desactivar" type="button"
                             class="btn boton-eliminar"><i class="fa-regular fa-trash-can"></i></button>
                     </td>
                 </tr>

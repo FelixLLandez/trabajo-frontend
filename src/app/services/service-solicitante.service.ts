@@ -41,4 +41,20 @@ export class ServiceSolicitanteService {
       return true;
     }
   }
+
+  get_solicitantes() {
+    return this.http.get('http://localhost:3000/api/users/solicitantes');
+  }
+
+  get_solic(id: any) {
+    return this.http.get(`http://localhost:3000/api/users/usuario/${id}`);
+  }
+
+  modificar_solicitante(id:any, data:any){
+    return this.http.patch(`http://localhost:3000/api/users/modificar/${id}`, data);
+  }
+
+  desactivar_administrador(data: any) {
+    return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
+  }
 }

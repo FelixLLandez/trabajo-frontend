@@ -82,7 +82,7 @@ export class ServiceAdministradorService {
   }
 
   get_admin(id: any) {
-    return this.http.get(`http://localhost:3000/api/users/administrador/${id}`);
+    return this.http.get(`http://localhost:3000/api/users/usuario/${id}`);
   }
 
   modificar_administrador(data: any): Observable<Request> {
