@@ -42,19 +42,19 @@ export class ServiceSolicitanteService {
   }
 
   addTrabajo(data: any, userId: number): Observable<any> {
-    return this.http.post<any>(`http://localhost:3000/api/task/createTask?usuario=${userId}`, data);
+    return this.http.post<any>(`http://localhost:3000/api/trabajos/crearTrabajo?usuario=${userId}`, data);
   }  
 
   getAllTrabajos(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/api/task/allTasks');
+    return this.http.get<any>('http://localhost:3000/api/trabajos/allTrabajos');
   }  
 
   eliminarTrabajo(id: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:3000/api/task/${id}`);
+    return this.http.delete<any>(`http://localhost:3000/api/trabajos/${id}`);
   }  
 
   getTrabajoByID(id: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/task/${id}`)
+    return this.http.get<any>(`http://localhost:3000/api/trabajos/${id}`)
   }
 
   getLoggedInUserId(): number {
@@ -67,7 +67,11 @@ export class ServiceSolicitanteService {
   }
 
   desactivar_trabajo(id: number) {
-    return this.http.delete(`http://localhost:3000/api/task/${id}`);
+    return this.http.delete(`http://localhost:3000/api/trabajos/${id}`);
+  }
+
+  updateTrabajo(id: number, data: any): Observable<any> {
+    return this.http.patch<any>(`http://localhost:3000/api/trabajos/${id}`, data);
   }
     
 }

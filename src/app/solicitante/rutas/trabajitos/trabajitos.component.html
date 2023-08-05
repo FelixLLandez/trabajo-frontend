@@ -17,8 +17,8 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Dirección</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Status</th>
+                <th scope="col">Precio mensual</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -28,12 +28,12 @@
                 <td>{{ trabajo.nombre }}</td>
                 <td>{{ trabajo.descripcion }}</td>
                 <td>{{ trabajo.direccion }}</td>
-                <td>{{ trabajo.precio }}</td>
+                <td>$ {{ trabajo.precio }}</td>
                 <td>{{ getEstadoInfo(trabajo.estado) }}</td>
                 <td class="options">
                     <button class="btn btn-info" (click)="openModal(trabajo.id)" title="Ver más"><i
                             class="fas fa-eye"></i></button>
-                    <button class="btn btn-warning" (click)="ir_a_editar_trabajo()" title="Editar trabajo"><i
+                    <button class="btn btn-warning" (click)="ir_a_editar_trabajo(trabajo.id)" title="Editar trabajo"><i
                             class="fas fa-edit"></i></button>
                     <button class="btn btn-secondary" (click)="eliminar_trabajo(trabajo.id)" title="Eliminar trabajo"><i
                             class="fas fa-trash-alt"></i></button>

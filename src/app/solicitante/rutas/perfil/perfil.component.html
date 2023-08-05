@@ -5,72 +5,60 @@
   </header>
 
   <div class="profile-info">
-    <div class="profile-image">
-      <img src="assets/imagen_perfil.jpg" alt="Imagen de perfil">
-      <br>
-      <br>
-      <div class="edit-img-container">
-        <label class="btn btn-edit-profile">
-          <i class="fas fa-pencil-alt"></i> Cambiar imagen
-          <input type="file" style="display: none;" accept="image/*">
-        </label>
-      </div>
-    </div>
-
     <div class="form-container">
       <form>
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" class="form-control" required>
+          <input type="text" id="nombre" name="nombre" class="form-control" required [(ngModel)]="usuario.nombre">
         </div>
 
         <div class="form-group">
           <label for="apellidos">Apellidos:</label>
-          <input type="text" id="apellidos" name="apellidos" class="form-control" required>
+          <input type="text" id="apellidos" name="apellidos" class="form-control" required [(ngModel)]="usuario.apellidos">
         </div>
 
         <div class="form-group">
           <label for="sexo">Sexo:</label>
-          <select id="sexo" name="sexo" class="form-control" required>
+          <select id="sexo" name="sexo" class="form-control" required [(ngModel)]="usuario.sexo">
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
             <option value="otro">Otro</option>
           </select>
         </div>
 
-        <div class="form-group">
+        <!--div class="form-group">
           <label for="direccion">Dirección:</label>
-          <input type="text" id="direccion" name="direccion" class="form-control" required>
-        </div>
+          <input type="text" id="direccion" name="direccion" class="form-control" required [(ngModel)]="usuario.direccion">
+        </div-->
 
         <div class="form-group">
           <label for="edad">Edad:</label>
-          <input type="number" id="edad" name="edad" class="form-control" required>
+          <input type="number" id="edad" name="edad" class="form-control" required [(ngModel)]="usuario.edad">
         </div>
 
         <div class="form-group">
           <label for="telefono">Número de Teléfono:</label>
-          <input type="tel" id="telefono" name="telefono" class="form-control" required>
+          <input type="tel" id="telefono" name="telefono" class="form-control" required [(ngModel)]="usuario.telefono">
         </div>
 
-        <div class="form-group">
+        <!--div class="form-group">
           <label for="municipio">Municipio:</label>
-          <input type="text" id="municipio" name="municipio" class="form-control" required>
+          <input type="text" id="municipio" name="municipio" class="form-control" required [(ngModel)]="usuario.municipio">
         </div>
 
         <div class="form-group">
           <label for="localidad">Localidad:</label>
-          <input type="text" id="localidad" name="localidad" class="form-control" required>
-        </div>
+          <input type="text" id="localidad" name="localidad" class="form-control" required [(ngModel)]="usuario.localidad">
+        </div-->
 
         <div class="form-group">
           <label for="correo">Correo Electrónico:</label>
-          <input type="email" id="correo" name="correo" class="form-control" required>
+          <input type="email" id="correo" name="correo" class="form-control" required [(ngModel)]="usuario.email">
         </div>
 
         <div class="form-group">
           <label for="contrasena">Contraseña:</label>
-          <input type="password" id="contrasena" name="contrasena" class="form-control" required>
+          <input type="password" id="contrasena" name="contrasena" class="form-control" required [(ngModel)]="usuario.password">
         </div>
 
         <div>

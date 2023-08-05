@@ -31,7 +31,8 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       pageLength: 10,
       processing: true,
       lengthMenu: [5, 10, 25],
-      responsive: true
+      responsive: true,
+      destroy: true,
     };
     this.getTrabajos();
   }
@@ -47,55 +48,18 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
     this.modalRef = this.modalService.show(VerTrabajoComponent, { initialState });
   }
 
-
   ir_a_add_trabajo() {
     this.router.navigateByUrl(`/add-trabajo`);
   }
 
-  ir_a_editar_trabajo() {
-    this.router.navigateByUrl(`/editar-trabajo`);
+  ir_a_editar_trabajo(id: number) {
+    this.router.navigateByUrl(`/editar-trabajo/${id}`);
   }
-
-  /* eliminarTrabajo(id: number) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Se desactivará este trabajo!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Aceptar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.soliService.eliminarTrabajo(id).subscribe(
-          () => {
-            Swal.fire(
-              'Desactivado!',
-              'El trabajo ha sido desactivado correctamente.',
-              'success'
-            );
-            console.log('El trabajo se ha desactivado correctamente.');
-            this.getTrabajos();
-          },
-          (error) => {
-            console.error('Error al eliminar el trabajo:', error);
-            Swal.fire(
-              'Error!',
-              'Ha ocurrido un error al desactivar el trabajo.',
-              'error'
-            );
-          }
-        );
-      } else {
-        console.log('El trabajo no se ha desactivado.');
-      }
-    });
-  } */
 
   eliminar_trabajo(id: number) {
     Swal.fire({
-      title: '¿Estás seguro de desactivar este trabajo?',
-      text: "Al realizar esta acción, se archivará el trabajo.",
+      title: '¿Estás seguro?',
+      text: "Al realizar esta acción, se desactivará el trabajo.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -106,12 +70,17 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       if (result.isConfirmed) {
         this.soliService.desactivar_trabajo(id).subscribe(
           (data: any) => {
-            if (data && data.message === 'Tarea desactivada correctamente') {
+            if (data && data.message === 'Trabajo desactivado correctamente') {
               Swal.fire({
                 icon: 'success',
                 title: 'Trabajo desactivado correctamente!',
               });
               this.getTrabajos();
+              this.trabajos = this.trabajos.filter((trabajo: any) => trabajo.id !== id); // aqui lo puse para actualizar la lista de trabajos después de eliminar uno
+              $('#datatabletrabajitos').DataTable().destroy();
+              setTimeout(() => {
+                $('#datatabletrabajitos').DataTable(this.dtOptions);
+              }, 0);
             } else {
               Swal.fire({
                 icon: 'error',
@@ -129,14 +98,13 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
 
   getTrabajos() {
     const solicitanteId = this.soliService.getLoggedInUserId();
     this.soliService.getTrabajosBySolicitanteId(solicitanteId).subscribe(
       (data: any) => {
         console.log(data);
-        this.trabajos = data.task;
+        this.trabajos = data.task.filter((trabajo: any) => trabajo.estate === true);
         $('#datatabletrabajitos').DataTable().destroy();
         setTimeout(() => {
           $('#datatabletrabajitos').DataTable(this.dtOptions);
@@ -147,7 +115,6 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       }
     );
   }
-
 
   getEstadoInfo(estado: boolean): string {
     return estado ? "Ocupado" : "Disponible";
