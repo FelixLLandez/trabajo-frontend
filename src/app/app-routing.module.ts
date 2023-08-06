@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'ver-solicitantes', component: SolicitantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'add-solicitante', component: AddSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-solicitante', component: EditSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'ver-solicitante', component: VerSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
+  { path: 'ver-solicitante', component: VerSolicitanteRolAdminComponent , canActivate: [AuthGuard_admin] },
   { path: 'ver-postulantes', component: PostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'add-postulante', component: AddPostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-postulante', component: EditPostulanteRolAdminComponent, canActivate: [AuthGuard_admin] },

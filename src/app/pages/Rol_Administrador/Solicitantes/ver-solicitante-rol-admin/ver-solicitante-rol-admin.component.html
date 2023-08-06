@@ -23,10 +23,10 @@
 </header>
 
 <body>
-    <div class="card mb-3">
+    <div class="cards">
         <div class="row g-0 div-datos-personales">
             <div class="col-md-4 col-sm-4">
-                <img src="/assets/perfil.jpg" class="img-fluid rounded-start" alt="...">
+                <img src="/assets/perfil.jpg" class="img-fluid" alt="...">
             </div>
             <div class="col-sm-8">
                 <div class="row">
@@ -81,7 +81,7 @@
     </div>
 
     <hr class="division">
-    <div class="row div-segundo-titulo" >
+    <div class="row div-segundo-titulo">
         <label class="text-center titulo-trabajos-publicados">TRABAJOS PUBLICADOS</label>
     </div>
 
@@ -94,7 +94,7 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4 div-cards">
         <div class="col" *ngFor="let item of items">
-            <div class="card card-trabajo">
+            <!-- <div class="card card-trabajo">
                 <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <div class="row">
@@ -108,15 +108,44 @@
                                 quae quasi dolore</p>
                         </div>
                     </div>
-                    <div class="row" >
+                    <div class="row">
+                        <button class="btn btn-outline-danger">
+                            <i class="fa-solid fa-ban"></i> Banear
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">Nombre:</label>
+                            <p>Limpieza de hogar</p>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="">Descripción:</label>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, praesentium nisi. Tenetur
+                                quae quasi dolore</p>
+                        </div>
+                    </div>
+                    <div class="row">
                         <button class="btn btn-outline-danger">
                             <i class="fa-solid fa-ban"></i> Banear
                         </button>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
+
+
+
 </body>
-<button id="btnUp" class="btn" title="Subir"><i class="fa-solid fa-arrow-up" ></i></button>
+<button id="btnUp" class="btn" title="Subir"><i class="fa-solid fa-arrow-up"></i></button>
+
 </html>
