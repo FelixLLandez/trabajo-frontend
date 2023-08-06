@@ -1,70 +1,101 @@
-<div class="container">
-  <header>
-    <h1>Mi Información</h1>
-    <a class="back-button" href="/trabajitos"><b><i class="fas fa-arrow-left"></i> Regresar </b></a>
-  </header>
+<div class="header-container">
+  <h1>INFORMACIÓN DE MI PERFIL</h1>
+  <a class="back-button" href="/trabajitos"><b><i class="fas fa-arrow-left"></i> Regresar </b></a>
+</div>
 
-  <div class="profile-info">
-    <div class="form-container">
-      <form>
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" class="form-control" required [(ngModel)]="usuario.nombre">
-        </div>
-
-        <div class="form-group">
-          <label for="apellidos">Apellidos:</label>
-          <input type="text" id="apellidos" name="apellidos" class="form-control" required [(ngModel)]="usuario.apellidos">
-        </div>
-
-        <div class="form-group">
-          <label for="sexo">Sexo:</label>
-          <select id="sexo" name="sexo" class="form-control" required [(ngModel)]="usuario.sexo">
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-            <option value="otro">Otro</option>
-          </select>
-        </div>
-
-        <!--div class="form-group">
-          <label for="direccion">Dirección:</label>
-          <input type="text" id="direccion" name="direccion" class="form-control" required [(ngModel)]="usuario.direccion">
-        </div-->
-
-        <div class="form-group">
-          <label for="edad">Edad:</label>
-          <input type="number" id="edad" name="edad" class="form-control" required [(ngModel)]="usuario.edad">
-        </div>
-
-        <div class="form-group">
-          <label for="telefono">Número de Teléfono:</label>
-          <input type="tel" id="telefono" name="telefono" class="form-control" required [(ngModel)]="usuario.telefono">
-        </div>
-
-        <!--div class="form-group">
-          <label for="municipio">Municipio:</label>
-          <input type="text" id="municipio" name="municipio" class="form-control" required [(ngModel)]="usuario.municipio">
-        </div>
-
-        <div class="form-group">
-          <label for="localidad">Localidad:</label>
-          <input type="text" id="localidad" name="localidad" class="form-control" required [(ngModel)]="usuario.localidad">
-        </div-->
-
-        <div class="form-group">
-          <label for="correo">Correo Electrónico:</label>
-          <input type="email" id="correo" name="correo" class="form-control" required [(ngModel)]="usuario.email">
-        </div>
-
-        <div class="form-group">
-          <label for="contrasena">Contraseña:</label>
-          <input type="password" id="contrasena" name="contrasena" class="form-control" required [(ngModel)]="usuario.password">
-        </div>
-
-        <div>
-          <button type="submit" class="btn btn-save" (click)="editarPerfil()"><b><i class="fas fa-save"></i> Guardar cambios</b></button>
-        </div>
-      </form>
+<div class="content-container">
+  <div class="profile-card" >
+    <h2 class="text-center">MI INFORMACIÓN</h2>
+    <hr>
+    <div class="profile-image" (mouseover)="showEditMessage = true" (mouseout)="showEditMessage = false"
+      (click)="openFileInput()">
+      <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" id="fileInput">
+      <img src="assets/perfil.jpg" alt="Foto de perfil">
+      <span class="edit-text" *ngIf="showEditMessage">Editar foto</span>
     </div>
+    <div class="user-info">
+      <br>
+      <h1>{{ usuario.nombre }} {{ usuario.apellidos }}</h1>
+      <br>
+      <p><strong>Rol:</strong> {{ usuario.rol.nombre }}</p>
+      <p><strong>Sexo:</strong> {{ usuario.sexo }}</p>
+      <p><strong>Edad:</strong> {{ usuario.edad }}</p>
+      <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+      <p><strong>Correo:</strong> {{ usuario.email }}</p>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h2 class="text-center">EDITAR MI INFORMACIÓN</h2>
+    <hr>
+    <form [formGroup]="Edit_Mi_Info_Postulante">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" formControlName="nombre"
+          [value]="usuario.nombre">
+        <small class="form-text text-danger" *ngIf="campoValido('nombre')">{{ getErrorMessage('nombre') }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" class="form-control" formControlName="apellidos"
+          [value]="usuario.apellidos">
+        <small class="form-text text-danger" *ngIf="campoValido('apellidos')">{{ getErrorMessage('apellidos')
+          }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" class="form-control" formControlName="sexo">
+          <option [value]="usuario.sexo" selected>{{ usuario.sexo }}</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+        </select>
+        <small class="form-text text-danger" *ngIf="campoValido('sexo')">{{ getErrorMessage('sexo') }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" class="form-control" formControlName="edad" [value]="usuario.edad">
+        <small class="form-text text-danger" *ngIf="campoValido('edad')">{{ getErrorMessage('edad') }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Número de Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" class="form-control" formControlName="telefono"
+          [value]="usuario.telefono">
+        <small class="form-text text-danger" *ngIf="campoValido('telefono')">{{ getErrorMessage('telefono') }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" class="form-control" formControlName="correo"
+          [value]="usuario.email">
+        <small class="form-text text-danger" *ngIf="campoValido('correo')">{{ getErrorMessage('correo') }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="contrasena">Contraseña actual:</label>
+        <div class="password-input">
+          <input type="password" id="contrasena-actual" name="contrasena" class="form-control" formControlName="password"
+            [value]="usuario.password">
+          <i class="toggle-password fas fa-eye" (click)="visibilidadContrasennia('contrasena-actual')"></i>
+        </div>
+        <small class="form-text text-danger" *ngIf="campoValido('password')">{{ getErrorMessage('password') }}</small>
+      </div>
+      
+      <div class="form-group">
+        <label for="contrasena">Contraseña nueva:</label>
+        <div class="password-input">
+          <input type="password" id="contrasena-nueva" name="contrasena" class="form-control" formControlName="password2">
+          <i class="toggle-password fas fa-eye" (click)="visibilidadContrasennia('contrasena-nueva')"></i>
+        </div>
+        <small class="form-text text-danger" *ngIf="campoValido('password2')">{{ getErrorMessage('password2') }}</small>
+      </div>                
+
+      <div class="btn-container">
+        <button type="submit" class="btn btn-save" (click)="editarPerfil()"><b><i class="fas fa-save"></i> Guardar cambios</b></button>
+      </div>
+    </form>
   </div>
 </div>

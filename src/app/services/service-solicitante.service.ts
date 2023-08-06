@@ -41,6 +41,16 @@ export class ServiceSolicitanteService {
     }
   }
 
+  //FUNCIONES DE LA SECCION DE TRABAJOS DEL SOLICITANTE
+  getLoggedInUserId(): number {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? user.id : 0;
+  }
+
+  getTrabajosBySolicitanteId(solicitanteId: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/users/${solicitanteId}`);
+  }
+
   addTrabajo(data: any, userId: number): Observable<any> {
     return this.http.post<any>(`http://localhost:3000/api/trabajos/crearTrabajo?usuario=${userId}`, data);
   }  
@@ -57,21 +67,18 @@ export class ServiceSolicitanteService {
     return this.http.get<any>(`http://localhost:3000/api/trabajos/${id}`)
   }
 
-  getLoggedInUserId(): number {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-    return user ? user.id : 0; // Si no está logueado, retorna 0 o el valor adecuado
-  }
-
-  getTrabajosBySolicitanteId(solicitanteId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/users/${solicitanteId}`);
-  }
-
   desactivar_trabajo(id: number) {
     return this.http.delete(`http://localhost:3000/api/trabajos/${id}`);
   }
 
   updateTrabajo(id: number, data: any): Observable<any> {
     return this.http.patch<any>(`http://localhost:3000/api/trabajos/${id}`, data);
+  }
+
+
+  //FUNCIONES DE LA SECCION DE EDITAR PERFIL DEL SOLICITANTE
+  updatePerfil(id: number, data: any): Observable<any> {
+    return this.http.patch<any>(`http://localhost:3000/api/users/${id}`, data);
   }
     
 }
