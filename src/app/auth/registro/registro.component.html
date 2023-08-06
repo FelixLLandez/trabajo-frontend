@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <a class="navbar-brand"><b>TRABAJITOS</b></a>
         <form class="d-flex">
-                <button class="btn btn-success">
-                <a class="nav-link active" routerLink="/login">Iniciar sesión</a>
+            <button routerLink="/login">
+                Iniciar Sesión
             </button>
         </form>
     </div>
@@ -44,7 +44,7 @@
                 <label for="foto"><b>Cargar foto de perfil:</b></label>
                 <input type="file" id="foto" name="foto" accept=".png, .jpg, .jpeg" required>
             </div>
-            <button class="registro-button" (click)="registrarse()">Registrarse</button>
+            <button (click)="registrarse()">Registrarse</button>
         </div>
     </div>
 </div>

@@ -1,10 +1,11 @@
 .registro-container {
     max-width: 700px;
+    height: auto;
     margin: 0 auto;
     background-color: #E8F1F2;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
 }
 
 .registro-header {
@@ -24,7 +25,8 @@
 .registro-image {
     flex: 1;
     text-align: center;
-    margin-right: 20px;
+    height: 40vh; /* Ajustar la altura según tus necesidades */
+    margin-right: 15px;
 }
 
 .registro-image img {
@@ -72,3 +74,49 @@
     color: #7A9E7E;
     text-decoration: underline;
 }
+
+
+
+/* Cambios Villalobos */
+
+button {
+    border: none;
+    color: #fff;
+    background-image: linear-gradient(30deg, #7a9e7e, #31493c);
+    border-radius: 50px;
+    background-size: 100% auto;
+    font-family: inherit;
+    font-size: 17px;
+    padding: 0.6em 1.5em;
+   }
+   
+   button:hover {
+    background-position: right center;
+    background-size: 200% auto;
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse512 1.5s infinite;
+   }
+   
+   @keyframes pulse512 {
+    0% {
+     box-shadow: 0 0 0 0 #001a23;
+    }
+   
+    70% {
+     box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    }
+    
+    100% {
+     box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+    }
+   }
+   
+      /* Estilos para las filas */
+      .row {
+        flex: 1;
+        display: flex;
+        justify-content: center; /* Centrar horizontalmente los elementos en la fila */
+        align-items: center; /* Centrar verticalmente los elementos en la fila */
+        background-color: #f0f0f0;
+      }
+  
