@@ -39,13 +39,13 @@ const routes: Routes = [
 
   //Ruta para el usuario con Rol de Administrador
   { path: 'login-administrador', component: LoginAdminComponent },
-  { path: 'ver-administradores', component: AdministradoresRolAdminComponent, canActivate: [AuthGuard_admin] },
+  { path: 'ver-administradores', component: AdministradoresRolAdminComponent },
   { path: 'add-administrador', component: AddAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'edit-administrador', component: EditAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
+  { path: 'edit-administrador/:id', component: EditAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'ver-solicitantes', component: SolicitantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'add-solicitante', component: AddSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-solicitante', component: EditSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'ver-solicitante', component: VerSolicitanteRolAdminComponent , canActivate: [AuthGuard_admin] },
+  { path: 'ver-solicitante', component: VerSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'ver-postulantes', component: PostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'add-postulante', component: AddPostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-postulante', component: EditPostulanteRolAdminComponent, canActivate: [AuthGuard_admin] },
