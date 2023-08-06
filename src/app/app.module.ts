@@ -37,6 +37,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trabajo.component';
 import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

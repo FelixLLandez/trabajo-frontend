@@ -50,7 +50,7 @@
                     <td>{{item.edad}}</td>
                     <td>{{item.sexo}}</td>
                     <td class="opciones-botones">
-                        <button (click)="ver_solicitante()" type="button" title="Ver información"
+                        <button (click)="ver_solicitante(item.id)" type="button" title="Ver información"
                             class="btn boton-ver"><i class="fa-regular fa-eye"></i></button>
                         <button (click)="modificar_solicitante(item.id)" title="Modificar" type="button"
                             class="btn boton-modificar"><i class="fa-regular fa-pen-to-square"></i></button>

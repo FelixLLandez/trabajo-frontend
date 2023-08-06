@@ -55,7 +55,7 @@ label {
 }
 
 .div-buscador {
-    justify-content: end;
+    justify-content: center;
     margin-top: 2%;
 }
 
@@ -63,13 +63,15 @@ label {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    font-size: 20px;
+
 }
 
 .text-buscar {
     margin-right: 10px;
 }
 
-.div-cards{
+.div-cards {
     margin: 10px;
 }
 
@@ -100,3 +102,48 @@ label {
     display: block;
     /* Muestra el botón cuando se agrega la clase .show */
 }
+
+.btn-info-user { 
+    cursor: pointer;
+    color: #00b05d;
+    border: 1px solid #00b05d;
+
+}
+
+.btn-info-user:hover{
+    background-color: #00b05d;
+    color: #fff;
+}
+
+/* Clase para el efecto de fade-in */
+.card-fade-in {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Clase para el efecto de fade-out */
+  .card-fade-out {
+    animation: fadeOut 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+ 
+
+
+  

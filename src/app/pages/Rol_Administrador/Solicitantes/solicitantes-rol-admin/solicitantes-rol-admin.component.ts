@@ -32,8 +32,8 @@ export class SolicitantesRolAdminComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(`/edit-solicitante/${id}`);
   }
 
-  ver_solicitante() {
-    this.router.navigateByUrl(`/ver-solicitante`)
+  ver_solicitante(id:any) {
+    this.router.navigateByUrl(`/ver-solicitante/${id}`)
   }
 
   eliminar_solicitante(id:any) {

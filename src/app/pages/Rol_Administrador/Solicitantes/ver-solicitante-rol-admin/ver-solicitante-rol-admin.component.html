@@ -23,92 +23,106 @@
 </header>
 
 <body>
-    <div class="card mb-3">
-        <div class="row g-0 div-datos-personales">
-            <div class="col-md-4 col-sm-4">
-                <img src="/assets/perfil.jpg" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-sm-8">
-                <div class="row">
-                    <label class="text-center titulo-datos-personales">DATOS PERSONALES</label>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="statics" data-bs-keyboard="false" tabindex="2"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #31494c; color: #fff;">
+                    <h3>INFORMACION PERSONAL</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #fff;"></button>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-4">
-                            <label for="input1">Nombre</label>
-                            <p class="datos-personales">Isidro Noé</p>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label for="input1">Apellidos</label>
-                            <p class="datos-personales">Salvador Jiménez</p>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label for="input1">Sexo</label>
-                            <p class="datos-personales">Masculino</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-4">
-                            <label for="input1">Teléfono</label>
-                            <p class="datos-personales">9513545268</p>
-                        </div>
-                        <div class="col-sm-12 col-md-2">
-                            <label for="input1">Edad</label>
-                            <p class="datos-personales">21</p>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <label for="input1">Correo</label>
+                <div class="modal-body" style="background-color: #e8f1f2;">
+                    <div class="row" style="display: flex; justify-content: center;">
+                        <div class="col-sm-12 col-md-4"
+                            style="display: flex; flex-direction: column; align-items: center;">
+                            <div
+                                style="box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2); width: 150px; height: 150px; border-radius: 50%; overflow: hidden;">
+                                <img src="/assets/perfil.jpg" class="card-img-top" alt="..."
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <label for="input1" style="margin-top:20px">Nombre</label>
                             <p class="datos-personales">
-                                isidronoesalvadorjimene9@gmail.com</p>
+                                {{datos_solicitante.nombre}} {{datos_solicitante.apellidos}}</p>
+
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
-                            <label for="input1">Dirección</label>
-                            <p class="datos-personales">C. Marcelino Carrizosa #607,
-                                Barrio San Juan</p>
+                            <label for="input1" >Correo</label>
+                            <p class="datos-personales">
+                                {{datos_solicitante.email}}</p>
                         </div>
                         <div class="col-sm-12 col-md-6">
+                            <label for="input1">Teléfono</label>
+                            <p class="datos-personales">{{datos_solicitante.telefono}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Dirección</label>
+                            <p class="datos-personales">{{datos_solicitante.calle}}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
                             <label for="input1">Municipio</label>
-                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                            <p class="datos-personales">{{datos_solicitante.municipio}}</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Estado</label>
+                            <p class="datos-personales">{{datos_solicitante.estado}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">No. de publicaciones</label>
+                            <p class="datos-personales">236</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Trabajos conluidos</label>
+                            <p class="datos-personales">80</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="input1">Trabajos eliminados</label>
+                            <p class="datos-personales">46</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
-
     </div>
-
-    <hr class="division">
-    <div class="row div-segundo-titulo" >
-        <label class="text-center titulo-trabajos-publicados">TRABAJOS PUBLICADOS</label>
-    </div>
-
-    <div class="row div-buscador">
-        <div class="col-md-5 input-buscar">
+    <div class="row" style="margin:10px; margin-top: 3%;">
+        <div class="col-sm-12 col-md-6 input-buscar">
             <label for="" class="text-buscar">Buscar:</label>
-            <input class="form-control me-2" type="search" name="" placeholder="Nombre del trabajo">
+            <input class="form-control me-2" type="search" name="" [(ngModel)]="nombreBusqueda"
+                placeholder="Nombre del trabajo">
+        </div>
+        <div class="col-sm-12 col-md-6" style="display: flex; justify-content: end;">
+            <button class="btn btn-info-user" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-circle-info" title="Ver información"></i> Ver
+                información
+            </button>
         </div>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 div-cards">
-        <div class="col" *ngFor="let item of items">
+        <div class="col" *ngFor="let item of obtenerItemsFiltrados()"
+            [ngClass]="{'card-fade-in': nombreBusqueda, 'card-fade-out': !nombreBusqueda}">
             <div class="card card-trabajo">
-                <img src="/assets/ejemplo-trabajo.jpg" class="card-img-top" alt="...">
+                <img src="/assets/ejemplo-trabajo2.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
                             <label for="">Nombre:</label>
-                            <p>Limpieza de hogar</p>
+                            <p>{{item.nombre}}</p>
                         </div>
                         <div class="col-md-12">
                             <label for="">Descripción:</label>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, praesentium nisi. Tenetur
-                                quae quasi dolore</p>
+                            <p>{{item.descripcion}}</p>
                         </div>
                     </div>
-                    <div class="row" >
+                    <div class="row">
                         <button class="btn btn-outline-danger">
                             <i class="fa-solid fa-ban"></i> Banear
                         </button>
@@ -118,5 +132,8 @@
         </div>
     </div>
 </body>
-<button id="btnUp" class="btn" title="Subir"><i class="fa-solid fa-arrow-up" ></i></button>
+<button id="btnUp" class="btn" title="Subir"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+
 </html>
