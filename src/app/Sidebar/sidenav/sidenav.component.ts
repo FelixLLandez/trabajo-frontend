@@ -19,13 +19,16 @@ export class SidenavComponent {
   rol_user:any="";
   user_admin: any = {};
   id_rol: any = {};
+  sidenav:any= false;
 
   constructor(private router: Router, private serviceAdmin:ServiceAdministradorService) {
     this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
     try{
       this.id_rol = this.user_admin.rol.id;
       this.rol_user=this.id_rol;
+      this.sidenav=true;
     }catch (error){
+      
       console.log('error');
     }
    

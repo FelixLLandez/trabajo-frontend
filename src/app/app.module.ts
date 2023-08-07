@@ -38,6 +38,7 @@ import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trab
 import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
 import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

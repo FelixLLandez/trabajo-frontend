@@ -41,29 +41,19 @@ export class ServiceSolicitanteService {
     }
   }
 
-  addTrabajo(data: any, userId: number): Observable<any> {
-    return this.http.post<any>(`http://localhost:3000/api/task/createTask?usuario=${userId}`, data);
-  }  
-
-  getAllTrabajos(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/api/task/allTasks');
-  }  
-
-  eliminarTrabajo(id: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:3000/api/task/${id}`);
-  }  
-
-  getTrabajoByID(id: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/task/${id}`)
+  get_solicitantes() {
+    return this.http.get('http://localhost:3000/api/users/solicitantes');
   }
 
-  getLoggedInUserId(): number {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-    return user ? user.id : 0; // Si no está logueado, retorna 0 o el valor adecuado
+  get_solic(id: any) {
+    return this.http.get(`http://localhost:3000/api/users/usuario/${id}`);
   }
 
-  getTrabajosBySolicitanteId(solicitanteId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/users/${solicitanteId}`);
+  modificar_solicitante(id:any, data:any){
+    return this.http.patch(`http://localhost:3000/api/users/modificar/${id}`, data);
   }
-    
+
+  desactivar_administrador(data: any) {
+    return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
+  }
 }

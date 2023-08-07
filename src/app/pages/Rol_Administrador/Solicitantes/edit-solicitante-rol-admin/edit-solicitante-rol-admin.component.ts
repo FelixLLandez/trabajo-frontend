@@ -1,14 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServiceSolicitanteService } from '../../../../services/service-solicitante.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-solicitante-rol-admin',
   templateUrl: './edit-solicitante-rol-admin.component.html',
   styleUrls: ['./edit-solicitante-rol-admin.component.css']
 })
-export class EditSolicitanteRolAdminComponent {
+export class EditSolicitanteRolAdminComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  id_user: any;
+  datos_solicitante: any = [];
+
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private serviceSolicitante: ServiceSolicitanteService, private router:Router) { }
+
+  ngOnInit(): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+    this.id_user = id;
+    console.log(this.id_user);
+    this.obtener_datos();
+  }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -29,62 +42,60 @@ export class EditSolicitanteRolAdminComponent {
   };
 
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
-  edadynumero= '[0-9]+';
+  edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
   Editsolicitante: FormGroup = this.fb.group({
 
     nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-    apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido),  Validators.minLength(3), Validators.maxLength(45)]],
-    genero: ['', [Validators.required]],
-    direccion: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(45)]],
+    apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+    sexo: ['', [Validators.required]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
-    correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
-    password2: ['', [Validators.required,]],
-    foto: ['', [Validators.required,]]
+    email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
+    // password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+    // password2: ['', [Validators.required,]],
+    // foto: ['', [Validators.required,]],
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    numero: ['', [Validators.pattern(this.edadynumero)]],
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
   );
 
-  nombrevalido(){
+  nombrevalido() {
     return this.Editsolicitante.controls?.['nombre']?.errors && this.Editsolicitante.controls?.['nombre']?.touched
   }
 
-  apellidosvalido(){
+  apellidosvalido() {
     return this.Editsolicitante.controls?.['apellidos']?.errors && this.Editsolicitante.controls?.['apellidos']?.touched
   }
 
-  sexovalido(){
-    return this.Editsolicitante.controls?.['genero']?.touched && this.Editsolicitante.controls?.['genero'].errors
+  sexovalido() {
+    return this.Editsolicitante.controls?.['sexo']?.touched && this.Editsolicitante.controls?.['sexo'].errors
   }
 
-  direccionvalida(){
-    return this.Editsolicitante.controls?.['direccion']?.errors && this.Editsolicitante.controls?.['direccion']?.touched
-  }
-
-  municipiovalido(){
+  municipiovalido() {
     return this.Editsolicitante.controls?.['municipio']?.errors && this.Editsolicitante.controls?.['municipio']?.touched
   }
 
-  localidadvalida(){
+  localidadvalida() {
     return this.Editsolicitante.controls?.['localidad']?.errors && this.Editsolicitante.controls?.['localidad']?.touched
   }
 
-  edadvalida(){
+  edadvalida() {
     return this.Editsolicitante.controls?.['edad']?.errors && this.Editsolicitante.controls?.['edad']?.touched
   }
 
-  telefonovalido(){
+  telefonovalido() {
     return this.Editsolicitante.controls?.['telefono']?.errors && this.Editsolicitante.controls?.['telefono']?.touched
   }
 
-  correovalido(){
-    return this.Editsolicitante.controls?.['correo']?.errors && this.Editsolicitante.controls?.['correo']?.touched
+  correovalido() {
+    return this.Editsolicitante.controls?.['email']?.errors && this.Editsolicitante.controls?.['email']?.touched
   }
 
 
@@ -96,12 +107,51 @@ export class EditSolicitanteRolAdminComponent {
     return this.Editsolicitante.controls?.['password2']?.errors && this.Editsolicitante.controls?.['password2']?.touched
   }
 
-  fotovalida(){
+  fotovalida() {
     return this.Editsolicitante.controls?.['foto']?.touched && this.Editsolicitante.controls?.['foto'].errors
   }
 
-  modificar() {
-    console.log(this.Editsolicitante.value);
+  callevalida() {
+    return this.Editsolicitante.controls?.['calle']?.errors && this.Editsolicitante.controls?.['calle']?.touched
+  }
 
+  estadovalido() {
+    return this.Editsolicitante.controls?.['estado']?.errors && this.Editsolicitante.controls?.['estado']?.touched
+  }
+
+  numerovalido() {
+    return this.Editsolicitante.controls?.['numero']?.errors && this.Editsolicitante.controls?.['numero']?.touched
+  }
+
+  modificar() {
+    Swal.fire({
+      title: 'Estás seguro de modificar la informacion?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+        this.serviceSolicitante.modificar_solicitante(id,this.Editsolicitante.value).subscribe((data: any) => {
+          this.router.navigateByUrl('/ver-solicitantes')
+          Swal.fire({
+            icon: 'success',
+            title: 'Usuario modificado correctamente',
+          })
+
+        })
+      }
+    })
+
+  }
+
+  obtener_datos() {
+    this.serviceSolicitante.get_solic(this.id_user).subscribe((data: any) => {
+      this.Editsolicitante.patchValue(data)
+      this.datos_solicitante = data;
+    })
   }
 }
