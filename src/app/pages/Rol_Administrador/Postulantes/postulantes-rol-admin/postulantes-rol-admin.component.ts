@@ -26,8 +26,8 @@ export class PostulantesRolAdminComponent implements OnInit{
     this.router.navigateByUrl('/add-postulante');
   }
 
-  ver_postulante() {
-    this.router.navigateByUrl('/informacion-postulante');
+  ver_postulante(id:any) {
+    this.router.navigateByUrl(`/informacion-postulante/${id}`);
   }
 
   modificar_postulante(id:any) {
