@@ -1,0 +1,66 @@
+[33ma356f1da[m[33m ([m[1;36mHEAD -> [m[1;32mMódulo_De_Trabajos_De_Solicitante[m[33m, [m[1;32mmain[m[33m)[m Ajustes de funcion eliminar trabajo
+[33m629e825c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'page-error'
+[33m5ebc7b12[m Merge remote-tracking branch 'origin/Conexion_registro_login_+_avances'
+[33maa798bcd[m[33m ([m[1;31morigin/Conexion_registro_login_+_avances[m[33m, [m[1;32mConexion_registro_login_+_avances[m[33m)[m Ajuste del método addTrabajo
+[33m0265bce3[m Correción de conexión de interfaz del registro y validaciones en roles
+[33me98a787b[m Conexion del registro + login + avances de interfaz de Mis Trabajos
+[33mf8b0c4ad[m[33m ([m[1;31morigin/page-error[m[33m)[m pagina-error
+[33mca35954e[m pagina-error
+[33m57b369f8[m[33m ([m[1;31morigin/Componente_admin[m[33m)[m CRUD en el componente del Administrador en RolAdministrador
+[33m4be15c24[m pagina-error
+[33mc540d520[m page-error
+[33m332c210a[m Pruebas con la conexion al Backend
+[33m38d2782e[m Conexion del registro
+[33mfe7ee1d2[m solución de integración
+[33mc8e060f7[m Merge remote-tracking branch 'origin/Solucion_problemas'
+[33m35b6e701[m[33m ([m[1;31morigin/Solucion_problemas[m[33m)[m Correcion de errores en general
+[33md13c6a0e[m Correcion de errores en general y pruebas con el login
+[33mc74090cf[m Merge remote-tracking branch 'origin/dashboard_Solicitante'
+[33m1930e795[m[33m ([m[1;31morigin/dashboard_Solicitante[m[33m)[m Agregando sweetAlerts a los componentes
+[33m7236253d[m Merge remote-tracking branch 'origin/Dashboard-admin'
+[33m5a0cbc4a[m Merge remote-tracking branch 'origin/Login-admin'
+[33m8ae58845[m Ajustes en algunos archivos
+[33mc3bf5284[m[33m ([m[1;31morigin/Dashboard-admin[m[33m)[m Diseño del componente para ver el perfil del administrador y cambios generales en los diseños css
+[33m59a34828[m Creacion y diseño del componente para ver a los usuarios archivados en el RolAdministrador
+[33m1769e73e[m Creacion y diseño del componente para ver informacion de un Postulante en el RolAdministrador
+[33m5b5bf6c0[m Diseño del SweetAlert para inhabilitar a un Postulante en el RolAdministrador
+[33m73335a50[m Creacion y diseño del componente para editar un Postulante en el RolAdministrador
+[33m563272d5[m Creacion y diseño del componente para agregar un Postulante en el RolAdministrador
+[33me6305d84[m Creacion y diseño del componente Postulantes en el RolAdministrador
+[33madc2c7ad[m Cambios generales a los diseños de las cards de los trabajos publicados por el solicitante en el RolAdministrador
+[33m9e215b23[m Rediseño de las cards para ver los trabajos publicados por el solicitante en el RolAdministrador
+[33mf2b4657d[m Creacion y diseño del componente ver informacion del solicitante en el RolAdministrador
+[33md6ecbb37[m SweetAlert para desactivar a un solicitante en el RolAdministrador
+[33m930124b2[m actualizacion data
+[33mc1a52e10[m Cambios de las rutas de los componentes
+[33mcf26efd8[m Creacion y diseño del componente para editar solicitantes en el RolAdministrador
+[33me5b44551[m Creacion y diseño del componente (Mejorado) para agregar solicitantes en el RolAdministrador
+[33m26db473d[m Creacion y diseño del componente para agregar solicitantes en el RolAdministrador
+[33m18c69674[m Implementación de Datatables y modificaciones generales a los index html en el RolAdministardor
+[33m6db9fd2c[m Respaldo del Poryecto con la version 15 de Angular
+[33m5508ed04[m nuevos cambios xd en las rutas
+[33m97e90a81[m Diseño del componente de Solicitantes en el RolAdministrador
+[33m44ece24f[m Creacion del componente Solicitantes en el RolAdministrador
+[33m80b5f272[m Agregación de SweetAlert y diseño de botón para desactivar a un Administrador
+[33m2f571d4f[m Formulario para la edición de algún administrador
+[33m1eb09bc4[m Creacion del componente Edit_administrador en el RolAdministrador
+[33m4f6016bc[m Formulario de agregar nuevo Administrador en el RolAdministrador
+[33mc4f76185[m Creacion del componente Add_administrador en el Rol Administrador
+[33m9caaa029[m Diseño del componente de Administradores en el RolAdministrador
+[33m4b26aea7[m Creación del componente de Administradores en el RolAdministrador
+[33mc1d9cc50[m Diseño del Sidebar
+[33md28862b3[m Creacion de la carpeta Sidebar con componentes para el SIDEBAR
+[33m98d6820f[m[33m ([m[1;31morigin/Login-admin[m[33m)[m Agregacion de ReactiveForms al LOGIN
+[33m13d1cff4[m Diseño de la interfaz de LOGIN
+[33m478c4e60[m Creacion del componente LOGIN
+[33mb98049fc[m Descarga de los node modules
+[33m44ff48f9[m[33m ([m[1;31morigin/ramaLogin[m[33m)[m Interfaz de login
+[33m68c7f74c[m Merge branch 'Ramaregistro'
+[33maa07e683[m[33m ([m[1;31morigin/ramaRegistro[m[33m)[m revisado ramaRegistro
+[33mf34299fe[m Anidando la imagen de logotipo con el registro
+[33mbe111a0d[m Interfaz de registro
+[33mc62d67cc[m instalando los complementos necesarios
+[33m3d067ca3[m Interfaz de login
+[33mdcf5797f[m Interfaz de registro
+[33mc0df3878[m Iniciando el proyecto
+[33mdaf43557[m Inicio de proyecto

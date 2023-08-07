@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard_solicitante] },
   { path: 'postulantes', component: PostulantesComponent, canActivate: [AuthGuard_solicitante] },
   { path: 'add-trabajo', component: AddTrabajoComponent, canActivate: [AuthGuard_solicitante] },
-  { path: 'editar-trabajo', component: EditarTrabajoComponent, canActivate: [AuthGuard_solicitante] },
+  { path: 'editar-trabajo/:id', component: EditarTrabajoComponent, canActivate: [AuthGuard_solicitante] },
 
 
   //Ruta para el usuario con Rol de Administrador

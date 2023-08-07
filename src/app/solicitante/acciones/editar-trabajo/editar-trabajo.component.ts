@@ -1,15 +1,40 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.service';
 
 @Component({
   selector: 'app-editar-trabajo',
   templateUrl: './editar-trabajo.component.html',
   styleUrls: ['./editar-trabajo.component.css']
 })
-export class EditarTrabajoComponent {
+export class EditarTrabajoComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  trabajo: any = {}; 
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private soliService: ServiceSolicitanteService
+  ) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.getTrabajo(id);
+    });
+  }
+
+  getTrabajo(id: number) {
+    this.soliService.getTrabajoByID(id).subscribe(
+      (data: any) => {
+        this.trabajo = data;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
 
   editarTrabajo() {
     Swal.fire({
@@ -22,13 +47,26 @@ export class EditarTrabajoComponent {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Actualizado!',
-          'El trabajo ha sido actualizado correctamente.',
-          'success'
+        this.soliService.updateTrabajo(this.trabajo.id, this.trabajo).subscribe(
+          () => {
+            Swal.fire(
+              'Actualizado!',
+              'El trabajo ha sido actualizado correctamente.',
+              'success'
+            );
+            this.router.navigateByUrl('/trabajitos');
+          },
+          (error: any) => {
+            console.error('Error al actualizar el trabajo:', error);
+            Swal.fire(
+              'Error!',
+              'Ha ocurrido un error al actualizar el trabajo.',
+              'error'
+            );
+          }
         );
-        this.router.navigateByUrl('/trabajitos');
       }
-    })
+    });
   }
+
 }

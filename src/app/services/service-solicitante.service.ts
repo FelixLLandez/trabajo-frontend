@@ -41,12 +41,10 @@ export class ServiceSolicitanteService {
     }
   }
 
-  get_solicitantes() {
-    return this.http.get('http://localhost:3000/api/users/solicitantes');
-  }
-
-  get_solic(id: any) {
-    return this.http.get(`http://localhost:3000/api/users/usuario/${id}`);
+  //FUNCIONES DE LA SECCION DE TRABAJOS DEL SOLICITANTE
+  getLoggedInUserId(): number {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? user.id : 0;
   }
 
   modificar_solicitante(id:any, data:any){
@@ -56,4 +54,35 @@ export class ServiceSolicitanteService {
   desactivar_administrador(data: any) {
     return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
   }
+
+  addTrabajo(data: any, userId: number): Observable<any> {
+    return this.http.post<any>(`http://localhost:3000/api/trabajos/crearTrabajo?usuario=${userId}`, data);
+  }  
+
+  getAllTrabajos(): Observable<any> {
+    return this.http.get<any>('http://localhost:3000/api/trabajos/allTrabajos');
+  }  
+
+  eliminarTrabajo(id: number): Observable<any> {
+    return this.http.delete<any>(`http://localhost:3000/api/trabajos/${id}`);
+  }  
+
+  getTrabajoByID(id: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/trabajos/${id}`)
+  }
+
+  desactivar_trabajo(id: number) {
+    return this.http.delete(`http://localhost:3000/api/trabajos/${id}`);
+  }
+
+  updateTrabajo(id: number, data: any): Observable<any> {
+    return this.http.patch<any>(`http://localhost:3000/api/trabajos/${id}`, data);
+  }
+
+
+  //FUNCIONES DE LA SECCION DE EDITAR PERFIL DEL SOLICITANTE
+  updatePerfil(id: number, data: any): Observable<any> {
+    return this.http.patch<any>(`http://localhost:3000/api/users/${id}`, data);
+  }
+    
 }
