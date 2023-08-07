@@ -53,7 +53,7 @@ export class AddSolicitanteRolAdminComponent {
     foto: ['', [Validators.required,]],
     calle:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
     estado:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
-    numero:['',[Validators.pattern(this.edadynumero)]],
+    numero:['',[Validators.required,Validators.pattern(this.edadynumero)]],
     rolId:2
 
   }, {

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ServicePostulanteService } from '../../../../services/administrador-service/service-postulante.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-postulante-rol-admin',
@@ -8,7 +11,17 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 })
 export class EditPostulanteRolAdminComponent {
 
-  constructor(private fb: FormBuilder) { }
+  id_user:any;
+  datos_postulante:any=[];
+
+  constructor(private fb: FormBuilder, private servicePostulante:ServicePostulanteService, private route:ActivatedRoute, private router:Router) { }
+
+  ngOnInit(): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+    this.id_user = id;
+    console.log(this.id_user);
+    this.obtener_datos();
+  }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -35,56 +48,56 @@ export class EditPostulanteRolAdminComponent {
   Editpostulante: FormGroup = this.fb.group({
 
     nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-    apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido),  Validators.minLength(3), Validators.maxLength(45)]],
-    genero: ['', [Validators.required]],
-    direccion: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(45)]],
+    apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+    sexo: ['', [Validators.required]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
-    correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
-    password2: ['', [Validators.required,]],
-    foto: ['', [Validators.required,]]
+    email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
+    // password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+    // password2: ['', [Validators.required,]],
+    // foto: ['', [Validators.required,]],
+    calle:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    estado:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    numero:['',[Validators.required,Validators.pattern(this.edadynumero)]]
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
   );
 
-  nombrevalido(){
+  nombrevalido() {
     return this.Editpostulante.controls?.['nombre']?.errors && this.Editpostulante.controls?.['nombre']?.touched
   }
 
-  apellidosvalido(){
+  apellidosvalido() {
     return this.Editpostulante.controls?.['apellidos']?.errors && this.Editpostulante.controls?.['apellidos']?.touched
   }
 
-  sexovalido(){
-    return this.Editpostulante.controls?.['genero']?.touched && this.Editpostulante.controls?.['genero'].errors
+  sexovalido() {
+    return this.Editpostulante.controls?.['sexo']?.touched && this.Editpostulante.controls?.['sexo'].errors
   }
 
-  direccionvalida(){
-    return this.Editpostulante.controls?.['direccion']?.errors && this.Editpostulante.controls?.['direccion']?.touched
-  }
+  
 
-  municipiovalido(){
+  municipiovalido() {
     return this.Editpostulante.controls?.['municipio']?.errors && this.Editpostulante.controls?.['municipio']?.touched
   }
 
-  localidadvalida(){
+  localidadvalida() {
     return this.Editpostulante.controls?.['localidad']?.errors && this.Editpostulante.controls?.['localidad']?.touched
   }
 
-  edadvalida(){
+  edadvalida() {
     return this.Editpostulante.controls?.['edad']?.errors && this.Editpostulante.controls?.['edad']?.touched
   }
 
-  telefonovalido(){
+  telefonovalido() {
     return this.Editpostulante.controls?.['telefono']?.errors && this.Editpostulante.controls?.['telefono']?.touched
   }
 
-  correovalido(){
-    return this.Editpostulante.controls?.['correo']?.errors && this.Editpostulante.controls?.['correo']?.touched
+  correovalido() {
+    return this.Editpostulante.controls?.['email']?.errors && this.Editpostulante.controls?.['email']?.touched
   }
 
 
@@ -96,12 +109,51 @@ export class EditPostulanteRolAdminComponent {
     return this.Editpostulante.controls?.['password2']?.errors && this.Editpostulante.controls?.['password2']?.touched
   }
 
-  fotovalida(){
+  fotovalida() {
     return this.Editpostulante.controls?.['foto']?.touched && this.Editpostulante.controls?.['foto'].errors
   }
 
-  modificar() {
-    console.log(this.Editpostulante.value);
+  callevalida(){
+    return this.Editpostulante.controls?.['calle']?.errors && this.Editpostulante.controls?.['calle']?.touched
+  }
 
+  estadovalido(){
+    return this.Editpostulante.controls?.['estado']?.errors && this.Editpostulante.controls?.['estado']?.touched
+  }
+
+  numerovalido(){
+    return this.Editpostulante.controls?.['numero']?.errors && this.Editpostulante.controls?.['numero']?.touched
+  }
+
+  modificar() {
+    Swal.fire({
+      title: 'Estás seguro de modificar la informacion?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
+        this.servicePostulante.modificar_postulante(id,this.Editpostulante.value).subscribe((data: any) => {
+          this.router.navigateByUrl('/ver-postulantes')
+          Swal.fire({
+            icon: 'success',
+            title: 'Usuario modificado correctamente',
+          })
+
+        })
+      }
+    })
+
+  }
+
+  obtener_datos() {
+    this.servicePostulante.get_postulante(this.id_user).subscribe((data: any) => {
+      this.Editpostulante.patchValue(data)
+      this.datos_postulante = data;
+    })
   }
 }

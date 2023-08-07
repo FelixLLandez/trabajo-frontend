@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,8 +67,8 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input1">Sexo</label>
-                            <select class="form-select" required aria-label="Default select example" id="genero"
-                                name="genero" formControlName="genero">
+                            <select class="form-select" required aria-label="Default select example" id="sexo"
+                                name="sexo" formControlName="sexo">
                                 <option value="">Seleccionar...</option>
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
@@ -87,23 +88,53 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="input1">Dirección</label>
-                            <textarea type="text" class="form-control" id="direccion" name="direccion"
-                                formControlName="direccion"></textarea>
-                            <div *ngIf="direccionvalida()"
+                            <label for="input1">Calle</label>
+                            <input type="text" class="form-control" id="calle" name="calle" formControlName="calle">
+                            <div *ngIf="callevalida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
                                     <use xlink:href="#info-fill" />
                                 </svg>
                                 <div>
-                                    Dirección inválida
+                                    Calle inválida
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="input2">Municipio</label>
+                            <label for="input1">Número</label>
+                            <input type="number" class="form-control" id="numero" name="numero" formControlName="numero"
+                                min="1">
+                            <div *ngIf="numerovalido()"
+                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
+                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                    <use xlink:href="#info-fill" />
+                                </svg>
+                                <div>
+                                    Número inválido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="input2">Estado</label>
+                            <input type="text" class="form-control" id="estado" name="estado" formControlName="estado">
+                            <div *ngIf="estadovalido()"
+                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
+                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                    <use xlink:href="#info-fill" />
+                                </svg>
+                                <div>
+                                    Estado inválido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="input3">Municipio</label>
                             <input type="text" class="form-control" id="municipio" name="municipio"
                                 formControlName="municipio">
                             <div *ngIf="municipiovalido()"
@@ -133,8 +164,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input3">Teléfono</label>
@@ -151,10 +180,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input2">Edad</label>
-                            <input type="text" class="form-control" id="edad" name="edad" formControlName="edad">
+                            <input type="number" class="form-control" id="edad" name="edad" formControlName="edad"
+                                min="18" max="100">
                             <div *ngIf="edadvalida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -169,7 +201,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input1">Correo</label>
-                            <input type="email" class="form-control" id="correo" name="correo" formControlName="correo">
+                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
                             <div *ngIf="correovalido()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -181,13 +213,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input2">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                formControlName="password">
+                            <input type="password" class="form-control" id="password" name="password">
                             <div *ngIf="contrasenavalida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -199,11 +228,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input3">Confirmar constraseña</label>
-                            <input type="password" class="form-control" id="password2" name="password2"
-                                formControlName="password2">
+                            <input type="password" class="form-control" id="password2" name="password2">
                             <div *ngIf="contrasena2valida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -218,8 +248,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="input3">Fotografía</label>
-                            <input type="file" accept="image/png" class="form-control" id="foto" name="foto"
-                                formControlName="foto">
+                            <input type="file" accept="image/png" class="form-control" id="foto" name="foto">
                             <div *ngIf="fotovalida()"
                                 class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
                                 <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
@@ -241,4 +270,5 @@
         </div>
     </div>
 </body>
+
 </html>

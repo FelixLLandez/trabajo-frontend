@@ -27,4 +27,12 @@ export class ServicePostulanteService {
   get_postulantes() {
     return this.http.get('http://localhost:3000/api/users/postulantes');
   }
+
+  get_postulante(id: any) {
+    return this.http.get(`http://localhost:3000/api/users/usuario/${id}`);
+  }
+
+  modificar_postulante(id:any, data:any){
+    return this.http.patch(`http://localhost:3000/api/users/modificar/${id}`, data);
+  }
 }
