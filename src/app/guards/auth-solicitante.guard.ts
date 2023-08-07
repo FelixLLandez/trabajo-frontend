@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ServiceAdministradorService } from '../services/service-administrador.service';
 import { ServiceSolicitanteService } from '../services/service-solicitante.service';
+import { SolicitanteService } from '../services/solicitante-service/solicitante.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { ServiceSolicitanteService } from '../services/service-solicitante.servi
 export class AuthGuard_solicitante  {
 
   constructor(private route: Router,
-    private serviceSolicitante: ServiceSolicitanteService) {
+    private serviceSolicitante: SolicitanteService) {
   }
 
   canActivate(

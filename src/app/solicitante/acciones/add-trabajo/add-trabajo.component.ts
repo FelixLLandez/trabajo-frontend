@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.service';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
   selector: 'app-add-trabajo',
@@ -12,7 +12,7 @@ import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.
 export class AddTrabajoComponent {
   trabajoForm: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private soliSer: ServiceSolicitanteService) {
+  constructor(private router: Router, private fb: FormBuilder, private soliSer: SolicitanteService) {
     this.trabajoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],

@@ -77,8 +77,16 @@ body {
   }
   
   .options {
+    justify-content: space-around;
+  }
+  
+  td.options {
     display: flex;
     justify-content: space-around;
+  }
+  
+  td.options button {
+    margin: 6px;
   }
   
   .btn {
@@ -98,8 +106,8 @@ body {
     background-color: #2196F3;
   }
   
-  .btn-success {
-    background-color: #4CAF50;
+  .btn-warning {
+    background-color: #FF9800;
   }
   
   .btn-secondary {
@@ -107,11 +115,33 @@ body {
   }
   
   .btn i {
-    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
   }
   
   .btn:hover {
     background-color: #000;
     opacity: 0.8;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    th,
+    td {
+      width: auto;
+    }
+  
+    td.options button {
+      margin: 2px; 
+      font-size: 12px; 
+      padding: 5px 10px; 
+    }
+  
+    td.options button i {
+      font-size: 16px; 
+    }
   }
   

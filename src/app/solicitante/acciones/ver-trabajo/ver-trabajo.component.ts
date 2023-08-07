@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.service';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
   selector: 'app-ver-trabajo',
@@ -11,7 +11,7 @@ export class VerTrabajoComponent implements OnInit {
   trabajoId!: number;
   trabajo: any;
   
-  constructor(public modalRef: BsModalRef, private soliSer: ServiceSolicitanteService) { }
+  constructor(public modalRef: BsModalRef, private soliSer: SolicitanteService) { }
 
   ngOnInit(): void {
     this.getTrabajoDetails();

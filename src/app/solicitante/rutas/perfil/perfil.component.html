@@ -4,7 +4,7 @@
 </div>
 
 <div class="content-container">
-  <div class="profile-card" >
+  <div class="profile-card">
     <h2 class="text-center">MI INFORMACIÓN</h2>
     <hr>
     <div class="profile-image" (mouseover)="showEditMessage = true" (mouseout)="showEditMessage = false"
@@ -77,24 +77,26 @@
       <div class="form-group">
         <label for="contrasena">Contraseña actual:</label>
         <div class="password-input">
-          <input type="password" id="contrasena-actual" name="contrasena" class="form-control" formControlName="password"
-            [value]="usuario.password">
+          <input type="password" id="contrasena-actual" name="contrasena" class="form-control"
+            formControlName="password" [value]="usuario.password">
           <i class="toggle-password fas fa-eye" (click)="visibilidadContrasennia('contrasena-actual')"></i>
         </div>
         <small class="form-text text-danger" *ngIf="campoValido('password')">{{ getErrorMessage('password') }}</small>
       </div>
-      
+
       <div class="form-group">
         <label for="contrasena">Contraseña nueva:</label>
         <div class="password-input">
-          <input type="password" id="contrasena-nueva" name="contrasena" class="form-control" formControlName="password2">
+          <input type="password" id="contrasena-nueva" name="contrasena" class="form-control"
+            formControlName="password2">
           <i class="toggle-password fas fa-eye" (click)="visibilidadContrasennia('contrasena-nueva')"></i>
         </div>
         <small class="form-text text-danger" *ngIf="campoValido('password2')">{{ getErrorMessage('password2') }}</small>
-      </div>                
+      </div>
 
       <div class="btn-container">
-        <button type="submit" class="btn btn-save" (click)="editarPerfil()"><b><i class="fas fa-save"></i> Guardar cambios</b></button>
+        <button type="submit" class="btn btn-save" (click)="editarPerfil()"><b><i class="fas fa-save"></i> Guardar
+            cambios</b></button>
       </div>
     </form>
   </div>

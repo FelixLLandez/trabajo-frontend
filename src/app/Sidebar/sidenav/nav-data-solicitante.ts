@@ -17,5 +17,11 @@ export const navbarData_solicitante = [
       label: 'Postulantes',
       title:'Postulantes'
     },
+    {
+      routeLink:'trabajos-archivados',
+      icon: 'fal fa-box-archive',
+      label:'Archivados',
+      title:'Archivados'
+  }
   ];
   

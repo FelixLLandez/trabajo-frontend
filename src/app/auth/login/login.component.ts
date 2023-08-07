@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServiceSolicitanteService } from '../../services/service-solicitante.service';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { ServiceSolicitanteService } from '../../services/service-solicitante.se
 })
 export class LoginComponent {
 
-  constructor(private fb: FormBuilder, private serviceSolicitante: ServiceSolicitanteService, private router: Router) { }
+  constructor(private fb: FormBuilder, private serviceSolicitante: SolicitanteService, private router: Router) { }
 
   Formulario_login: FormGroup = this.fb.group({
     email: ['', [Validators.required]],
