@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ServiceAdministradorService } from '../../../../services/service-administrador.service';
+import { ServiceAdministradorService } from '../../../../services/administrador-service/service-administrador.service';
 
 @Component({
   selector: 'app-edit-admin-rol-admin',

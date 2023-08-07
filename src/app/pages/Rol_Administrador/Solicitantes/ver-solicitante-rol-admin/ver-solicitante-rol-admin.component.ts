@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ServiceSolicitanteService } from '../../../../services/service-solicitante.service';
+import { ServiceSolicitanteService } from '../../../../services/administrador-service/service-solicitante.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({

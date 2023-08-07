@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { ServiceAdministradorService } from 'src/app/services/service-administrador.service';
+import { ServiceAdministradorService } from 'src/app/services/administrador-service/service-administrador.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ServiceSolicitanteService } from 'src/app/services/administrador-service/service-solicitante.service';
 
 @Component({
   selector: 'app-add-solicitante-rol-admin',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddSolicitanteRolAdminComponent {
 
-  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private router:Router) { 
+  constructor(private fb: FormBuilder, private serviceSolicitante: ServiceSolicitanteService, private router:Router) { 
     
   }
 
@@ -122,7 +123,7 @@ export class AddSolicitanteRolAdminComponent {
   guardar() {
     console.log(this.Addsolicitante.value);
     
-    this.serviceAdmin.agregar_solicitante(this.Addsolicitante.value).subscribe((datos: any) => {
+    this.serviceSolicitante.agregar_solicitante(this.Addsolicitante.value).subscribe((datos: any) => {
       if (datos) {
         Swal.fire({
           title: 'Solicitante agregado correctamente',

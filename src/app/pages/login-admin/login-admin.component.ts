@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ServiceAdministradorService } from '../../services/service-administrador.service';
+import { ServiceAdministradorService } from '../../services/administrador-service/service-administrador.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 

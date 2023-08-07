@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ServiceAdministradorService } from '../../../../services/service-administrador.service';
+import { ServiceAdministradorService } from '../../../../services/administrador-service/service-administrador.service';
 
 declare var $: any;
 

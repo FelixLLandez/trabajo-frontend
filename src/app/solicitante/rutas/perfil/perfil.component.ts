@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.service';
+import { ServiceSolicitanteService } from 'src/app/services/administrador-service/service-solicitante.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';

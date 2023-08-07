@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { ServiceAdministradorService } from '../services/service-administrador.service';
+import { ServiceAdministradorService } from '../services/administrador-service/service-administrador.service';
 
 @Injectable({
   providedIn: 'root'

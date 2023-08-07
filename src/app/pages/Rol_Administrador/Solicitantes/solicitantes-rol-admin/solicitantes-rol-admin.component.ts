@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { ServiceSolicitanteService } from '../../../../services/service-solicitante.service';
+import { ServiceSolicitanteService } from '../../../../services/administrador-service/service-solicitante.service';
 
 
 @Component({
@@ -107,7 +107,6 @@ export class SolicitantesRolAdminComponent implements OnInit, OnDestroy {
           showConfirmButton: false,
           timer: 1500,
         });
-
         setTimeout(() => {
           this.router.navigateByUrl(`/login-administrador`);
         }, 1500);

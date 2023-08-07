@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/
 import { navbarData } from './nav-data';
 import { navbarData_solicitante } from './nav-data-solicitante';
 import { Router } from '@angular/router';
-import { ServiceAdministradorService } from '../../services/service-administrador.service';
+import { ServiceAdministradorService } from '../../services/administrador-service/service-administrador.service';
 
 interface SideNavToggle {
   screenWidth: number;
