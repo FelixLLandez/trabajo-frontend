@@ -1,15 +1,12 @@
 <header>
-    <span><b>MIS TRABAJOS</b></span>
+    <span><b>MIS TRABAJOS ARCHIVADOS</b></span>
     <a class="close-button" (click)="salir()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
 </header>
 <hr>
-<div>
-    <button class="add-button" (click)="ir_a_add_trabajo()"><i class="fas fa-plus"></i> Agregar trabajo</button>
-</div>
 
 <div>
     <br>
-    <table id="datatabletrabajitos" class="table table-bordered table-hover">
+    <table id="datatabletrabajitosarchivados" class="table table-bordered table-hover">
         <thead>
             <br>
             <tr>
@@ -31,10 +28,8 @@
                 <td class="options">
                     <button class="btn btn-info" (click)="openModal(trabajo.id)" title="Ver más"><i
                             class="fas fa-eye"></i></button>
-                    <button class="btn btn-warning" (click)="ir_a_editar_trabajo(trabajo.id)" title="Editar trabajo"><i
-                            class="fas fa-edit"></i></button>
-                    <button class="btn btn-secondary" (click)="eliminar_trabajo(trabajo.id)" title="Eliminar trabajo"><i
-                            class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-warning" (click)="activarTrabajo(trabajo.id)" title="Activar trabajo"><i
+                            class="fa-solid fa-arrow-up"></i></button>
                 </td>
             </tr>
         </tbody>

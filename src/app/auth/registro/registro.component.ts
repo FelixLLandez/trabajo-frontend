@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/authSolicitante/auth-solicitante.service';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
   selectedRol: string = '';
 
   constructor(
-    private authS: AuthService,
+    private solicitanteS: SolicitanteService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -54,7 +54,7 @@ export class RegistroComponent implements OnInit {
         delete formData.rol; 
       }
 
-      this.authS.registro(formData).subscribe(
+      this.solicitanteS.registro(formData).subscribe(
         (data) => {
           console.log(data);
           this.router.navigate(['/login']);
@@ -79,7 +79,7 @@ export class RegistroComponent implements OnInit {
 
   roles: any[] = [];
   getRoles() {
-    this.authS.getRoles().subscribe(
+    this.solicitanteS.getRoles().subscribe(
       (data: any) => {
         // En este caso filtre los roles para eliminar el rol del administrador (ID: 1) y solo mostrar los dos restantes
         this.roles = data.filter((rol: any) => rol.id !== 1);

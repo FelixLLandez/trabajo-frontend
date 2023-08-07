@@ -1,17 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { VerTrabajoComponent } from '../../acciones/ver-trabajo/ver-trabajo.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
+import { VerTrabajoComponent } from '../../acciones/ver-trabajo/ver-trabajo.component';
 import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
-  selector: 'app-trabajitos',
-  templateUrl: './trabajitos.component.html',
-  styleUrls: ['./trabajitos.component.css']
+  selector: 'app-trabajos-archivados',
+  templateUrl: './trabajos-archivados.component.html',
+  styleUrls: ['./trabajos-archivados.component.css']
 })
-export class TrabajitosComponent implements OnInit, OnDestroy {
-
+export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
   modalRef: BsModalRef<any> | undefined;
   trabajos: any[] = [];
   dtOptions: DataTables.Settings = {};
@@ -34,7 +33,7 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       responsive: true,
       destroy: true,
     };
-    this.getTrabajos();
+    this.getTrabajosArchivados();
   }
 
   ngOnDestroy(): void {
@@ -48,18 +47,10 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
     this.modalRef = this.modalService.show(VerTrabajoComponent, { initialState });
   }
 
-  ir_a_add_trabajo() {
-    this.router.navigateByUrl(`/add-trabajo`);
-  }
-
-  ir_a_editar_trabajo(id: number) {
-    this.router.navigateByUrl(`/editar-trabajo/${id}`);
-  }
-
-  eliminar_trabajo(id: number) {
+  activarTrabajo(id: number) {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "Al realizar esta acción, se desactivará el trabajo.",
+      text: "Al realizar esta acción, se activará el trabajo.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -68,41 +59,42 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.soliService.desactivar_trabajo(id).subscribe(
+        this.soliService.activar_trabajo(id).subscribe(
           (data: any) => {
-            if (data && data.message === 'Trabajo desactivado correctamente') {
+            if (data && data.message === 'Trabajo activado correctamente') {
               Swal.fire({
                 icon: 'success',
-                title: 'Trabajo desactivado correctamente!',
+                title: 'Trabajo activado correctamente!',
               });
-              this.getTrabajos();
+              this.getTrabajosArchivados();
             } else {
               Swal.fire({
                 icon: 'error',
-                title: 'Ocurrió un problema al desactivar el trabajo!',
+                title: 'Ocurrió un problema al activar el trabajo!',
               });
             }
           },
           (error: any) => {
             Swal.fire({
               icon: 'error',
-              title: 'Ocurrió un problema al desactivar el trabajo!',
+              title: 'Ocurrió un problema al activar el trabajo!',
             });
           }
         );
       }
     });
   }
+  
 
-  getTrabajos() {
+  getTrabajosArchivados() {
     const solicitanteId = this.soliService.getLoggedInUserId();
     this.soliService.getTrabajosBySolicitanteId(solicitanteId).subscribe(
       (data: any) => {
         console.log(data);
-        this.trabajos = data.task.filter((trabajo: any) => trabajo.estate === true);
-        $('#datatabletrabajitos').DataTable().destroy();
+        this.trabajos = data.task.filter((trabajo: any) => trabajo.estate === false);
+        $('#datatabletrabajitosarchivados').DataTable().destroy();
         setTimeout(() => {
-          $('#datatabletrabajitos').DataTable(this.dtOptions);
+          $('#datatabletrabajitosarchivados').DataTable(this.dtOptions);
         }, 0);
       },
       (error: any) => {
@@ -139,5 +131,4 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 }

@@ -37,6 +37,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trabajo.component';
 import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
 import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
+import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archivados/trabajos-archivados.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component
     VerTrabajoComponent,
     VerPostulanteComponent,
     LoginAdminComponent,
-    PaginaErrorComponent
+    PaginaErrorComponent,
+    TrabajosArchivadosComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.service';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
   selector: 'app-editar-trabajo',
@@ -15,7 +15,7 @@ export class EditarTrabajoComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private soliService: ServiceSolicitanteService
+    private soliService: SolicitanteService
   ) { }
 
   ngOnInit(): void {

@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { ServiceSolicitanteService } from 'src/app/services/service-solicitante.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
 
 @Component({
   selector: 'app-perfil',
@@ -17,7 +18,7 @@ export class PerfilComponent implements OnInit {
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   editMode: boolean = false;
 
-  constructor(private soliSer: ServiceSolicitanteService, private fb: FormBuilder, private router: Router) { }
+  constructor(private soliSer: SolicitanteService, private fb: FormBuilder, private router: Router) { }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
