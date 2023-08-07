@@ -36,19 +36,19 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Teléfono</th>
                     <th scope="col">Edad</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Sexo</th>
                     <th scope="col" class="opciones">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of postulantes; let i = index">
+                <tr *ngFor="let item of all_postulantes; let i = index">
                     <th scope="row">{{i +1 }}</th>
-                    <td>Isidro Noé</td>
-                    <td>Salvador Jiménez</td>
-                    <td>isidronoe.sj@gmail.com</td>
-                    <td>9513645268</td>
-                    <td>21</td>
-                    <td>Activo</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.edad}}</td>
+                    <td>{{item.sexo}}</td>
                     <td class="opciones-botones">
                         <button (click)="ver_postulante()" type="button" title="Ver información"
                             class="btn boton-ver"><i class="fa-regular fa-eye"></i></button>

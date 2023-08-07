@@ -1,30 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ServicePostulanteService } from '../../../../services/administrador-service/service-postulante.service';
 
 @Component({
   selector: 'app-postulantes-rol-admin',
   templateUrl: './postulantes-rol-admin.component.html',
   styleUrls: ['./postulantes-rol-admin.component.css']
 })
-export class PostulantesRolAdminComponent {
+export class PostulantesRolAdminComponent implements OnInit{
 
-  postulantes = Array(100).fill(0);
+  all_postulantes:any=[]
 
-  constructor(private router: Router) {
-    setTimeout(() => {
-      $('#tabla-postulantes').DataTable({
-        language: {
-          url: "//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
-        },
-        pagingType: 'full_numbers',
-        pageLength: 10,
-        processing: true,
-        lengthMenu: [5, 10, 25],
-        responsive: true
+  constructor(private router: Router, private servicePostulante: ServicePostulanteService) {}
 
-      });
-    }, 1);
+  ngOnInit(): void {
+    this.get_postulantes();
+  }
+
+  ngOnDestroy(): void {
+    $('#tabla-postulantes').DataTable().destroy();
   }
 
   agregar_postulante() {
@@ -56,6 +51,27 @@ export class PostulantesRolAdminComponent {
           title: 'Desactivado exitosamente!',
         })
       }
+    })
+  }
+
+  get_postulantes() {
+    this.servicePostulante.get_postulantes().subscribe((data: any) => {
+      this.all_postulantes = data;
+      console.log(this.all_postulantes);
+
+      $('#tabla-postulantes').DataTable().destroy();
+      setTimeout(() => {
+        $('#tabla-postulantes').DataTable({
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
+          },
+          pagingType: 'full_numbers',
+          pageLength: 10,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+          responsive: true
+        });
+      }, 1);
     })
   }
 }
