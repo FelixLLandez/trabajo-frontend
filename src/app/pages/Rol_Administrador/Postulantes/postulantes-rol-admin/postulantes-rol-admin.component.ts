@@ -8,11 +8,11 @@ import { ServicePostulanteService } from '../../../../services/administrador-ser
   templateUrl: './postulantes-rol-admin.component.html',
   styleUrls: ['./postulantes-rol-admin.component.css']
 })
-export class PostulantesRolAdminComponent implements OnInit{
+export class PostulantesRolAdminComponent implements OnInit {
 
-  all_postulantes:any=[]
+  all_postulantes: any = []
 
-  constructor(private router: Router, private servicePostulante: ServicePostulanteService) {}
+  constructor(private router: Router, private servicePostulante: ServicePostulanteService) { }
 
   ngOnInit(): void {
     this.get_postulantes();
@@ -26,15 +26,15 @@ export class PostulantesRolAdminComponent implements OnInit{
     this.router.navigateByUrl('/add-postulante');
   }
 
-  ver_postulante(id:any) {
+  ver_postulante(id: any) {
     this.router.navigateByUrl(`/informacion-postulante/${id}`);
   }
 
-  modificar_postulante(id:any) {
+  modificar_postulante(id: any) {
     this.router.navigateByUrl(`/edit-postulante/${id}`);
   }
 
-  eliminar_postulante() {
+  eliminar_postulante(id: any) {
     Swal.fire({
       title: 'Estás seguro de desactivar este postulante?',
       text: "Podrás volver a habilitarlo si es necesario",
@@ -46,9 +46,20 @@ export class PostulantesRolAdminComponent implements OnInit{
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Desactivado exitosamente!',
+        this.servicePostulante.desactivar_postulante(id).subscribe((data: any) => {
+          if (data) {
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Usuario desactivado exitosamente!',
+            });
+            this.get_postulantes();
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Sucedio un problema al desactivar al usuario!',
+            });
+          }
         })
       }
     })

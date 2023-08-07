@@ -35,4 +35,8 @@ export class ServicePostulanteService {
   modificar_postulante(id:any, data:any){
     return this.http.patch(`http://localhost:3000/api/users/modificar/${id}`, data);
   }
+
+  desactivar_postulante(data: any) {
+    return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
+  }
 }
