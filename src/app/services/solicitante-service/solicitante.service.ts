@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SolicitanteService {
-
+  
+  constructor(private http: HttpClient) { }
+  
   apiurl = 'http://localhost:3000/api'; // Ruta global
 
   registro(formData: any): Observable<any> {
@@ -19,7 +21,6 @@ export class SolicitanteService {
     return this.http.get<any>(url);
   }  
 
-  constructor(private http: HttpClient) { }
 
   token_solicitante: any = "";
   user_solicitante: any = {};
@@ -101,8 +102,8 @@ export class SolicitanteService {
 
 
   //FUNCIONES DE LA SECCION DE POSTULANTES
-  getUsuariosByRolId(roleId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/users?roleId=${roleId}`);
+  getUsuariosByRolId(rolId: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/users?rolId=${rolId}`);
   }
 
 }
