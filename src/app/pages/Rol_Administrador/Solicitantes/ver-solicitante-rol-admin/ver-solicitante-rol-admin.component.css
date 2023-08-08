@@ -9,6 +9,10 @@
 
 }
 
+.card:hover {
+    transform: scale(0.95);
+}
+
 .card-body {
     padding: 20px;
     background-color: #fafafa;
@@ -242,10 +246,6 @@ label {
 .card-img-top {
     width: 100%;
     height: auto;
-}
-
-.card-img-top:hover {
-    transform: scale(0.95);
 }
 
 .div-segundo-titulo {
