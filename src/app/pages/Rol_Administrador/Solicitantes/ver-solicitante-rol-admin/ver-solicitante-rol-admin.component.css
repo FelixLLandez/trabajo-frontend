@@ -1,3 +1,5 @@
+
+
 .titulo-principal {
     font-size: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
@@ -43,11 +45,6 @@ label {
 
 .card-trabajo:hover {
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.327);
-}
-
-.card-img-top {
-    width: 100%;
-    height: auto;
 }
 
 .div-segundo-titulo {
@@ -202,18 +199,6 @@ input:hover {
 .titulo-principal {
     font-size: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-}
-
-.cards {
-    width: 100%;
-    background-color: #fafafa;
-    border-radius: 15px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.card-body {
-    padding: 20px;
-    background-color: #fafafa;
 }
 
 label {
