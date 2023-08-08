@@ -107,7 +107,7 @@
             </div>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4 div-cards">
+        <div class="row row-cols-1 row-cols-md-2 g-4 div-cards">
             <div class="col" *ngFor="let item of obtenerItemsFiltrados()"
                 [ngClass]="{'card-fade-in': nombreBusqueda, 'card-fade-out': !nombreBusqueda}">
                 <div class="card card-trabajo">
@@ -134,4 +134,13 @@
         </div>
     </div>
 </body>
-<button id="btnUp" class="btn-primary"  title="Subir"><i class="fa-solid fa-arrow-up"></i></button>
+
+<button class="Btn" id="btnUp">
+
+    <div class="sign">
+        <i class="fa-solid fa-arrow-up color"></i>
+    </div>
+
+    <div class="text">Subir</div>
+</button>
+
