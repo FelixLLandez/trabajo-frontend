@@ -85,4 +85,30 @@ export class PostulantesRolAdminComponent implements OnInit {
       }, 1);
     })
   }
+
+  salir() {
+    Swal.fire({
+      title: '¿Estás seguro de cerrar sesón?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        Swal.fire({
+          icon: 'success',
+          title: 'Cerrando sesión...',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl(`/login-administrador`);
+        }, 1500);
+      }
+    })
+  }
 }
