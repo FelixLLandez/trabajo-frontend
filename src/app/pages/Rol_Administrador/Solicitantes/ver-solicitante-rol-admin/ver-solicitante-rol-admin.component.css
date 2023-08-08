@@ -1,4 +1,13 @@
-
+body {
+    background-size: cover;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 12pt;
+    color: #2A293E;
+    border-radius: 15px;
+}
 
 .titulo-principal {
     font-size: 35px;
@@ -16,7 +25,7 @@
 }
 
 .card-body {
-    padding: 20px;
+    padding: 10px;
     background-color: #fafafa;
 }
 
@@ -302,7 +311,6 @@ label {
     border-radius: 50%;
     cursor: pointer;
     position: relative;
-    left: 1150px;
     overflow: hidden;
     transition-duration: .3s;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
