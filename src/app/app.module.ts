@@ -38,6 +38,9 @@ import { VerTrabajoComponent } from './solicitante/acciones/ver-trabajo/ver-trab
 import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ver-postulante.component';
 import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
 import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archivados/trabajos-archivados.component';
+import { ArchivadosAdministradorComponent } from './pages/Rol_Administrador/Archivados/archivados-administrador/archivados-administrador.component';
+import { ArchivadosSolicitanteComponent } from './pages/Rol_Administrador/Archivados/archivados-solicitante/archivados-solicitante.component';
+import { ArchivadosPostulanteComponent } from './pages/Rol_Administrador/Archivados/archivados-postulante/archivados-postulante.component';
 
 
 @NgModule({
@@ -73,7 +76,10 @@ import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archiv
     VerPostulanteComponent,
     LoginAdminComponent,
     PaginaErrorComponent,
-    TrabajosArchivadosComponent
+    TrabajosArchivadosComponent,
+    ArchivadosAdministradorComponent,
+    ArchivadosSolicitanteComponent,
+    ArchivadosPostulanteComponent
   ],
   imports: [
     BrowserModule,

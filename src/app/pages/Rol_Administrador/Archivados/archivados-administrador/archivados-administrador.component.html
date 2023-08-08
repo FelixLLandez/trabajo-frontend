@@ -1,0 +1,33 @@
+<body style="background-color: transparent;">
+    <div class="table-responsive">
+        <table id="table-data-administradores" class="table table-bordered table-hove table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col" class="opciones">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of administradores_archivados; let i=index ">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.edad}}</td>
+                    <td>{{item.sexo}}</td>
+                    <td class="opciones-botones">
+                        <button (click)="activar_administrador(item.id)" type="button" title="Activar administrador"
+                            class="btn boton-activar"><i class="fa fa-user-check"></i> Activar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
