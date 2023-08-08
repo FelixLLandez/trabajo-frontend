@@ -75,6 +75,50 @@ label {
     margin: 10px;
 }
 
+
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 190px;
+}
+
+.input {
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+}
+
+.input::placeholder {
+    color: #9e9ea7;
+}
+
+.input:focus,
+input:hover {
+    outline: none;
+    border-color: rgba(205, 93, 23, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(225, 76, 12, 0.1);
+}
+
+.icon {
+    position: absolute;
+    left: 1rem;
+    fill: #9e9ea7;
+    width: 1rem;
+    height: 1rem;
+}
+
+
 /* styles.css (o coloca estos estilos dentro de la etiqueta <style> en tu archivo HTML) */
 #btnUp {
     display: none;
@@ -103,14 +147,18 @@ label {
     /* Muestra el botón cuando se agrega la clase .show */
 }
 
-.btn-info-user { 
+.boton-redondeado {
+    border-radius: 10px;
+}
+
+.btn-info-user {
     cursor: pointer;
     color: #00b05d;
     border: 1px solid #00b05d;
 
 }
 
-.btn-info-user:hover{
+.btn-info-user:hover {
     background-color: #00b05d;
     color: #fff;
 }
@@ -118,32 +166,194 @@ label {
 /* Clase para el efecto de fade-in */
 .card-fade-in {
     animation: fadeIn 0.5s ease;
-  }
-  
-  /* Clase para el efecto de fade-out */
-  .card-fade-out {
+}
+
+/* Clase para el efecto de fade-out */
+.card-fade-out {
     animation: fadeOut 0.5s ease;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
+
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  @keyframes fadeOut {
+}
+
+@keyframes fadeOut {
     from {
-      opacity: 1;
+        opacity: 1;
     }
+
     to {
-      opacity: 0;
+        opacity: 0;
     }
-  }
-  
- 
+}
 
 
-  
+
+.titulo-principal {
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.cards {
+    width: 100%;
+    background-color: #fafafa;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+label {
+    font-weight: bold;
+}
+
+.div-datos-personales {
+    padding: 1%;
+}
+
+.titulo-datos-personales {
+    font-size: 22px;
+}
+
+.datos-personales {
+    border-bottom: 1px solid black;
+    text-align: justify;
+}
+
+.division {
+    border: 1px solid black;
+    margin-top: 3%;
+}
+
+
+.card-trabajo:hover {
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.327);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-img-top:hover {
+    transform: scale(0.95);
+}
+
+.div-segundo-titulo {
+    padding: 1%;
+}
+
+.titulo-trabajos-publicados {
+    font-size: 28px;
+}
+
+.div-buscador {
+    justify-content: end;
+    margin-top: 2%;
+}
+
+.input-buscar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-buscar {
+    margin-right: 10px;
+}
+
+.div-cards {
+    margin: 10px;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+}
+
+/* styles.css (o coloca estos estilos dentro de la etiqueta <style> en tu archivo HTML) */
+#btnUp {
+    display: none;
+    /* Oculta el botón por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    background-color: #989899b2;
+    color: #fff;
+
+}
+
+#btnUp:hover {
+    background-color: #767677;
+}
+
+#btnUp.show {
+    display: block;
+    /* Muestra el botón cuando se agrega la clase .show */
+}
+
+
+/* Cambios Villalobos */
+
+.card {
+    height: 475px;
+    width: 375px;
+    background: white;
+    padding: .4em;
+    border-radius: 15px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.327);
+}
+
+.category {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: rgb(63, 121, 230);
+    padding: 10px 7px 0;
+}
+
+.category:hover {
+    cursor: pointer;
+}
+
+.heading {
+    font-weight: 600;
+    color: rgb(88, 87, 87);
+    padding: 7px;
+}
+
+.heading:hover {
+    cursor: pointer;
+}
+
+.author {
+    color: gray;
+    font-weight: 400;
+    font-size: 11px;
+    padding-top: 20px;
+}
+
+.name {
+    font-weight: 600;
+}
+
+.name:hover {
+    cursor: pointer;
+}
