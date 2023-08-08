@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ServiceAdministradorService } from '../../../../services/administrador-service/service-administrador.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,61 +17,30 @@ export class ArchivadosRolAdminComponent {
   seleccionarPestana(pestana: string) {
     this.pestanaSeleccionada = pestana;
   }
-  constructor(private serviceAdministrador: ServiceAdministradorService) { }
+  constructor(private serviceAdministrador: ServiceAdministradorService, private router:Router) { }
 
-  activar_administrador() {
+  salir() {
     Swal.fire({
-      title: 'Estás seguro de activar este administrador?',
+      title: '¿Estás seguro de cerrar sesón?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, activar!',
+      confirmButtonText: 'Aceptar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
         Swal.fire({
           icon: 'success',
-          title: 'Activado exitosamente!',
-        })
-      }
-    })
-  }
-
-  activar_solicitante() {
-    Swal.fire({
-      title: 'Estás seguro de activar este solicitante?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, activar!',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Activado exitosamente!',
-        })
-      }
-    })
-  }
-
-  activar_postulante() {
-    Swal.fire({
-      title: 'Estás seguro de activar este postulante?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, activar!',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Activado exitosamente!',
-        })
+          title: 'Cerrando sesión...',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl(`/login-administrador`);
+        }, 1500);
       }
     })
   }
