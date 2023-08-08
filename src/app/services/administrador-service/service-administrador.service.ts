@@ -93,7 +93,12 @@ export class ServiceAdministradorService {
     return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
   }
 
-  // Funciones para el Solicitante
+  get_administradores_archivados() {
+    return this.http.get('http://localhost:3000/api/users/administradores_archivados');
+  }
 
+  activar_administrador(data: any) {
+    return this.http.patch(`http://localhost:3000/api/users/activar_user/${data}`, {});
+  }
   
 }

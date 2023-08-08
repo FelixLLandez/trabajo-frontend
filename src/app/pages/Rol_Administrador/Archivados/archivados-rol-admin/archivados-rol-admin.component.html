@@ -1,159 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Mostrar Tablas</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
+<header>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <h4 class="titulo-principal">USUARIOS ARCHIVADOS</h4>
+        <button (click)="salir()" title="Salir" class="btn boton-salir"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Salir</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+</header>
 
 <body>
 
-    <header>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="d-flex align-items-center justify-content-between">
-                    <h4 class="titulo-principal">USUARIOS ARCHIVADOS</h4>
-                    <button title="Salir" class="btn boton-salir"><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        Salir</button>
-                </div>
-            </div>
-        </div>
-        <hr>
-    </header>
+  <div class="d-flex  flex-wrap">
+    <button class="btn m-1" [class.btn-administradores]="pestanaSeleccionada !== 'administradores'"
+      [class.btn-admin-seleccionado]="pestanaSeleccionada === 'administradores'"
+      (click)="seleccionarPestana('administradores')">
+      Mostrar Administradores
+    </button>
+    <button class="btn m-1" [class.btn-solcitantes]="pestanaSeleccionada !== 'solicitantes'"
+      [class.btn-solic-seleccionado]="pestanaSeleccionada === 'solicitantes'"
+      (click)="seleccionarPestana('solicitantes')">
+      Mostrar
+      Solicitantes
+    </button>
+    <button class="btn m-1" [class.btn-postulantes]="pestanaSeleccionada !== 'postulantes'"
+      [class.btn-postu-seleccionado]="pestanaSeleccionada === 'postulantes'"
+      (click)="seleccionarPestana('postulantes')">
+      Mostrar Postulantes
+    </button>
+  </div>
 
-    <div class="div-btn-agregar text-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-6 col-sm-4">
-                    <button (click)="mostrarTabla(1)" class="btn boton-agregar"><i class="fa-solid fa-users-slash"></i>
-                        Administradores</button>
-                </div>
-                <div class="col-6 col-sm-4">
-                    <button (click)="mostrarTabla(2)" class="btn boton-agregar"><i class="fa-solid fa-users-slash"></i>
-                        Solicitantes</button>
-                </div>
-                <div class="col-6 col-sm-4">
-                    <button (click)="mostrarTabla(3)" class="btn boton-agregar"><i class="fa-solid fa-users-slash"></i>
-                        Postulantes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div *ngIf="Tabla_Administradores" class="table-responsive">
-        <table id="tabla-archivados" class="table table-bordered table-hove table-striped">
-            <thead>
-                <tr>
-                    <th colspan="8">
-                        Tabla de Administradores
-                    </th>
-                </tr>
-            </thead>
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Edad</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" class="opciones">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of administradores; let i = index">
-                    <th scope="row">{{i +1 }}</th>
-                    <td>Jesús Alexis</td>
-                    <td>Martinez Calderón</td>
-                    <td>jesusalexis@gmail.com</td>
-                    <td>9514764636</td>
-                    <td>28</td>
-                    <td>Activo</td>
-                    <td class="opciones-botones">
-                        <button (click)="activar_administrador()" type="button" title="Activar administrador"
-                            class="btn boton-activar"><i class="fa fa-user-check"></i> Activar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="tabs" style="margin-top: 1%;">
+    <div *ngIf="pestanaSeleccionada === 'administradores'">
+      <app-archivados-administrador></app-archivados-administrador>
     </div>
-    <div *ngIf="Tabla_Solicitantes" class="table-responsive tablas">
-        <table id="tabla-archivados" class="table table-bordered table-hove table-striped">
-            <thead>
-                <tr>
-                    <th colspan="8">
-                        Tabla de Solicitantes
-                    </th>
-                </tr>
-            </thead>
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Edad</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" class="opciones">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of administradores; let i = index">
-                    <th scope="row">{{i +1 }}</th>
-                    <td>Isidro Noé</td>
-                    <td>Salvador Jiménez</td>
-                    <td>isidronoe.sj@gmail.com</td>
-                    <td>9513645268</td>
-                    <td>21</td>
-                    <td>Activo</td>
-                    <td class="opciones-botones">
-                        <button (click)="activar_solicitante()" type="button" title="Activar solicitante"
-                            class="btn boton-activar"><i class="fa fa-user-check"></i> Activar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div *ngIf="pestanaSeleccionada === 'solicitantes'">
+      <app-archivados-solicitante></app-archivados-solicitante>
     </div>
-    <div *ngIf="Tabla_Postulantes" class="table-responsive">
-        <table id="tabla-archivados" class="table table-bordered table-hove table-striped">
-            <thead>
-                <tr>
-                    <th colspan="8">
-                        Tabla de Postulantes
-                    </th>
-                </tr>
-            </thead>
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Edad</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" class="opciones">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of administradores; let i = index">
-                    <th scope="row">{{i +1 }}</th>
-                    <td>Fernando</td>
-                    <td>García Montes</td>
-                    <td>montesgarcia@gmail.com</td>
-                    <td>9518562589</td>
-                    <td>24</td>
-                    <td>Activo</td>
-                    <td class="opciones-botones">
-                        <button (click)="activar_postulante()" type="button" title="Activar postulante"
-                            class="btn boton-activar"><i class="fa fa-user-check"></i> Activar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div *ngIf="pestanaSeleccionada === 'postulantes'">
+      <app-archivados-postulante></app-archivados-postulante>
     </div>
 
+  </div>
 </body>
 
 </html>

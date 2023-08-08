@@ -39,4 +39,12 @@ export class ServicePostulanteService {
   desactivar_postulante(data: any) {
     return this.http.patch(`http://localhost:3000/api/users/desactivar_user/${data}`, {});
   }
+
+  get_postulantes_archivados() {
+    return this.http.get('http://localhost:3000/api/users/postulantes_archivados');
+  }
+
+  activar_postulante(data: any) {
+    return this.http.patch(`http://localhost:3000/api/users/activar_user/${data}`, {});
+  }
 }
