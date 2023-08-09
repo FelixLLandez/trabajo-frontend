@@ -70,10 +70,6 @@ export class SolicitanteService {
     return this.http.post<any>(`http://localhost:3000/api/trabajos/crearTrabajo?usuario=${userId}`, data);
   }
 
-  eliminarTrabajo(id: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:3000/api/trabajos/${id}`);
-  }
-
   getTrabajoByID(id: number): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/api/trabajos/${id}`)
   }
