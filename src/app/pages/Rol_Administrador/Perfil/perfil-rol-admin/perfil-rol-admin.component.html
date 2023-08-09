@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="input1">Sexo</label>
                                     <select class="form-select" required aria-label="Default select example" id="sexo"
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label for="input2">Edad</label>
                                     <input type="text" class="form-control" id="edad" name="edad"
@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="input3">Teléfono</label>
                                     <input type="text" class="form-control" id="telefono" name="telefono"
@@ -135,8 +135,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="input1">Correo</label>
@@ -154,9 +152,147 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <!--  -->
+                        <!--  -->
+                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="input2">Contraseña</label>
+                                    <label for="input1">Calle</label>
+                                    <input type="text" class="form-control" id="calle" name="calle"
+                                        formControlName="calle">
+                                    <div *ngIf="callevalida()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Calle inválida
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="input1">Número</label>
+                                    <input type="number" class="form-control" id="numero" name="numero"
+                                        formControlName="numero" min="1">
+                                    <div *ngIf="numerovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Número inválido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="input2">Estado</label>
+                                    <input type="text" class="form-control" id="estado" name="estado"
+                                        formControlName="estado">
+                                    <div *ngIf="estadovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Estado inválido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="input3">Municipio</label>
+                                    <input type="text" class="form-control" id="municipio" name="municipio"
+                                        formControlName="municipio">
+                                    <div *ngIf="municipiovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Municipio inválido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="input3">Localidad</label>
+                                    <input type="text" class="form-control" id="localidad" name="localidad"
+                                        formControlName="localidad">
+                                    <div *ngIf="localidadvalida()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Localidad inválida
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-end">
+                            <button class="btn btn-guardar" [disabled]="Editadmin.invalid"
+                                title="Modifcar administrador">
+                                <i class="fa-regular fa-pen-to-square"></i> Modificar
+                            </button>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Launch static backdrop modal
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #31494c; color: #fff; ">
+                    <h5 class="modal-title" id="staticBackdropLabel">Cambio de contraseña</h5>
+                    <button style="background-color: #fff;" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: #e8f1f2;">
+                    <form [formGroup]="Editpassword" (ngSubmit)="cambiar_contrasena()">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="input2">Contraseña anterior</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        formControlName="password_anterior">
+                                    <div *ngIf="contrasenavalida()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Constraseña inválida
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="input2">Contraseña nueva</label>
                                     <input type="password" class="form-control" id="password" name="password"
                                         formControlName="password">
                                     <div *ngIf="contrasenavalida()"
@@ -171,9 +307,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <div class="form-group">
-                                    <label for="input3">Confirmar constraseña</label>
+                                    <label for="input2">Confirmar contraseña</label>
                                     <input type="password" class="form-control" id="password2" name="password2"
                                         formControlName="password2">
                                     <div *ngIf="contrasena2valida()"
@@ -183,21 +321,15 @@
                                             <use xlink:href="#info-fill" />
                                         </svg>
                                         <div>
-                                            Su contraseña no coincide con la anterior
+                                            Constraseña inválida
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group d-flex justify-content-end">
-                            <button class="btn btn-guardar" [disabled]="Editadmin.invalid"
-                                title="Modifcar administrador">
-                                <i class="fa-regular fa-pen-to-square"></i> Modificar
-                            </button>
-                        </div>
+                        <button type="button" [disabled]="Editpassword.invalid" class="btn btn-primary">Modificar</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

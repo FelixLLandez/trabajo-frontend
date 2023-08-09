@@ -9,9 +9,9 @@ import { ServiceAdministradorService } from '../../../../services/administrador-
 })
 export class PerfilRolAdminComponent {
 
-  datos_perfil:any=[];
+  datos_perfil: any = [];
 
-  constructor(private fb: FormBuilder, private serviceAdmin:ServiceAdministradorService) { }
+  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService) { }
 
   ngOnInit(): void {
     this.get_datos();
@@ -36,7 +36,7 @@ export class PerfilRolAdminComponent {
   };
 
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
-  edadynumero= '[0-9]+';
+  edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
   Editadmin: FormGroup = this.fb.group({
@@ -47,44 +47,74 @@ export class PerfilRolAdminComponent {
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    numero: ['', [Validators.required,Validators.pattern(this.edadynumero)]],
+    municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+    localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+  }
+  );
+
+  Editpassword:FormGroup= this.fb.group({
+    password_anterior:['',[Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]]
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
-  );
+  )
 
-  nombrevalido(){
+  nombrevalido() {
     return this.Editadmin.controls?.['nombre']?.errors && this.Editadmin.controls?.['nombre']?.touched
   }
 
-  apellidosvalido(){
+  apellidosvalido() {
     return this.Editadmin.controls?.['apellidos']?.errors && this.Editadmin.controls?.['apellidos']?.touched
   }
 
-  sexovalido(){
+  sexovalido() {
     return this.Editadmin.controls?.['sexo']?.touched && this.Editadmin.controls?.['sexo'].errors
   }
 
-  edadvalida(){
+  edadvalida() {
     return this.Editadmin.controls?.['edad']?.errors && this.Editadmin.controls?.['edad']?.touched
   }
 
-  telefonovalido(){
+  telefonovalido() {
     return this.Editadmin.controls?.['telefono']?.errors && this.Editadmin.controls?.['telefono']?.touched
   }
 
-  correovalido(){
+  correovalido() {
     return this.Editadmin.controls?.['email']?.errors && this.Editadmin.controls?.['email']?.touched
   }
 
 
   contrasenavalida() {
-    return this.Editadmin.controls?.['password']?.errors && this.Editadmin.controls?.['password']?.touched
+    return this.Editpassword.controls?.['password']?.errors && this.Editpassword.controls?.['password']?.touched
   }
 
   contrasena2valida() {
-    return this.Editadmin.controls?.['password2']?.errors && this.Editadmin.controls?.['password2']?.touched
+    return this.Editpassword.controls?.['password2']?.errors && this.Editpassword.controls?.['password2']?.touched
+  }
+
+  callevalida() {
+    return this.Editadmin.controls?.['calle']?.errors && this.Editadmin.controls?.['calle']?.touched
+  }
+
+  estadovalido() {
+    return this.Editadmin.controls?.['estado']?.errors && this.Editadmin.controls?.['estado']?.touched
+  }
+
+  numerovalido() {
+    return this.Editadmin.controls?.['numero']?.errors && this.Editadmin.controls?.['numero']?.touched
+  }
+
+  municipiovalido() {
+    return this.Editadmin.controls?.['municipio']?.errors && this.Editadmin.controls?.['municipio']?.touched
+  }
+
+  localidadvalida() {
+    return this.Editadmin.controls?.['localidad']?.errors && this.Editadmin.controls?.['localidad']?.touched
   }
 
   modificar() {
@@ -92,12 +122,17 @@ export class PerfilRolAdminComponent {
 
   }
 
-  get_datos(){
-    this.serviceAdmin.get_datos_perfil().subscribe((data:any)=>{
-      this.datos_perfil=data;
+  get_datos() {
+    this.serviceAdmin.get_datos_perfil().subscribe((data: any) => {
+      this.datos_perfil = data;
       this.Editadmin.patchValue(data);
       console.log(data);
-      
+
     })
+  }
+
+  cambiar_contrasena() {
+    console.log(this.Editpassword.value);
+    
   }
 }
