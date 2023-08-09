@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ServiceAdministradorService } from '../../../../services/administrador-service/service-administrador.service';
 
 @Component({
   selector: 'app-perfil-rol-admin',
@@ -8,7 +9,13 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 })
 export class PerfilRolAdminComponent {
 
-  constructor(private fb: FormBuilder) { }
+  datos_perfil:any=[];
+
+  constructor(private fb: FormBuilder, private serviceAdmin:ServiceAdministradorService) { }
+
+  ngOnInit(): void {
+    this.get_datos();
+  }
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -36,10 +43,10 @@ export class PerfilRolAdminComponent {
 
     nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
     apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
-    genero: ['', [Validators.required]],
+    sexo: ['', [Validators.required]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
-    correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
+    email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
     password: ['', [Validators.required,  Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]]
   }, {
@@ -56,7 +63,7 @@ export class PerfilRolAdminComponent {
   }
 
   sexovalido(){
-    return this.Editadmin.controls?.['genero']?.touched && this.Editadmin.controls?.['genero'].errors
+    return this.Editadmin.controls?.['sexo']?.touched && this.Editadmin.controls?.['sexo'].errors
   }
 
   edadvalida(){
@@ -68,7 +75,7 @@ export class PerfilRolAdminComponent {
   }
 
   correovalido(){
-    return this.Editadmin.controls?.['correo']?.errors && this.Editadmin.controls?.['correo']?.touched
+    return this.Editadmin.controls?.['email']?.errors && this.Editadmin.controls?.['email']?.touched
   }
 
 
@@ -83,5 +90,14 @@ export class PerfilRolAdminComponent {
   modificar() {
     console.log(this.Editadmin.value);
 
+  }
+
+  get_datos(){
+    this.serviceAdmin.get_datos_perfil().subscribe((data:any)=>{
+      this.datos_perfil=data;
+      this.Editadmin.patchValue(data);
+      console.log(data);
+      
+    })
   }
 }

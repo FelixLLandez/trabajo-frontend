@@ -100,5 +100,9 @@ export class ServiceAdministradorService {
   activar_administrador(data: any) {
     return this.http.patch(`http://localhost:3000/api/users/activar_user/${data}`, {});
   }
+
+  get_datos_perfil(){
+    return this.http.get(`http://localhost:3000/api/users/usuario/${this.id_rol}`);
+  }
   
 }
