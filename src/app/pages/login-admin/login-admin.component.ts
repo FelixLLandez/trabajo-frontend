@@ -36,7 +36,8 @@ export class LoginAdminComponent {
       } else {
         Swal.fire({
           icon: 'error',
-          title: 'Correo y/o contraseñas incorrectas',
+          title: 'Correo y/o contraseña incorrectos',
+          text: 'Por favor, verifica tus credenciales e intenta de nuevo.',
           showConfirmButton: true,
         });
         console.log('error');

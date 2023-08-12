@@ -12,6 +12,7 @@ export class ServiceAdministradorService {
   token_admin: any = "";
   user_admin: any = {};
   id_rol: any = {};
+  id_user:any=[];
 
   constructor(private http: HttpClient) { }
 
@@ -35,6 +36,7 @@ export class ServiceAdministradorService {
         Swal.fire({
           icon: 'error',
           title: 'Correo y/o contraseñas incorrectas',
+          text: 'Por favor, verifica tus credenciales e intenta de nuevo.',
           showConfirmButton: true,
         });
         return throwError('Ha ocurrido un error en la petición.');
@@ -55,6 +57,7 @@ export class ServiceAdministradorService {
     this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
     try {
       this.id_rol = this.user_admin.rol.id;
+      this.id_user=this.user_admin.id;
     } catch (error) {
       console.log('error');
 
@@ -102,7 +105,7 @@ export class ServiceAdministradorService {
   }
 
   get_datos_perfil(){
-    return this.http.get(`http://localhost:3000/api/users/usuario/${this.id_rol}`);
+    return this.http.get(`http://localhost:3000/api/users/usuario/${this.id_user}`);
   }
   
 }

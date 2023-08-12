@@ -84,7 +84,7 @@
                                 <div class="form-group">
                                     <label for="input1">Sexo</label>
                                     <select class="form-select" required aria-label="Default select example" id="sexo"
-                                        name="sexo" formControlName="sexo">
+                                        name="sexo" formControlName="sexo" value="{{datos_perfil.sexo}}">
                                         <option value="">Seleccionar...</option>
                                         <option value="Hombre">Hombre</option>
                                         <option value="Mujer">Mujer</option>
@@ -243,7 +243,7 @@
                             </div>
                         </div>
                         <div class="form-group d-flex justify-content-end">
-                            <button class="btn btn-guardar" [disabled]="Editadmin.invalid"
+                            <button class="btn btn-guardar" [disabled]="!cambiosRealizados() || Editadmin.invalid"
                                 title="Modifcar administrador">
                                 <i class="fa-regular fa-pen-to-square"></i> Modificar
                             </button>
@@ -251,8 +251,9 @@
                     </form>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
-                        Launch static backdrop modal
+                        Cambiar contraseña
                     </button>
+                    
                 </div>
 
             </div>
@@ -276,14 +277,14 @@
                                     <label for="input2">Contraseña anterior</label>
                                     <input type="password" class="form-control" id="password" name="password"
                                         formControlName="password_anterior">
-                                    <div *ngIf="contrasenavalida()"
+                                    <div *ngIf="contrasenaanteriorvalida()"
                                         class="alert alert-danger d-flex align-items-center alerta-boostrap"
                                         role="alert">
                                         <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
                                             <use xlink:href="#info-fill" />
                                         </svg>
                                         <div>
-                                            Constraseña inválida
+                                            Campo requerido
                                         </div>
                                     </div>
                                 </div>
@@ -321,13 +322,13 @@
                                             <use xlink:href="#info-fill" />
                                         </svg>
                                         <div>
-                                            Constraseña inválida
+                                            La contraseña no condice con la nueva contraseña 
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="button" [disabled]="Editpassword.invalid" class="btn btn-primary">Modificar</button>
+                        <button type="button" [disabled]="Editpassword.invalid" class="btn btn-primary">Cambiar</button>
                     </form>
                 </div>
             </div>

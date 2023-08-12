@@ -41,7 +41,7 @@ const routes: Routes = [
 
   //Ruta para el usuario con Rol de Administrador
   { path: 'login-administrador', component: LoginAdminComponent },
-  { path: 'ver-administradores', component: AdministradoresRolAdminComponent },
+  { path: 'ver-administradores', component: AdministradoresRolAdminComponent,canActivate: [AuthGuard_admin] },
   { path: 'add-administrador', component: AddAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-administrador/:id', component: EditAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'ver-solicitantes', component: SolicitantesRolAdminComponent, canActivate: [AuthGuard_admin] },
