@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ServiceAdministradorService } from '../../../../services/administrador-service/service-administrador.service';
+import { async } from '@angular/core/testing';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-perfil-rol-admin',
@@ -13,7 +15,7 @@ export class PerfilRolAdminComponent {
   Editadmin: FormGroup;
   Editpassword: FormGroup;
 
-  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService) {
+  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private sanitizer: DomSanitizer) {
     this.Editadmin = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
       apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
@@ -26,9 +28,10 @@ export class PerfilRolAdminComponent {
       numero: ['', [Validators.required, Validators.pattern(this.edadynumero)]],
       municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
       localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+      foto: ['']
     });
 
-    this.Editpassword= this.fb.group({
+    this.Editpassword = this.fb.group({
       password_anterior: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       password2: ['', [Validators.required,]]
@@ -127,6 +130,7 @@ export class PerfilRolAdminComponent {
 
   modificar() {
     if (this.Editadmin.valid && this.cambiosRealizados()) {
+      console.log(this.Editadmin.value);
       
     }
   }
@@ -142,6 +146,44 @@ export class PerfilRolAdminComponent {
 
   cambiar_contrasena() {
     console.log(this.Editpassword.value);
-    
+
   }
+
+  //Funciones para cargar imagenes
+  previsualizacion: string = '';
+  public archivos: any = []
+  capturarFile(event: any) {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+
+      this.previsualizacion = imagen.base;
+      this.Editadmin.patchValue({
+        foto: imagen.base // Asignar la imagen al campo en el FormGroup
+      });
+
+    })
+
+  }
+
+  extraerBase64 = async ($event: any) => {
+    return new Promise((resolve, reject) => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result
+          });
+        };
+        reader.onerror = error => {
+          reject(error); // Aquí manejamos el error rechazando la Promesa
+        };
+      } catch (e) {
+        reject(e); // Rechazamos la Promesa en caso de excepción
+      }
+    });
+  }
+
 }
