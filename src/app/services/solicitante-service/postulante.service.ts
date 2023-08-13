@@ -15,7 +15,8 @@ export class PostulanteService {
     return this.http.get<User[]>('http://localhost:3000/api/users/postulantesActivos');
   }  
 
-  getPostulanteByid(id: any) {
+  get_postulante(id: any) {
     return this.http.get(`http://localhost:3000/api/users/${id}`);
   }
+
 }

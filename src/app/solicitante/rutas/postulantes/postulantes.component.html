@@ -14,7 +14,6 @@
         <th scope="col">Correo</th>
         <th scope="col">Teléfono</th>
         <th scope="col">Trabajo de postulación</th>
-        <th scope="col">Acerca de</th>
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -25,13 +24,13 @@
         <td>{{ postulante.email }}</td>
         <td>{{ postulante.telefono }}</td>
         <td>Programador</td>
-        <td >
-          <button class="btn btn-info"><i class="fas fa-eye"></i>Ver CV</button>
-        </td>
-        <td class="options">
-          <button class="btn btn-info" (click)="openModal()" title="Ver información"><i class="fas fa-eye" ></i></button>
-          <button class="btn btn-success" (click)="aceptarPostulante()" title="Aceptar postulante"><i class="fas fa-check"></i></button>
-          <button class="btn btn-secondary" (click)="rechazarPostulante()" title="Rechazar postulante"><i class="fas fa-times"></i></button>
+        <td class="opciones-botones">
+          <button class="btn btn-info" (click)="verPostulante(postulante.id)" title="Ver información"><i
+              class="fas fa-eye"></i></button>
+          <button class="btn btn-success" (click)="aceptarPostulante()" title="Aceptar postulante"><i
+              class="fas fa-check"></i></button>
+          <button class="btn btn-secondary" (click)="rechazarPostulante()" title="Rechazar postulante"><i
+              class="fas fa-times"></i></button>
         </td>
       </tr>
     </tbody>

@@ -104,7 +104,7 @@ export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
   }
 
   getEstadoInfo(estado: boolean): string {
-    return estado ? "Ocupado" : "Disponible";
+    return estado ? "Disponible" : "Desactivado";
   }
 
   salir() {

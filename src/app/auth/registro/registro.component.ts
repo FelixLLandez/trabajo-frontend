@@ -30,7 +30,12 @@ export class RegistroComponent implements OnInit {
       edad: ['', [Validators.required, Validators.min(1), Validators.max(100), Validators.maxLength(100), Validators.minLength(1)]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      calle: ['', [Validators.required, Validators.minLength(5)]],
+      estado: ['', [Validators.required]],
+      municipio: ['', [Validators.required, Validators.minLength(5)]],
+      localidad: ['', [Validators.required, Validators.minLength(5)]],
+      numero: ['', [Validators.required,  Validators.min(0), Validators.minLength(1)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       rol: ['', Validators.required]
     });
   }
@@ -50,8 +55,8 @@ export class RegistroComponent implements OnInit {
       if (this.selectedRol === '1') {
         delete formData.rol;
       } else {
-        formData.rolId = this.selectedRol; 
-        delete formData.rol; 
+        formData.rolId = this.selectedRol;
+        delete formData.rol;
       }
 
       this.solicitanteS.registro(formData).subscribe(
@@ -121,6 +126,33 @@ export class RegistroComponent implements OnInit {
     return campoTelefono?.invalid && campoTelefono?.touched;
   }
 
+  isCalleInvalid() {
+    const campoCalle = this.registroForm.get('calle');
+    return campoCalle?.invalid && campoCalle?.touched;
+  }
+  //------
+
+  isEstadoInvalid() {
+    const campoEstado = this.registroForm.get('estado');
+    return campoEstado?.invalid && campoEstado?.touched;
+  }
+
+  isMunicipioInvalid() {
+    const campoMunicipio = this.registroForm.get('municipio');
+    return campoMunicipio?.invalid && campoMunicipio?.touched;
+  }
+
+  isLocalidadInvalid() {
+    const campoLocalidad = this.registroForm.get('localidad');
+    return campoLocalidad?.invalid && campoLocalidad?.touched;
+  }
+
+  isNumeroInvalid() {
+    const campoNumero = this.registroForm.get('numero');
+    return campoNumero?.invalid && campoNumero?.touched;
+  }
+
+  //---
   isEmailInvalid() {
     const campoEmail = this.registroForm.get('email');
     return campoEmail?.invalid && campoEmail?.touched;

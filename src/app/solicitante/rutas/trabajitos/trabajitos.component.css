@@ -13,25 +13,6 @@ header {
   text-align: left;
 }
 
-.add-button {
-  background-color: #2e943a;
-  border: none;
-  color: #FFF;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.add-button:hover {
-  margin-right: 5px;
-  background-color: #000;
-  opacity: 0.8;
-}
-
 .close-button {
   background-color: #F44336;
   border: none;
@@ -76,24 +57,18 @@ tr:nth-child(even) td {
   background-color: #FFF;
 }
 
-.options {
-  justify-content: space-around;
-}
-
-td.options {
+.opciones-botones {
+  position: relative;
+  text-align: center;
   display: flex;
   justify-content: space-around;
 }
 
-td.options button {
-  margin: 6px;
-}
-
 .btn {
-  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 8px 16px;
+  margin: 5%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -107,7 +82,7 @@ td.options button {
 }
 
 .btn-warning {
-  background-color: #FF9800;
+  background-color: #ffa333;
 }
 
 .btn-secondary {
@@ -115,8 +90,7 @@ td.options button {
 }
 
 .btn i {
-  display: inline-block;
-  vertical-align: middle;
+  margin-right: 5px;
 }
 
 .btn:hover {
@@ -124,23 +98,21 @@ td.options button {
   opacity: 0.8;
 }
 
-table {
-  width: 100%;
+.add-button {
+  background-color: #2e943a;
+  border: none;
+  color: #FFF;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-  th,
-  td {
-    width: auto;
-  }
-
-  td.options button {
-    margin: 2px; 
-    font-size: 12px; 
-    padding: 5px 10px; 
-  }
-
-  td.options button i {
-    font-size: 16px; 
-  }
+.add-button:hover {
+  margin-right: 5px;
+  background-color: #000;
+  opacity: 0.8;
 }

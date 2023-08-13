@@ -1,117 +1,99 @@
 body {
-    background-color: #E8F1F2;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .add-button {
-    background-color: #2e943a;
-    border: none;
-    color: #FFF;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .add-button:hover {
-    margin-right: 5px;
-    background-color: #000;
-    opacity: 0.8;
-  }
-  
-  .close-button {
-    background-color: #F44336;
-    border: none;
-    color: #FFF;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-  }
-  
-  .close-button:hover {
-    background-color: #000;
-    opacity: 0.8;
-  }
-  
-  table {
-    background-color: #fff;
-    border-collapse: collapse;
-    margin: 20px auto;
-    width: 100%;
-  }
-  
-  th,
-  td {
-    border: 1px solid #d5d5d5;
-    padding: 10px;
-    text-align: justify;
-  }
-  
-  th {
-    background-color: #7A9E7E;
-    color: #FFF;
-  }
-  
-  tr:nth-child(even) td {
-    background-color: #FFF;
-  }
-  
-  .options {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .btn {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .btn-info {
-    background-color: #2196F3;
-  }
-  
-  .btn-success {
-    background-color: #4CAF50;
-  }
-  
-  .btn-secondary {
-    background-color: #656566;
-  }
-  
-  .btn i {
-    margin-right: 5px;
-  }
-  
-  .btn:hover {
-    background-color: #000;
-    opacity: 0.8;
-  }
-  
+  background-color: #E8F1F2;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 20px;
+  text-align: left;
+}
+
+.close-button {
+  background-color: #F44336;
+  border: none;
+  color: #FFF;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.close-button:hover {
+  background-color: #000;
+  opacity: 0.8;
+}
+
+table {
+  background-color: #fff;
+  border-collapse: collapse;
+  margin: 20px auto;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #d5d5d5;
+  padding: 10px;
+  text-align: justify;
+}
+
+th {
+  background-color: #7A9E7E;
+  color: #FFF;
+}
+
+tr:nth-child(even) td {
+  background-color: #FFF;
+}
+
+.opciones-botones {
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  margin: 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-info {
+  background-color: #2196F3;
+}
+
+.btn-success {
+  background-color: #4CAF50;
+}
+
+.btn-secondary {
+  background-color: #656566;
+}
+
+.btn i {
+  margin-right: 5px;
+}
+
+.btn:hover {
+  background-color: #000;
+  opacity: 0.8;
+}

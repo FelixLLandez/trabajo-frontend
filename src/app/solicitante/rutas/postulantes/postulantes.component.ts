@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { VerPostulanteComponent } from '../../acciones/ver-postulante/ver-postulante.component';
 import Swal from 'sweetalert2';
 import { PostulanteService } from 'src/app/services/solicitante-service/postulante.service';
 import { Router } from '@angular/router';
@@ -53,9 +52,8 @@ export class PostulantesComponent implements OnInit, OnDestroy {
               private router: Router) {
   }
 
-  openModal() {
-    const initialState = {};
-    this.modalRef = this.modalService.show(VerPostulanteComponent, { initialState });
+  verPostulante(id:number){
+    this.router.navigateByUrl(`/informacion-postulante/${id}`);
   }
 
   aceptarPostulante() {
@@ -104,9 +102,9 @@ export class PostulantesComponent implements OnInit, OnDestroy {
       (data: any) => {
         console.log(data);
         this.postulantes = data;
-        $('#datatabletrabajitos').DataTable().destroy();
+        $('#datatablepostulantes').DataTable().destroy();
         setTimeout(() => {
-          $('#datatabletrabajitos').DataTable(this.dtOptions);
+          $('#datatablepostulantes').DataTable(this.dtOptions);
         }, 0);
       },
       (error: any) => {

@@ -66,6 +66,7 @@ export class PerfilComponent implements OnInit {
         password: this.usuario.password
       });
     }
+    console.log(this.usuario.password);
   }
 
    editarPerfil() {

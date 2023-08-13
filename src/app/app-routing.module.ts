@@ -25,6 +25,7 @@ import { AuthGuard_admin } from './guards/auth-admin.guard';
 import { AuthGuard_solicitante } from './guards/auth-solicitante.guard';
 import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
 import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archivados/trabajos-archivados.component';
+import { InfoPostulantesRolSolicitanteComponent } from './solicitante/rutas/info-postulantes/info-postulantes-rol-solicitante.component';
 
 const routes: Routes = [
   //Rutas para el usuario con Rol de Solicitante
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'trabajitos', component: TrabajitosComponent, canActivate: [AuthGuard_solicitante] },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard_solicitante] },
   { path: 'postulantes', component: PostulantesComponent, canActivate: [AuthGuard_solicitante] },
+  {path: 'informacion-postulante/:id', component:InfoPostulantesRolSolicitanteComponent,canActivate:[AuthGuard_solicitante]},
   { path: 'add-trabajo', component: AddTrabajoComponent, canActivate: [AuthGuard_solicitante] },
   { path: 'editar-trabajo/:id', component: EditarTrabajoComponent, canActivate: [AuthGuard_solicitante] },
   { path: 'trabajos-archivados', component: TrabajosArchivadosComponent, canActivate: [AuthGuard_solicitante] },
