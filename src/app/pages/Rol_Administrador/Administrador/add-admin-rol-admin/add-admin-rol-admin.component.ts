@@ -92,13 +92,21 @@ export class AddAdminRolAdminComponent {
         Swal.fire({
           title: 'Administrador agregado correctamente',
           icon: 'success',
-          showCancelButton: false,
-          showConfirmButton: true
+          showConfirmButton: true,
+          confirmButtonText:'Aceptar'
         })
         this.Addadmin.reset();
         this.router.navigateByUrl('/ver-administradores');
 
       }
+    }, (error) => {
+      Swal.fire({
+        title: 'Ocurrio un problema al registrar al usuario',
+        text: 'Por favor, verifica su información e intenta de nuevo.',
+        icon: 'error',
+        showConfirmButton: true,
+        confirmButtonText:'Aceptar'
+      })
     })
 
   }
