@@ -19,9 +19,7 @@ export class AuthGuard_solicitante  {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.serviceSolicitante.isAuth_solicitante()) {
-      console.log('estamos dentro');
     } else {
-      console.log('Estamos fuera');
       this.route.navigateByUrl('/login');
     }
     return true;

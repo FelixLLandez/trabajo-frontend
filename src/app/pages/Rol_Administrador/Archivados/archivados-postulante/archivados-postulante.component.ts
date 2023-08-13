@@ -23,7 +23,6 @@ export class ArchivadosPostulanteComponent {
   get_admin_archivados() {
     this.servicePostulante.get_postulantes_archivados().subscribe((data: any) => {
       this.postulantes_archivados = data;
-      console.log(this.postulantes_archivados);
       $('#table-data-postulantes').DataTable().destroy();
       setTimeout(() => {
         $('#table-data-postulantes').DataTable({

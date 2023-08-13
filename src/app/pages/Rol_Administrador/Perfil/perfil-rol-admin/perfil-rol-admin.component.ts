@@ -31,7 +31,7 @@ export class PerfilRolAdminComponent {
       numero: ['', [Validators.required, Validators.pattern(this.edadynumero)]],
       municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
       localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-      foto: ['',[Validators.required]]
+      foto: ['', [Validators.required]]
     });
 
     this.Editpassword = this.fb.group({
@@ -143,15 +143,24 @@ export class PerfilRolAdminComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(this.Editadmin.value);
-        
-        this.serviceAdmin.modificar_admin(this.Editadmin.value).subscribe((data: any) => {
-          if(data){
-            this.get_datos();
-            Swal.fire({
-              icon: 'success',
-              title: 'Información modificada correctamente',
-            })
-          }
+
+        this.serviceAdmin.modificar_admin(this.Editadmin.value).subscribe((response) => {
+          this.get_datos();
+          Swal.fire({
+            icon: 'success',
+            title: 'Información modificada correctamente',
+            confirmButtonText: 'Aceptar',
+            showConfirmButton: true,
+          })
+        }, (error) => {
+          this.get_datos();
+          Swal.fire({
+            icon: 'error',
+            title: 'Hubo un problema al actualizar la información',
+            text: 'Por favor, verifica su información e intenta de nuevo.',
+            confirmButtonText: 'Aceptar',
+            showConfirmButton: true,
+          })
         })
       }
     })
@@ -160,7 +169,7 @@ export class PerfilRolAdminComponent {
   get_datos() {
     this.serviceAdmin.get_datos_perfil().subscribe((data: any) => {
       this.datos_perfil = data;
-      this.imagePreview=data.foto
+      this.imagePreview = data.foto
       this.Editadmin.patchValue(data);
     })
   }
@@ -176,11 +185,11 @@ export class PerfilRolAdminComponent {
     reader.onload = () => {
       this.imagePreview = reader.result;
       console.log(this.imagePreview);
-      
+
       this.Editadmin.patchValue({ foto: reader.result });
     };
     reader.readAsDataURL(file);
   }
 
-  
+
 }
