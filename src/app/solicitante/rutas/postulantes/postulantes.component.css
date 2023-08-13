@@ -60,8 +60,7 @@ tr:nth-child(even) td {
 .opciones-botones {
   position: relative;
   text-align: center;
-  display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .btn {
@@ -96,4 +95,21 @@ tr:nth-child(even) td {
 .btn:hover {
   background-color: #000;
   opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  th,
+  td {
+    width: auto;
+  }
+
+  td.options button {
+    margin: 2px; 
+    font-size: 12px; 
+    padding: 5px 10px; 
+  }
+
+  td.options button i {
+    font-size: 16px; 
+  }
 }
