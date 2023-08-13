@@ -107,5 +107,19 @@ export class ServiceAdministradorService {
   get_datos_perfil(){
     return this.http.get(`http://localhost:3000/api/users/usuario/${this.id_user}`);
   }
+
+  modificar_admin(data:any){
+    return this.http.patch(`http://localhost:3000/api/users/modificar/${this.id_user}`, data).pipe(
+      catchError(error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Sucedio un error al modifcar la información',
+          text: 'Por favor, verifica su información e intenta de nuevo.',
+          showConfirmButton: true,
+        });
+        return throwError('Ha ocurrido un error en la petición.');
+      })
+    );
+  }
   
 }

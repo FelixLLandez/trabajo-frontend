@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { ServiceAdministradorService } from '../../../../services/administrador-service/service-administrador.service';
 import { async } from '@angular/core/testing';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-rol-admin',
@@ -14,6 +15,8 @@ export class PerfilRolAdminComponent {
   datos_perfil: any = [];
   Editadmin: FormGroup;
   Editpassword: FormGroup;
+
+  imagePreview: string | ArrayBuffer | null = null;
 
   constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private sanitizer: DomSanitizer) {
     this.Editadmin = this.fb.group({
@@ -28,7 +31,7 @@ export class PerfilRolAdminComponent {
       numero: ['', [Validators.required, Validators.pattern(this.edadynumero)]],
       municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
       localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-      foto: ['']
+      foto: ['',[Validators.required]]
     });
 
     this.Editpassword = this.fb.group({
@@ -129,61 +132,55 @@ export class PerfilRolAdminComponent {
   }
 
   modificar() {
-    if (this.Editadmin.valid && this.cambiosRealizados()) {
-      console.log(this.Editadmin.value);
-      
-    }
+    Swal.fire({
+      title: 'Estás seguro de modificar tu perfil?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(this.Editadmin.value);
+        
+        this.serviceAdmin.modificar_admin(this.Editadmin.value).subscribe((data: any) => {
+          if(data){
+            this.get_datos();
+            Swal.fire({
+              icon: 'success',
+              title: 'Información modificada correctamente',
+            })
+          }
+        })
+      }
+    })
   }
 
   get_datos() {
     this.serviceAdmin.get_datos_perfil().subscribe((data: any) => {
       this.datos_perfil = data;
+      this.imagePreview=data.foto
       this.Editadmin.patchValue(data);
-      console.log(data);
-
     })
   }
 
   cambiar_contrasena() {
     console.log(this.Editpassword.value);
-
   }
 
-  //Funciones para cargar imagenes
-  previsualizacion: string = '';
-  public archivos: any = []
-  capturarFile(event: any) {
-    const archivoCapturado = event.target.files[0];
-    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
-      this.previsualizacion = imagen.base;
-      this.Editadmin.patchValue({
-        foto: imagen.base // Asignar la imagen al campo en el FormGroup
-      });
-
-    })
-
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+      console.log(this.imagePreview);
+      
+      this.Editadmin.patchValue({ foto: reader.result });
+    };
+    reader.readAsDataURL(file);
   }
 
-  extraerBase64 = async ($event: any) => {
-    return new Promise((resolve, reject) => {
-      try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result
-          });
-        };
-        reader.onerror = error => {
-          reject(error); // Aquí manejamos el error rechazando la Promesa
-        };
-      } catch (e) {
-        reject(e); // Rechazamos la Promesa en caso de excepción
-      }
-    });
-  }
-
+  
 }
