@@ -17,31 +17,11 @@ export class ServiceAdministradorService {
   constructor(private http: HttpClient) { }
 
   agregar_administrador(data: any): Observable<Request> {
-    return this.http.post<Request>('http://localhost:3000/api/users/register', data).pipe(
-      catchError(error=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Error al registrar al usuario',
-          showConfirmButton:true  
-        });
-        return throwError('');
-      })
-    )
+    return this.http.post<Request>('http://localhost:3000/api/users/register', data);
   }
 
   login_administrador(data: any) {
-    return this.http.post('http://localhost:3000/api/users/login', data).pipe(
-      catchError(error => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Correo y/o contraseñas incorrectas',
-          text: 'Por favor, verifica tus credenciales e intenta de nuevo.',
-          showConfirmButton: true,
-        });
-        return throwError('Ha ocurrido un error en la petición.');
-      })
-    );
+    return this.http.post('http://localhost:3000/api/users/login', data);
   }
 
   guardarToken_admistrador(token: string) {

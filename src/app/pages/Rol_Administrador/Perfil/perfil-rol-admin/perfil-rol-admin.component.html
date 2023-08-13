@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <div class="d-flex align-items-center justify-content-between">
                 <h4 class="titulo-principal">Mi Perfil</h4>
-                <button title="Salir" class="btn boton-salir"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <button (click)="salir()" title="Salir" class="btn boton-salir"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Salir</button>
             </div>
         </div>
@@ -30,7 +30,7 @@
 
 <body>
     <form [formGroup]="Editadmin" (ngSubmit)="modificar()">
-        <div class="row row-cols-1 row-cols-md-2 g-4" style="display: flex; justify-content: center; margin-top: 1%; ">
+        <div class="row row-cols-1 row-cols-md-2 g-4" style="display: flex; justify-content: center; ">
             <div class="col-sm-12 col-md-12">
                 <div class="card">
                     <div class="card-body">

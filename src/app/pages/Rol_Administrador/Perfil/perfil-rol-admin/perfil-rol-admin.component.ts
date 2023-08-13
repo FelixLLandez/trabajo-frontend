@@ -4,6 +4,7 @@ import { ServiceAdministradorService } from '../../../../services/administrador-
 import { async } from '@angular/core/testing';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-rol-admin',
@@ -18,7 +19,7 @@ export class PerfilRolAdminComponent {
 
   imagePreview: string | ArrayBuffer | null = null;
 
-  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private sanitizer: DomSanitizer) {
+  constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private sanitizer: DomSanitizer, private router:Router) {
     this.Editadmin = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
       apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido)]],
@@ -189,6 +190,32 @@ export class PerfilRolAdminComponent {
       this.Editadmin.patchValue({ foto: reader.result });
     };
     reader.readAsDataURL(file);
+  }
+
+  salir() {
+    Swal.fire({
+      title: '¿Estás seguro de cerrar sesón?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        Swal.fire({
+          icon: 'success',
+          title: 'Cerrando sesión...',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl(`/login-administrador`);
+        }, 1500);
+      }
+    })
   }
 
 
