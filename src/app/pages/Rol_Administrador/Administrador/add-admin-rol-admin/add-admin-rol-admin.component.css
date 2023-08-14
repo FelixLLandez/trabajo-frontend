@@ -35,6 +35,8 @@ body{
       align-items: end;
       background-color: #484f57;
       color: #fff;
+      width: 300px;
+      border-radius: 10px;
   }
 
   .alerta-boostrap{

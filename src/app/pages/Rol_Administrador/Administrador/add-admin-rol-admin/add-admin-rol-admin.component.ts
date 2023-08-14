@@ -47,9 +47,7 @@ export class AddAdminRolAdminComponent {
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
     calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
     estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
-    numero: ['', [Validators.required, Validators.pattern(this.edadynumero)]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-    localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     foto: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]],
@@ -91,18 +89,9 @@ export class AddAdminRolAdminComponent {
     return this.Addadmin.controls?.['estado']?.errors && this.Addadmin.controls?.['estado']?.touched
   }
 
-  numerovalido() {
-    return this.Addadmin.controls?.['numero']?.errors && this.Addadmin.controls?.['numero']?.touched
-  }
-
   municipiovalido() {
     return this.Addadmin.controls?.['municipio']?.errors && this.Addadmin.controls?.['municipio']?.touched
   }
-
-  localidadvalida() {
-    return this.Addadmin.controls?.['localidad']?.errors && this.Addadmin.controls?.['localidad']?.touched
-  }
-
 
   contrasenavalida() {
     return this.Addadmin.controls?.['password']?.errors && this.Addadmin.controls?.['password']?.touched
