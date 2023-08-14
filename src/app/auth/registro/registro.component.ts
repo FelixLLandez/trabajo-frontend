@@ -33,8 +33,6 @@ export class RegistroComponent implements OnInit {
       calle: ['', [Validators.required, Validators.minLength(5)]],
       estado: ['', [Validators.required]],
       municipio: ['', [Validators.required, Validators.minLength(5)]],
-      localidad: ['', [Validators.required, Validators.minLength(5)]],
-      numero: ['', [Validators.required, Validators.min(0), Validators.minLength(1)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       rol: ['', Validators.required]
     });
@@ -140,16 +138,6 @@ export class RegistroComponent implements OnInit {
   isMunicipioInvalid() {
     const campoMunicipio = this.registroForm.get('municipio');
     return campoMunicipio?.invalid && campoMunicipio?.touched;
-  }
-
-  isLocalidadInvalid() {
-    const campoLocalidad = this.registroForm.get('localidad');
-    return campoLocalidad?.invalid && campoLocalidad?.touched;
-  }
-
-  isNumeroInvalid() {
-    const campoNumero = this.registroForm.get('numero');
-    return campoNumero?.invalid && campoNumero?.touched;
   }
 
   isEmailInvalid() {

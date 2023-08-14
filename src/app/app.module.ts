@@ -39,6 +39,7 @@ import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ve
 import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
 import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archivados/trabajos-archivados.component';
 import { InfoPostulantesRolSolicitanteComponent } from './solicitante/rutas/info-postulantes/info-postulantes-rol-solicitante.component';
+import { HomeComponent } from './solicitante/rutas/home/home.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { InfoPostulantesRolSolicitanteComponent } from './solicitante/rutas/info
     LoginAdminComponent,
     PaginaErrorComponent,
     TrabajosArchivadosComponent,
-    InfoPostulantesRolSolicitanteComponent
+    InfoPostulantesRolSolicitanteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

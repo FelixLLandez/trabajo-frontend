@@ -78,22 +78,6 @@
                 </div>
 
                 <div class="registro-form-column">
-                    <label for="localidad">Localidad:</label>
-                    <input type="text" id="localidad" name="localidad" placeholder="Ingrese su localidad"
-                        formControlName="localidad" class="form-control">
-                    <div *ngIf="isLocalidadInvalid()" class="error-message">El nombre de la localidad es obligatorio.
-                    </div>
-                </div>
-
-                <div class="registro-form-column">
-                    <label for="numero">Numero de casa:</label>
-                    <input type="number" id="numero" name="numero" placeholder="Ingrese su # de casa"
-                        formControlName="numero" class="form-control">
-                    <div *ngIf="isNumeroInvalid()" class="error-message">El número de casa es obligatorio, en caso de no
-                        aplicar ingrese 0.</div>
-                </div>
-
-                <div class="registro-form-column">
                     <label for="estado">Estado:</label>
                     <select class="form-select" formControlName="estado">
                         <option value="" disabled selected>Seleccione una opción...</option>
