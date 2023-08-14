@@ -68,8 +68,6 @@ export class PostulantesRolAdminComponent implements OnInit {
   get_postulantes() {
     this.servicePostulante.get_postulantes().subscribe((data: any) => {
       this.all_postulantes = data;
-      console.log(this.all_postulantes);
-
       $('#tabla-postulantes').DataTable().destroy();
       setTimeout(() => {
         $('#tabla-postulantes').DataTable({
