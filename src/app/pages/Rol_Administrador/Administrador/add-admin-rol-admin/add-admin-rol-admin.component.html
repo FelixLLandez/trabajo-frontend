@@ -31,152 +31,266 @@
 </header>
 
 <body>
-    <div class="card">
-        <div class="card-body">
-            <form [formGroup]="Addadmin" (ngSubmit)="guardar()">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="form-group">
-                            <label for="input1">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre">
-                            <div *ngIf="nombrevalido()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Nombre inválido
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <div class="form-group">
-                            <label for="input2">Apellidos</label>
-                            <input type="text" class="form-control" id="apellidos" name="apellidos"
-                                formControlName="apellidos">
-                            <div *ngIf="apellidosvalido()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Apellidos inválidos
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="input1">Sexo</label>
-                            <select class="form-select" required aria-label="Default select example"  id="sexo" name="sexo"
-                                formControlName="sexo">
-                                <option value="">Seleccionar...</option>
-                                <option value="Hombre">Hombre</option>
-                                <option value="Mujer">Mujer</option>
-                            </select>
-                            <div *ngIf="sexovalido()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Campo requerido
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="input2">Edad</label>
-                            <input type="number" class="form-control" id="edad" name="edad" formControlName="edad">
-                            <div *ngIf="edadvalida()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Edad inválida
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="input3">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono"
-                                formControlName="telefono">
-                            <div *ngIf="telefonovalido()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Teléfono inválido
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="input1">Correo</label>
-                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
-                            <div *ngIf="correovalido()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Correo inválido
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="input2">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                formControlName="password">
-                            <div *ngIf="contrasenavalida()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Constraseña inválida
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="input3">Confirmar constraseña</label>
-                            <input type="password" class="form-control" id="password2" name="password2"
-                                formControlName="password2">
-                            <div *ngIf="contrasena2valida()"
-                                class="alert alert-danger d-flex align-items-center alerta-boostrap" role="alert">
-                                <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
-                                    <use xlink:href="#info-fill" />
-                                </svg>
-                                <div>
-                                    Su contraseña no coincide con la anterior
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group d-flex justify-content-end">
-                    <button class="btn btn-guardar" [disabled]="Addadmin.invalid" title="Agregar administrador">
-                        <i class="fa-regular fa-floppy-disk"></i> Guardar
-                    </button>
-                </div>
-            </form>
-        </div>
+    <div class="container">
+
     </div>
+    <form [formGroup]="Addadmin" (ngSubmit)="guardar()">
+        <div class="row row-cols-1 row-cols-md-2 g-4" style="display: flex; justify-content: center; ">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 column">
+                                <div class="form-group">
+                                    <label for="input1">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        formControlName="nombre">
+                                    <div *ngIf="nombrevalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Nombre inválido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input1">Sexo</label>
+                                    <select class="form-select" required aria-label="Default select example" id="sexo"
+                                        name="sexo" formControlName="sexo">
+                                        <option value="">Seleccionar...</option>
+                                        <option value="Hombre">Hombre</option>
+                                        <option value="Mujer">Mujer</option>
+                                    </select>
+                                    <div *ngIf="sexovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Campo requerido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="input2">Edad</label>
+                                        <input type="number" min="18" max="90" class="form-control" id="edad" name="edad"
+                                            formControlName="edad">
+                                        <div *ngIf="edadvalida()"
+                                            class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                            role="alert">
+                                            <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img"
+                                                aria-label="Info:">
+                                                <use xlink:href="#info-fill" />
+                                            </svg>
+                                            <div>
+                                                Edad inválida
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input1">Número</label>
+                                    <input type="number" class="form-control" id="numero" name="numero"
+                                        formControlName="numero" min="1">
+                                    <div *ngIf="numerovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Número inválido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input3">Municipio</label>
+                                    <input type="text" class="form-control" id="municipio" name="municipio"
+                                        formControlName="municipio">
+                                    <div *ngIf="municipiovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Municipio inválido
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 column">
+                                <div class="form-group">
+                                    <label for="input2">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                        formControlName="apellidos">
+                                    <div *ngIf="apellidosvalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Apellidos inválidos
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="input3">Teléfono</label>
+                                        <input type="text" class="form-control" id="telefono" name="telefono"
+                                            formControlName="telefono">
+                                        <div *ngIf="telefonovalido()"
+                                            class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                            role="alert">
+                                            <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img"
+                                                aria-label="Info:">
+                                                <use xlink:href="#info-fill" />
+                                            </svg>
+                                            <div>
+                                                Teléfono inválido
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input1">Dirección</label>
+                                    <input type="text" class="form-control" id="calle" name="calle"
+                                        formControlName="calle">
+                                    <div *ngIf="callevalida()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Calle inválida
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input2">Estado</label>
+                                    <input type="text" class="form-control" id="estado" name="estado"
+                                        formControlName="estado">
+                                    <div *ngIf="estadovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Estado inválido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input3">Localidad</label>
+                                    <input type="text" class="form-control" id="localidad" name="localidad"
+                                        formControlName="localidad">
+                                    <div *ngIf="localidadvalida()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Localidad inválida
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 column "
+                                style="display: flex; flex-direction: column; align-items: center;">
+                                <div
+                                    style="box-shadow: 0 0  20px rgba(0, 0, 0, 0.505); width: 200px; height: 200px; border-radius: 50%; overflow: hidden;">
+                                    <img [src]="imagePreview || '/assets/avatar.png'" class="card-img-top" alt="..."
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <input type="file" accept="image/*" style="margin-top: 5%; display: none;" #fileInput
+                                    (change)="onFileSelected($event)">
+                                <button type="button" class="btn btn-warning" style="margin-top: 5%;"
+                                    (click)="fileInput.click()">
+                                    Foto de perfil
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 column">
+                                <div class="form-group">
+                                    <label for="input1">Correo</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        formControlName="email">
+                                    <div *ngIf="correovalido()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Correo inválido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="input2">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        formControlName="password">
+                                    <div *ngIf="contrasenavalida()"
+                                        class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                        role="alert">
+                                        <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img" aria-label="Info:">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>
+                                            Constraseña inválida
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="input3">Confirmar constraseña</label>
+                                        <input type="password" class="form-control" id="password2" name="password2"
+                                            formControlName="password2">
+                                        <div *ngIf="contrasena2valida()"
+                                            class="alert alert-danger d-flex align-items-center alerta-boostrap"
+                                            role="alert">
+                                            <svg class="bi flex-shrink-0 me-2 icono-alerta" role="img"
+                                                aria-label="Info:">
+                                                <use xlink:href="#info-fill" />
+                                            </svg>
+                                            <div>
+                                                Su contraseña no coincide con la anterior
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group d-flex justify-content-end">
+                                    <button class="btn btn-guardar" [disabled]="Addadmin.invalid"
+                                        title="Agregar administrador">
+                                        <i class="fa-regular fa-floppy-disk"></i> Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
 
 </html>
