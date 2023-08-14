@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ServiceSolicitanteService } from 'src/app/services/administrador-service/service-solicitante.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
@@ -38,13 +37,18 @@ export class PerfilComponent implements OnInit {
     }
   };
 
-  Edit_Mi_Info_Postulante: FormGroup = this.fb.group({
+  Edit_Mi_Info: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     sexo: ['', [Validators.required]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
-    correo: ['', [Validators.required, Validators.pattern(this.correo_v)]],
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+    estado: ['', [Validators.required]],
+    municipio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+    localidad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+    numero: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
+    email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required]],
   }, {
@@ -55,31 +59,29 @@ export class PerfilComponent implements OnInit {
     const userString = localStorage.getItem('user');
     if (userString) {
       this.usuario = JSON.parse(userString);
-
-      this.Edit_Mi_Info_Postulante.patchValue({
+      this.Edit_Mi_Info.patchValue({
         nombre: this.usuario.nombre,
         apellidos: this.usuario.apellidos,
         sexo: this.usuario.sexo,
         edad: this.usuario.edad,
         telefono: this.usuario.telefono,
-        correo: this.usuario.email,
-        password: this.usuario.password
+        email: this.usuario.email,
+        password: this.usuario.password,
+        estado: this.usuario.estado,
+        calle: this.usuario.calle,
+        municipio: this.usuario.municipio,
+        localidad: this.usuario.localidad,
+        numero: this.usuario.numero
       });
     }
-    console.log(this.usuario.password);
   }
 
-   editarPerfil() {
-    const formData = this.Edit_Mi_Info_Postulante.value;
+  editarPerfil() {
+    const formData = this.Edit_Mi_Info.value;
+
+    formData.password = null;
     const dataToUpdate = {
-      nombre: formData.nombre,
-      apellidos: formData.apellidos,
-      sexo: formData.sexo,
-      edad: formData.edad,
-      telefono: formData.telefono,
-      correo: formData.correo,
-      password: formData.password
-      // No se incluye la contra por fallas en el back la contraseña en este objeto
+      ...formData
     };
     this.soliSer.updatePerfil(this.usuario.id, dataToUpdate).subscribe(
       () => {
@@ -88,7 +90,12 @@ export class PerfilComponent implements OnInit {
         this.usuario.sexo = formData.sexo;
         this.usuario.edad = formData.edad;
         this.usuario.telefono = formData.telefono;
-        this.usuario.email = formData.correo;
+        this.usuario.email = formData.email;
+        this.usuario.calle = formData.calle;
+        this.usuario.estado = formData.estado;
+        this.usuario.municipio = formData.municipio;
+        this.usuario.localidad = formData.localidad;
+        this.usuario.numero = formData.numero;
         localStorage.setItem('user', JSON.stringify(this.usuario));// Actualizamos los datos del usuario en el almacenamiento local
         Swal.fire(
           'Perfil actualizado',
@@ -99,6 +106,7 @@ export class PerfilComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error al actualizar el perfil:', error);
+        console.log('Detalles del error:', error.error);
         Swal.fire(
           'Error',
           'Ha ocurrido un error al actualizar el perfil.',
@@ -106,12 +114,17 @@ export class PerfilComponent implements OnInit {
         );
       }
     );
-  } 
+  }
 
-  /* editarPerfil() {
+  visibilidadContrasennia(inputId: string) {
+    const inputElement: HTMLInputElement = document.getElementById(inputId) as HTMLInputElement;
+    inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
+  }
+
+  salir() {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "Se actualizará la información de este trabajo!",
+      text: 'Con esta acción saldrás del sistema!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -119,76 +132,77 @@ export class PerfilComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.soliSer.updatePerfil(this.usuario.id, this.usuario).subscribe(
-          () => {
-            Swal.fire(
-              'Actualizado!',
-              'El trabajo ha sido actualizado correctamente.',
-              'success'
-            );
-            this.router.navigateByUrl('/trabajitos');
-          },
-          (error: any) => {
-            console.error('Error al actualizar el perfil:', error);
-            Swal.fire(
-              'Error!',
-              'Ha ocurrido un error al actualizar el perfil.',
-              'error'
-            );
-          }
+        localStorage.clear();
+        Swal.fire(
+          'Hasta luego!',
+          'Regresa pronto :).',
+          'success'
         );
+        this.router.navigateByUrl('/login');
+        console.log('Saliendo...');
+      } else {
+        console.log('No hemos salido.');
       }
     });
   }
- */
-  campoValido(field: string) {
-    const control = this.Edit_Mi_Info_Postulante.get(field);
-    return control?.touched && control.invalid;
+
+
+  estados = [
+    'Aguascalientes',
+    'Baja California',
+    'Baja California Sur',
+    'Campeche',
+    'Chiapas',
+    'Chihuahua',
+    'Coahuila de Zaragoza',
+    'Colima',
+    'Ciudad de México',
+    'Durango',
+    'Guanajuato',
+    'Guerrero',
+    'Hidalgo',
+    'Jalisco',
+    'Estado de Mexico',
+    'Michoacan de Ocampo',
+    'Morelos',
+    'Nayarit',
+    'Nuevo Leon',
+    'Oaxaca',
+    'Puebla',
+    'Queretaro de Arteaga',
+    'Quintana Roo',
+    'San Luis Potosi',
+    'Sinaloa',
+    'Sonora',
+    'Tabasco',
+    'Tamaulipas',
+    'Tlaxcala',
+    'Veracruz de Ignacio de la Llave',
+    'Yucatan',
+    'Zacatecas',
+  ];
+
+  imagenSeleccionada: File | null = null;
+  vistaPreviaURL: string | null = null; // URL de la vista previa
+
+  abrirSelectorDeImagen() {
+    const inputElement: HTMLInputElement | null = document.querySelector('input[type="file"]');
+    if (inputElement) {
+      inputElement.click();
+    }
   }
 
-  getErrorMessage(field: string) {
-    const control = this.Edit_Mi_Info_Postulante.get(field);
-    if (control?.hasError('required')) {
-      return 'Este campo es requerido';
-    }
-    if (control?.hasError('pattern')) {
-      return 'Formato inválido';
-    }
-    if (control?.hasError('minlength')) {
-      return 'Longitud mínima no cumplida';
-    }
-    if (control?.hasError('maxlength')) {
-      return 'Longitud máxima excedida';
-    }
-    if (control?.hasError('noIguales')) {
-      return 'Las contraseñas no coinciden';
-    }
-    if (control?.hasError('min') || control?.hasError('max')) {
-      return 'Valor fuera de rango';
-    }
-    return '';
-  }
+  cambiarImagen(event: any) {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      this.imagenSeleccionada = files[0];
 
-  showEditMessage = false;
-
-  openFileInput() {
-    const fileInput = document.getElementById('fileInput');
-    if (fileInput) {
-      fileInput.click();
+      // aqui se verifics si imagenSeleccionada no es nula antes de crear la URL
+      if (this.imagenSeleccionada) {
+        this.vistaPreviaURL = URL.createObjectURL(this.imagenSeleccionada);
+      }
     }
   }
 
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      // Aquí puedes implementar la lógica para cargar y mostrar la nueva imagen
-      // usando la File API y posiblemente una Vista Previa antes de subirla al servidor.
-    }
-  }
-
-  visibilidadContrasennia(inputId: string) {
-    const inputElement: HTMLInputElement = document.getElementById(inputId) as HTMLInputElement;
-    inputElement.type = inputElement.type === 'password' ? 'text' : 'password';
-  }
 
 }

@@ -97,8 +97,7 @@
                     <label for="estado">Estado:</label>
                     <select class="form-select" formControlName="estado">
                         <option value="" disabled selected>Seleccione una opción...</option>
-                        <option value="Oaxaca">Oaxaca</option>
-                        <option value="Jalisco">Jalisco</option>
+                        <option *ngFor="let estado of estados">{{estado}}</option>
                     </select>
                     <div *ngIf="isEstadoInvalid()" class="error-message">El estado es obligatorio.</div>
                 </div>

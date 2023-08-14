@@ -35,6 +35,6 @@ export class VerTrabajoComponent implements OnInit {
   }
 
   getEstadoInfo(estado: boolean): string {
-    return estado ? "Ocupado" : "Disponible";
+    return estado ? "Disponible" : "Desactivado";
   }
 }

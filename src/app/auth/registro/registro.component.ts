@@ -34,7 +34,7 @@ export class RegistroComponent implements OnInit {
       estado: ['', [Validators.required]],
       municipio: ['', [Validators.required, Validators.minLength(5)]],
       localidad: ['', [Validators.required, Validators.minLength(5)]],
-      numero: ['', [Validators.required,  Validators.min(0), Validators.minLength(1)]],
+      numero: ['', [Validators.required, Validators.min(0), Validators.minLength(1)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       rol: ['', Validators.required]
     });
@@ -152,7 +152,6 @@ export class RegistroComponent implements OnInit {
     return campoNumero?.invalid && campoNumero?.touched;
   }
 
-  //---
   isEmailInvalid() {
     const campoEmail = this.registroForm.get('email');
     return campoEmail?.invalid && campoEmail?.touched;
@@ -167,4 +166,39 @@ export class RegistroComponent implements OnInit {
     const campoRol = this.registroForm.get('rol');
     return campoRol?.invalid && campoRol?.touched;
   }
+
+  estados = [
+    'Aguascalientes',
+    'Baja California',
+    'Baja California Sur',
+    'Campeche',
+    'Chiapas',
+    'Chihuahua',
+    'Coahuila de Zaragoza',
+    'Colima',
+    'Ciudad de México',
+    'Durango',
+    'Guanajuato',
+    'Guerrero',
+    'Hidalgo',
+    'Jalisco',
+    'Estado de Mexico',
+    'Michoacan de Ocampo',
+    'Morelos',
+    'Nayarit',
+    'Nuevo Leon',
+    'Oaxaca',
+    'Puebla',
+    'Queretaro de Arteaga',
+    'Quintana Roo',
+    'San Luis Potosi',
+    'Sinaloa',
+    'Sonora',
+    'Tabasco',
+    'Tamaulipas',
+    'Tlaxcala',
+    'Veracruz de Ignacio de la Llave',
+    'Yucatan',
+    'Zacatecas',
+  ];
 }

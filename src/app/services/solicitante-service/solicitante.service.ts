@@ -15,7 +15,7 @@ export class SolicitanteService {
   user_solicitante: any = {};
   id_rol: any = {};
 
-  
+
   //FUNCIONES DEL REGISTRO Y LOGIN 
   registro(formData: any): Observable<any> {
     const url = `${this.apiurl}/users/register`;
