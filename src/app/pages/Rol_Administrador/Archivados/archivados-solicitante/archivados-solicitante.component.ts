@@ -24,6 +24,7 @@ export class ArchivadosSolicitanteComponent {
   get_solic_archivados() {
     this.serviceSolicitante.get_solicitantes_archivados().subscribe((data: any) => {
       this.solicitantes_archivados = data;
+      console.log(this.solicitantes_archivados);
       $('#table-data-solicitantes').DataTable().destroy();
       setTimeout(() => {
         $('#table-data-solicitantes').DataTable({

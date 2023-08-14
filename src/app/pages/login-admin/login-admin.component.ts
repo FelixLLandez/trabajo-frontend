@@ -20,26 +20,27 @@ export class LoginAdminComponent {
   );
 
   login() {
-    this.serviceAdmin.login_administrador(this.Formulario_login.value).subscribe((request:any) => {
-      this.serviceAdmin.guardarToken_admistrador(request.token);
-      this.serviceAdmin.guardaruser_administrador(request);
-      Swal.fire({
-        icon: 'success',
-        title: 'Bienvenido al sistema',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setTimeout(() => {
-        this.router.navigateByUrl(`/ver-administradores`);
-      }, 1500);
-    }, (error) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Correo y/o contraseñas incorrectas',
-        text: 'Por favor, verifica tus credenciales e intenta de nuevo.',
-        showConfirmButton: true,
-        confirmButtonText:'Aceptar',
-      });
+    this.serviceAdmin.login_administrador(this.Formulario_login.value).subscribe((datos: any) => {
+      if (datos) {
+        this.serviceAdmin.guardarToken_admistrador(datos.token);
+        this.serviceAdmin.guardaruser_administrador(datos);
+        Swal.fire({
+          icon: 'success',
+          title: 'Iniciando sesión...',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl(`/ver-administradores`);
+        }, 1500);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Correo y/o contraseñas incorrectas',
+          showConfirmButton: true,
+        });
+        console.log('error');
+      }
     })
   }
 }

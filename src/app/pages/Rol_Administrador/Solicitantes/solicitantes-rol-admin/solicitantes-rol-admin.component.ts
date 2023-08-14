@@ -70,6 +70,8 @@ export class SolicitantesRolAdminComponent implements OnInit, OnDestroy {
   get_solicitantes() {
     this.serviceSolicitante.get_solicitantes().subscribe((data: any) => {
       this.all_solicitantes = data;
+      console.log(this.all_solicitantes);
+
       $('#tabla-solicitantes').DataTable().destroy();
       setTimeout(() => {
         $('#tabla-solicitantes').DataTable({

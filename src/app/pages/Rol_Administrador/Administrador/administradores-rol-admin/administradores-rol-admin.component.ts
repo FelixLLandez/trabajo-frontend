@@ -97,6 +97,8 @@ export class AdministradoresRolAdminComponent implements OnInit, OnDestroy {
   get_administradores() {
     this.serviceAdmin.get_administradores().subscribe((data: any) => {
       this.all_administradores = data;
+      console.log(this.all_administradores);
+      
       $('#table-data-administradores').DataTable().destroy();
       setTimeout(() => {
         $('#table-data-administradores').DataTable({

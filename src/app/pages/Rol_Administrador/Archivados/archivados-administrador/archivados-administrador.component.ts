@@ -24,6 +24,7 @@ export class ArchivadosAdministradorComponent implements OnInit {
   get_admin_archivados() {
     this.serviceAdministrador.get_administradores_archivados().subscribe((data: any) => {
       this.administradores_archivados = data;
+      console.log(this.administradores_archivados);
       $('#table-data-administradores').DataTable().destroy();
       setTimeout(() => {
         $('#table-data-administradores').DataTable({

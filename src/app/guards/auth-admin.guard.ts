@@ -17,7 +17,9 @@ export class AuthGuard_admin  {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.serviceAdmin.isAuth_admin()) {
+      console.log('estamos dentro');
     } else {
+      console.log('Estamos fuera');
       this.route.navigateByUrl('/login-administrador');
     }
     return true;
