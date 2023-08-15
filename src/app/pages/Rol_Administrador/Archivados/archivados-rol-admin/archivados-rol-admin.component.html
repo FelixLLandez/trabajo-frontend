@@ -33,12 +33,7 @@
       [class.btn-solic-seleccionado]="pestanaSeleccionada === 'solicitantes'"
       (click)="seleccionarPestana('solicitantes')">
       Mostrar
-      Solicitantes
-    </button>
-    <button class="btn m-1" [class.btn-postulantes]="pestanaSeleccionada !== 'postulantes'"
-      [class.btn-postu-seleccionado]="pestanaSeleccionada === 'postulantes'"
-      (click)="seleccionarPestana('postulantes')">
-      Mostrar Postulantes
+      Usuarios
     </button>
   </div>
 
@@ -50,9 +45,7 @@
     <div *ngIf="pestanaSeleccionada === 'solicitantes'">
       <app-archivados-solicitante></app-archivados-solicitante>
     </div>
-    <div *ngIf="pestanaSeleccionada === 'postulantes'">
-      <app-archivados-postulante></app-archivados-postulante>
-    </div>
+
 
   </div>
 </body>

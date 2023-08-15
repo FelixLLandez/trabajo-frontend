@@ -123,3 +123,67 @@
     bottom: 0;
     
 }
+
+/* Estilos para la imagen de perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.profile-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: opacity 0.3s; /* Agregamos una transición suave */
+}
+
+.profile-info {
+    margin-left: 15px;
+    color: white;
+}
+
+.welcome-text {
+    font-size: 14px;
+}
+
+.username {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Ocultar la imagen cuando el sidenav esté expandido */
+.sidenav:not(.sidenav-collapsed) .profile-image img {
+    opacity: 0;
+    pointer-events: none; /* Evita que la imagen se pueda hacer clic cuando está oculta */
+}
+
+.separator {
+    background-color: white;
+    border: none;
+    height: 1px;
+
+}
+
+.options-container {
+    padding-top: 10px;
+    color: white;
+}
+
+.profile-containers{
+    padding-top: 20px;
+}
+
+
+.logo-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+}
+
+.footer-logo {
+    width: 100%;
+}

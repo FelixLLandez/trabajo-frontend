@@ -68,8 +68,8 @@ export class ServiceAdministradorService {
     return this.http.get(`http://localhost:3000/api/users/usuario/${id}`);
   }
 
-  modificar_administrador(data: any): Observable<Request> {
-    return this.http.patch<Request>('http://localhost:3000/api/users/modificar/', data);
+  modificar_administrador(id:any, data:any){
+    return this.http.patch(`http://localhost:3000/api/users/modificar/${id}`, data);
   }
 
   desactivar_administrador(data: any) {

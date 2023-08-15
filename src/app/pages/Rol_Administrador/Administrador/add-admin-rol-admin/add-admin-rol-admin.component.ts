@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class AddAdminRolAdminComponent {
 
+  imagePreview: string | ArrayBuffer | null = null;
+
   constructor(private fb: FormBuilder, private serviceAdmin: ServiceAdministradorService, private router: Router) { }
 
   camposIguales(control1: string, control2: string) {
@@ -34,6 +36,7 @@ export class AddAdminRolAdminComponent {
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
   edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  dirección = "[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9# ]+";
 
   Addadmin: FormGroup = this.fb.group({
 
@@ -43,6 +46,10 @@ export class AddAdminRolAdminComponent {
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.dirección)]],
+    estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+    foto: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]],
     rolId: [1]
@@ -75,6 +82,17 @@ export class AddAdminRolAdminComponent {
     return this.Addadmin.controls?.['email']?.errors && this.Addadmin.controls?.['email']?.touched
   }
 
+  callevalida() {
+    return this.Addadmin.controls?.['calle']?.errors && this.Addadmin.controls?.['calle']?.touched
+  }
+
+  estadovalido() {
+    return this.Addadmin.controls?.['estado']?.errors && this.Addadmin.controls?.['estado']?.touched
+  }
+
+  municipiovalido() {
+    return this.Addadmin.controls?.['municipio']?.errors && this.Addadmin.controls?.['municipio']?.touched
+  }
 
   contrasenavalida() {
     return this.Addadmin.controls?.['password']?.errors && this.Addadmin.controls?.['password']?.touched
@@ -110,4 +128,18 @@ export class AddAdminRolAdminComponent {
     })
 
   }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+
+      this.Addadmin.patchValue({ foto: reader.result });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  
 }

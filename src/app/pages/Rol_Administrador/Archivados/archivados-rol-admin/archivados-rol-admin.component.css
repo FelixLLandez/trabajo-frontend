@@ -74,7 +74,8 @@ table {
 }
 
 .btn-administradores{
-    border:1px solid #00b05d;
+    border:1px solid #9f9f9f;
+    background-color: #d1d1d1;
     color: #000;
     
 }
@@ -85,12 +86,13 @@ table {
 
 .btn-solic-seleccionado {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
-    background-color: #09d;
+    background-color: rgb(43, 92, 155);
     color: #fff;
 }
 
 .btn-solcitantes{
-    border:1px solid rgb(33, 147, 196);
+    border:1px solid #9f9f9f;
+    background-color: #d1d1d1;
     color: #000;
 }
 

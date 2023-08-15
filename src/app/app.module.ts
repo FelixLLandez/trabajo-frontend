@@ -18,10 +18,6 @@ import { DataTablesModule } from 'angular-datatables';
 import { AddSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/add-solicitante-rol-admin/add-solicitante-rol-admin.component';
 import { EditSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/edit-solicitante-rol-admin/edit-solicitante-rol-admin.component';
 import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/ver-solicitante-rol-admin/ver-solicitante-rol-admin.component';
-import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/postulantes-rol-admin/postulantes-rol-admin.component';
-import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
-import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
-import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/info-postulantes-rol-admin/info-postulantes-rol-admin.component';
 import { ArchivadosRolAdminComponent } from './pages/Rol_Administrador/Archivados/archivados-rol-admin/archivados-rol-admin.component';
 import { PerfilRolAdminComponent } from './pages/Rol_Administrador/Perfil/perfil-rol-admin/perfil-rol-admin.component';
 
@@ -39,10 +35,7 @@ import { VerPostulanteComponent } from './solicitante/acciones/ver-postulante/ve
 import { PaginaErrorComponent } from './auth/pagina-error/pagina-error.component';
 import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archivados/trabajos-archivados.component';
 import { ArchivadosAdministradorComponent } from './pages/Rol_Administrador/Archivados/archivados-administrador/archivados-administrador.component';
-import { ArchivadosSolicitanteComponent } from './pages/Rol_Administrador/Archivados/archivados-solicitante/archivados-solicitante.component';
-import { ArchivadosPostulanteComponent } from './pages/Rol_Administrador/Archivados/archivados-postulante/archivados-postulante.component';
-import { InfoPostulantesRolSolicitanteComponent } from './solicitante/rutas/info-postulantes/info-postulantes-rol-solicitante.component';
-import { HomeComponent } from './solicitante/rutas/home/home.component';
+import { ArchivadosSolicitanteComponent } from './pages/Rol_Administrador/Archivados/archivados-solicitante/archivados-solicitante.component'
 
 
 @NgModule({
@@ -59,10 +52,6 @@ import { HomeComponent } from './solicitante/rutas/home/home.component';
     AddSolicitanteRolAdminComponent,
     EditSolicitanteRolAdminComponent,
     VerSolicitanteRolAdminComponent,
-    PostulantesRolAdminComponent,
-    AddPostulantesRolAdminComponent,
-    EditPostulanteRolAdminComponent,
-    InfoPostulantesRolAdminComponent,
     ArchivadosRolAdminComponent,
     PerfilRolAdminComponent,
     RegistroComponent,
@@ -81,9 +70,6 @@ import { HomeComponent } from './solicitante/rutas/home/home.component';
     TrabajosArchivadosComponent,
     ArchivadosAdministradorComponent,
     ArchivadosSolicitanteComponent,
-    ArchivadosPostulanteComponent,
-    InfoPostulantesRolSolicitanteComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -98,7 +98,7 @@ body {
   
   .inputField:focus {
     outline: none;
-    border-bottom: 2px solid rgb(199, 114, 255);
+    border-bottom: 2px solid #5741b0;
   }
   
   .inputField::placeholder {

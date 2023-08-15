@@ -7,18 +7,12 @@ export const navbarData=[
         
     },
     {
-        routeLink:'ver-solicitantes',
-        icon: 'fal fa-newspaper',
+        routeLink:'ver-usuarios',
+        icon: 'fal fa-user-group',
+        
         label:'Solicitantes',
         title:'Solicitantes'
         
-    },
-    {
-        routeLink:'ver-postulantes',
-        icon: 'fal fa-magnifying-glass-dollar',
-        label:'Postulanes',
-        title:'Postulantes'
-   
     },
     {
         routeLink:'usuarios-archivados',

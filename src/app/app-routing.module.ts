@@ -10,10 +10,6 @@ import { SolicitantesRolAdminComponent } from './pages/Rol_Administrador/Solicit
 import { AddSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/add-solicitante-rol-admin/add-solicitante-rol-admin.component';
 import { EditSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/edit-solicitante-rol-admin/edit-solicitante-rol-admin.component';
 import { VerSolicitanteRolAdminComponent } from './pages/Rol_Administrador/Solicitantes/ver-solicitante-rol-admin/ver-solicitante-rol-admin.component';
-import { PostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/postulantes-rol-admin/postulantes-rol-admin.component';
-import { AddPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/add-postulantes-rol-admin/add-postulantes-rol-admin.component';
-import { EditPostulanteRolAdminComponent } from './pages/Rol_Administrador/Postulantes/edit-postulante-rol-admin/edit-postulante-rol-admin.component';
-import { InfoPostulantesRolAdminComponent } from './pages/Rol_Administrador/Postulantes/info-postulantes-rol-admin/info-postulantes-rol-admin.component';
 import { ArchivadosRolAdminComponent } from './pages/Rol_Administrador/Archivados/archivados-rol-admin/archivados-rol-admin.component';
 import { PerfilRolAdminComponent } from './pages/Rol_Administrador/Perfil/perfil-rol-admin/perfil-rol-admin.component';
 import { TrabajitosComponent } from './solicitante/rutas/trabajitos/trabajitos.component';
@@ -48,14 +44,10 @@ const routes: Routes = [
   { path: 'ver-administradores', component: AdministradoresRolAdminComponent,canActivate: [AuthGuard_admin] },
   { path: 'add-administrador', component: AddAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-administrador/:id', component: EditAdminRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'ver-solicitantes', component: SolicitantesRolAdminComponent, canActivate: [AuthGuard_admin] },
+  { path: 'ver-usuarios', component: SolicitantesRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'add-solicitante', component: AddSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'edit-solicitante/:id', component: EditSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'ver-solicitante/:id', component: VerSolicitanteRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'ver-postulantes', component: PostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'add-postulante', component: AddPostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'edit-postulante/:id', component: EditPostulanteRolAdminComponent, canActivate: [AuthGuard_admin] },
-  { path: 'informacion-postulante/:id', component: InfoPostulantesRolAdminComponent, canActivate: [AuthGuard_admin] },
+  { path: 'ver-solicitante/:id', component: VerSolicitanteRolAdminComponent/*, canActivate: [AuthGuard_admin] */},
   { path: 'usuarios-archivados', component: ArchivadosRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'mi-perfil', component: PerfilRolAdminComponent, canActivate: [AuthGuard_admin] },
   { path: 'pagina-error', component: PaginaErrorComponent },

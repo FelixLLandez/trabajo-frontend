@@ -12,9 +12,11 @@ import { ServiceSolicitanteService } from 'src/app/services/administrador-servic
 })
 export class AddSolicitanteRolAdminComponent {
 
-  constructor(private fb: FormBuilder, private serviceSolicitante: ServiceSolicitanteService, private router:Router) { 
-    
+  constructor(private fb: FormBuilder, private serviceSolicitante: ServiceSolicitanteService, private router: Router) {
+
   }
+
+  imagePreview: string | ArrayBuffer | null = null;
 
   camposIguales(control1: string, control2: string) {
     return (fg: AbstractControl): ValidationErrors | null => {
@@ -35,6 +37,7 @@ export class AddSolicitanteRolAdminComponent {
   };
 
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
+  dirección = "[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9# ]+";
   edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
@@ -44,18 +47,15 @@ export class AddSolicitanteRolAdminComponent {
     apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     sexo: ['', [Validators.required]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-    localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     password2: ['', [Validators.required,]],
     foto: ['', [Validators.required,]],
-    calle:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
-    estado:['',[Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
-    numero:['',[Validators.required,Validators.pattern(this.edadynumero)]],
-    rolId:2
-
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.dirección)]],
+    estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    rolId: 2
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
@@ -73,16 +73,11 @@ export class AddSolicitanteRolAdminComponent {
     return this.Addsolicitante.controls?.['sexo']?.touched && this.Addsolicitante.controls?.['sexo'].errors
   }
 
-  
+
 
   municipiovalido() {
     return this.Addsolicitante.controls?.['municipio']?.errors && this.Addsolicitante.controls?.['municipio']?.touched
   }
-
-  localidadvalida() {
-    return this.Addsolicitante.controls?.['localidad']?.errors && this.Addsolicitante.controls?.['localidad']?.touched
-  }
-
   edadvalida() {
     return this.Addsolicitante.controls?.['edad']?.errors && this.Addsolicitante.controls?.['edad']?.touched
   }
@@ -108,38 +103,51 @@ export class AddSolicitanteRolAdminComponent {
     return this.Addsolicitante.controls?.['foto']?.touched && this.Addsolicitante.controls?.['foto'].errors
   }
 
-  callevalida(){
+  callevalida() {
     return this.Addsolicitante.controls?.['calle']?.errors && this.Addsolicitante.controls?.['calle']?.touched
   }
 
-  estadovalido(){
+  estadovalido() {
     return this.Addsolicitante.controls?.['estado']?.errors && this.Addsolicitante.controls?.['estado']?.touched
-  }
-
-  numerovalido(){
-    return this.Addsolicitante.controls?.['numero']?.errors && this.Addsolicitante.controls?.['numero']?.touched
   }
 
   guardar() {
     console.log(this.Addsolicitante.value);
-    
-    this.serviceSolicitante.agregar_solicitante(this.Addsolicitante.value).subscribe((datos: any) => {
-      if (datos) {
-        Swal.fire({
-          title: 'Solicitante agregado correctamente',
-          icon: 'success',
-          showCancelButton: false,
-          showConfirmButton: true
-        })
-        this.Addsolicitante.reset();
-        this.router.navigateByUrl('/ver-solicitantes');
 
-      }
+    this.serviceSolicitante.agregar_solicitante(this.Addsolicitante.value).subscribe((datos: any) => {
+      Swal.fire({
+        title: 'Usuario agregado correctamente',
+        icon: 'success',
+        showConfirmButton: true,
+        confirmButtonText: 'Aceptar'
+      })
+      this.Addsolicitante.reset();
+      this.router.navigateByUrl('/ver-usuarios');
+    }, (error) => {
+      Swal.fire({
+        title: 'Ocurrio un problema al registrar al usuario',
+        text: 'Por favor, verifica su información e intenta de nuevo.',
+        icon: 'error',
+        showConfirmButton: true,
+        confirmButtonText:'Aceptar'
+      })
     })
 
   }
-  
 
-  
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+
+      this.Addsolicitante.patchValue({ foto: reader.result });
+    };
+    reader.readAsDataURL(file);
+  }
+
+
+
 
 }
