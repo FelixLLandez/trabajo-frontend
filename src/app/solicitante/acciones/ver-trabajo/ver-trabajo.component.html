@@ -5,33 +5,34 @@
 <div class="modal-body" *ngIf="trabajo">
     <div class="row">
         <div class="col-md-6">
-            <p><strong>#:</strong>{{trabajo.id}}</p>
-        </div>
-        <div class="col-md-6">
             <strong>Nombre:</strong>
             <p>{{ trabajo.nombre }}</p>
         </div>
-    </div>
-
-    <div class="row">
         <div class="col-md-6">
             <strong>Dirección:</strong>
             <p>{{ trabajo.direccion }}</p>
         </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-6">
             <strong>Descripción:</strong>
             <p>{{ trabajo.descripcion }}</p>
+        </div>
+        <div class="col-md-6">
+            <strong>Precio mensual:</strong>
+            <p>$ {{ trabajo.precio }}</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <strong>Precio mensual:</strong>
-            <p>$ {{ trabajo.precio }}</p>
+            <strong>Fecha de registro:</strong>
+            <p>{{ trabajo.fechaTrabajoRegistro | date: 'dd/MM/yyyy' }}</p>
         </div>
         <div class="col-md-6">
             <strong>Estado:</strong>
-            <p>{{ getEstadoInfo(trabajo.estado) }}</p>
+            <p>{{ getEstadoTrabajoName(trabajo.estadoTrabajo.id) }}</p>
         </div>
     </div>
 </div>

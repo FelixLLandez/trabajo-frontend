@@ -10,11 +10,13 @@ import { SolicitanteService } from 'src/app/services/solicitante-service/solicit
 export class VerTrabajoComponent implements OnInit {
   trabajoId!: number;
   trabajo: any;
-  
+  estadosTrabajos: any[] = [];
+
   constructor(public modalRef: BsModalRef, private soliSer: SolicitanteService) { }
 
   ngOnInit(): void {
     this.getTrabajoDetails();
+    this.getEstadosTrabajo();
   }
 
   closeModal() {
@@ -34,7 +36,25 @@ export class VerTrabajoComponent implements OnInit {
     }
   }
 
-  getEstadoInfo(estado: boolean): string {
-    return estado ? "Disponible" : "Desactivado";
+
+  getEstadosTrabajo() {
+    this.soliSer.getAllEstadosParaTrabajo().subscribe(
+      (data: any) => {
+        this.estadosTrabajos = data; // Almacenar los estados de trabajo
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
+
+  getEstadoTrabajoName(estadoTrabajoId: number): string {
+    const estadoTrabajo = this.trabajo.estadoTrabajo; // Accede directamente al objeto estadoTrabajo    
+    if (estadoTrabajo && estadoTrabajo.nombre) {
+      return estadoTrabajo.nombre;
+    } else {
+      return 'Desconocido';
+    }
+  }  
+
 }

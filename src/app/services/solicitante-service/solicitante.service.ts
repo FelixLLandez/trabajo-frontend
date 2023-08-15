@@ -9,8 +9,6 @@ export class SolicitanteService {
 
   constructor(private http: HttpClient) { }
 
-  apiurl = 'http://localhost:3000/api'; // Ruta global
-
   token_solicitante: any = "";
   user_solicitante: any = {};
   id_rol: any = {};
@@ -18,8 +16,7 @@ export class SolicitanteService {
 
   //FUNCIONES DEL REGISTRO Y LOGIN 
   registro(formData: any): Observable<any> {
-    const url = `${this.apiurl}/users/register`;
-    return this.http.post<any>(url, formData);
+    return this.http.post<any>('http://localhost:3000/api/users/register', formData)
   }
 
   login_solicitante(data: any): Observable<Request> {
@@ -51,12 +48,11 @@ export class SolicitanteService {
   }
 
   getRoles(): Observable<any> {
-    const url = `${this.apiurl}/rol/roles`;
-    return this.http.get<any>(url);
+    return this.http.get<any>('http://localhost:3000/api/rol/roles');
   }
 
 
-  //FUNCIONES DEL MÓDULO DE "TRABAJOS" PERTENECIENTE AL ROL SOLICITANTE
+  //FUNCIONES DEL MÓDULO DE "TRABAJOS" PERTENECIENTE AL ROL USUARIO
   getLoggedInUserId(): number {
     const user = JSON.parse(localStorage.getItem('user') || 'null');
     return user ? user.id : 0;
@@ -86,12 +82,16 @@ export class SolicitanteService {
   //FUNCIONES DEL MÓDULO DE "EDITAR PERFIL" DEL ROL SOLICITANTE
   updatePerfil(id: number, data: any): Observable<any> {
     return this.http.patch<any>(`http://localhost:3000/api/users/${id}`, data);
-  }
-
+  }  
 
   //FUNCIONES DEL MÓDULO DE "TRABAJOS ARCHIVADOS" DEL ROL SOLICITANTE
   activar_trabajo(id: number): Observable<any> {
     return this.http.patch<any>(`http://localhost:3000/api/trabajos/activar_trabajo/${id}`, { estate: true });
+  }
+
+  //FUNCIONES PARA TRAER TODOS LOS ESTADOS DEL TRABAJO
+  getAllEstadosParaTrabajo(): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/estados-trabajo/estados`);
   }
 
 }

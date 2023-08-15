@@ -113,3 +113,8 @@ tr:nth-child(even) td {
     font-size: 16px; 
   }
 }
+
+.textoscentrados {
+  text-align: center;
+  justify-content: center;
+}

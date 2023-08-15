@@ -13,6 +13,7 @@ export class EditarTrabajoComponent implements OnInit {
 
   trabajo: any = {};
   editTrabajoForm: FormGroup;
+  estadosTrabajos: any[] = [];
 
   constructor(
     private router: Router,
@@ -24,7 +25,8 @@ export class EditarTrabajoComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       descripcion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-      precio: ['', [Validators.required, Validators.min(1), Validators.maxLength(10)]]
+      precio: ['', [Validators.required, Validators.min(1), Validators.maxLength(10)]],
+      estadoTrabajoId: ['', [Validators.required]]
     });
   }
 
@@ -32,6 +34,7 @@ export class EditarTrabajoComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = params['id'];
       this.getTrabajo(id);
+      this.getEstadosTrabajo();
     });
   }
 
@@ -40,6 +43,7 @@ export class EditarTrabajoComponent implements OnInit {
       (data: any) => {
         this.trabajo = data;
         this.editTrabajoForm.patchValue(data);
+        this.editTrabajoForm.get('estadoTrabajoId')?.setValue(data.estadoTrabajo.id);
       },
       (error: any) => {
         console.error(error);
@@ -47,11 +51,30 @@ export class EditarTrabajoComponent implements OnInit {
     );
   }
 
+
+  getEstadosTrabajo() {
+    this.soliService.getAllEstadosParaTrabajo().subscribe(
+      (data: any) => {
+        this.estadosTrabajos = data.filter((estado: any) => estado.nombre !== 'Desactivado');
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
+
   editarTrabajo() {
     if (this.editTrabajoForm.invalid) {
       console.log('Formulario no válido');
       return;
     }
+    const estadoTrabajoId = Number(this.editTrabajoForm.get('estadoTrabajoId')?.value);
+    console.log(estadoTrabajoId);
+    const updateData = {
+      ...this.editTrabajoForm.value,
+      estadoTrabajoId: estadoTrabajoId
+    };
 
     Swal.fire({
       title: '¿Estás seguro?',
@@ -63,7 +86,7 @@ export class EditarTrabajoComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.soliService.updateTrabajo(this.trabajo.id, this.editTrabajoForm.value).subscribe(
+        this.soliService.updateTrabajo(this.trabajo.id, updateData).subscribe(
           () => {
             Swal.fire('Actualizado!', 'El trabajo ha sido actualizado correctamente.', 'success');
             this.router.navigateByUrl('/trabajitos');
@@ -76,6 +99,7 @@ export class EditarTrabajoComponent implements OnInit {
       }
     });
   }
+
 
   nombreValido() {
     return this.editTrabajoForm.get('nombre')?.valid;

@@ -15,6 +15,7 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
   modalRef: BsModalRef<any> | undefined;
   trabajos: any[] = [];
   dtOptions: DataTables.Settings = {};
+  estadosTrabajo: any[] = [];
 
   constructor(
     private router: Router,
@@ -35,6 +36,7 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       destroy: true,
     };
     this.getTrabajos();
+    this.getEstadosTrabajo(); // Cargar los estados de trabajo
   }
 
   ngOnDestroy(): void {
@@ -99,7 +101,9 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
     this.soliService.getTrabajosBySolicitanteId(solicitanteId).subscribe(
       (data: any) => {
         console.log(data);
-        this.trabajos = data.task.filter((trabajo: any) => trabajo.estate === true);
+        this.trabajos = data.task.filter(
+          (trabajo: any) => trabajo.estate === true
+        );
         $('#datatabletrabajitos').DataTable().destroy();
         setTimeout(() => {
           $('#datatabletrabajitos').DataTable(this.dtOptions);
@@ -109,10 +113,6 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
         console.error(error);
       }
     );
-  }
-
-  getEstadoInfo(estado: boolean): string {
-    return estado ? "Ocupado" : "Disponible";
   }
 
   salir() {
@@ -139,5 +139,22 @@ export class TrabajitosComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  getEstadosTrabajo() {
+    this.soliService.getAllEstadosParaTrabajo().subscribe(
+      (data: any) => {
+        this.estadosTrabajo = data; // Almacenar los estados de trabajo
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getEstadoTrabajoName(estadoTrabajoId: number): string {
+    const estadoTrabajo = this.estadosTrabajo.find(estado => estado.id === estadoTrabajoId);
+    return estadoTrabajo ? estadoTrabajo.nombre : 'Desconocido';
+  }
+  
 
 }

@@ -12,12 +12,12 @@
     <table id="datatabletrabajitos" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Dirección</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Opciones</th>
+                <th class="textoscentrados" scope="col">#</th>
+                <th class="textoscentrados" scope="col">Nombre</th>
+                <th class="textoscentrados" scope="col">Descripción</th>
+                <th class="textoscentrados" scope="col">Dirección</th>
+                <th class="textoscentrados" scope="col">Estado</th>
+                <th class="textoscentrados" scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                 <td>{{ trabajo.nombre }}</td>
                 <td>{{ trabajo.descripcion }}</td>
                 <td>{{ trabajo.direccion }}</td>
-                <td>{{ getEstadoInfo(trabajo.estado) }}</td>
+                <td>{{ getEstadoTrabajoName(trabajo.estadoTrabajoId) }}</td>
                 <td class="opciones-botones">
                     <button class="btn btn-info" (click)="openModal(trabajo.id)" title="Ver más"><i
                             class="fas fa-eye"></i></button>
@@ -37,6 +37,7 @@
                 </td>
             </tr>
         </tbody>
+
     </table>
 </div>
 

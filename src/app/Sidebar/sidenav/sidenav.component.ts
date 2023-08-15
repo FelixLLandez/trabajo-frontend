@@ -77,7 +77,7 @@ export class SidenavComponent {
   }
 
   home_solicitante() {
-    this.router.navigateByUrl('/trabajitos')
+    this.router.navigateByUrl('/home')
   }
 
   get_datos() {
