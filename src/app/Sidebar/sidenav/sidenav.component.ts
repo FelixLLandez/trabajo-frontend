@@ -20,12 +20,18 @@ export class SidenavComponent {
   user_admin: any = {};
   id_rol: any = {};
   sidenav:any= false;
+  nombre:any="";
+  datos_perfil:any=[];
+  foto_perfil:any;
 
   constructor(private router: Router, private serviceAdmin:ServiceAdministradorService) {
     this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
     try{
       this.id_rol = this.user_admin.rol.id;
       this.rol_user=this.id_rol;
+      this.nombre=this.user_admin.nombre;
+      this.foto_perfil=this.user_admin.foto;
+
       this.sidenav=true;
     }catch (error){
       
@@ -34,8 +40,10 @@ export class SidenavComponent {
    
   }
 
+
+
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = false;
+  collapsed = true;
   screenWidth = 0;
   navData = navbarData;
   navbarData_solicitante=navbarData_solicitante;
@@ -51,6 +59,7 @@ export class SidenavComponent {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+    this.get_datos()
   }
 
   toggleCollapse(): void {
@@ -69,6 +78,14 @@ export class SidenavComponent {
 
   home_solicitante() {
     this.router.navigateByUrl('/trabajitos')
+  }
+
+  get_datos() {
+    this.serviceAdmin.get_datos_perfil().subscribe((data: any) => {
+      this.datos_perfil = data;
+      console.log(this.datos_perfil);
+      
+    })
   }
 
 
