@@ -14,6 +14,7 @@ export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
   modalRef: BsModalRef<any> | undefined;
   trabajos: any[] = [];
   dtOptions: DataTables.Settings = {};
+  estadosTrabajosArchivados: any[] = [];
 
   constructor(
     private router: Router,
@@ -34,6 +35,7 @@ export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
       destroy: true,
     };
     this.getTrabajosArchivados();
+    this.getEstadosTrabajo();
   }
 
   ngOnDestroy(): void {
@@ -45,7 +47,7 @@ export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
       trabajoId: trabajoId
     };
     this.modalRef = this.modalService.show(VerTrabajoComponent, { initialState });
-  }
+  }  
 
   activarTrabajo(id: number) {
     Swal.fire({
@@ -84,10 +86,11 @@ export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
 
   getTrabajosArchivados() {
     const solicitanteId = this.soliService.getLoggedInUserId();
+
     this.soliService.getTrabajosBySolicitanteId(solicitanteId).subscribe(
       (data: any) => {
         console.log(data);
@@ -103,8 +106,20 @@ export class TrabajosArchivadosComponent implements OnInit, OnDestroy {
     );
   }
 
-  getEstadoInfoDesactivados(estado: boolean): string {
-    return estado ? "Desactivado" : "Desactivado";
+  getEstadosTrabajo() {
+    this.soliService.getAllEstadosParaTrabajo().subscribe(
+      (data: any) => {
+        this.estadosTrabajosArchivados = data; // Almacenar los estados de trabajo
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getEstadoTrabajoName(estadoTrabajoId: number): string {
+    const estadoTrabajo = this.estadosTrabajosArchivados.find(estado => estado.id === estadoTrabajoId);
+    return estadoTrabajo ? estadoTrabajo.nombre : 'Desconocido';
   }
 
   salir() {

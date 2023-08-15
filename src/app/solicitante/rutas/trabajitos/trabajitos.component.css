@@ -63,6 +63,11 @@ tr:nth-child(even) td {
   justify-content: center;
 }
 
+.textoscentrados {
+  text-align: center;
+  justify-content: center;
+}
+
 .btn {
   border: none;
   color: white;

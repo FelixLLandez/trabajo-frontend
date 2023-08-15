@@ -94,4 +94,9 @@ export class SolicitanteService {
     return this.http.patch<any>(`http://localhost:3000/api/trabajos/activar_trabajo/${id}`, { estate: true });
   }
 
+  //FUNCIONES PARA TRAER TODOS LOS ESTADOS DEL TRABAJO
+  getAllEstadosParaTrabajo(): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/estados-trabajo/estados`);
+  }
+
 }
