@@ -3,6 +3,7 @@ import { navbarData } from './nav-data';
 import { navbarData_solicitante } from './nav-data-solicitante';
 import { Router } from '@angular/router';
 import { ServiceAdministradorService } from '../../services/administrador-service/service-administrador.service';
+import { HttpClient } from '@angular/common/http';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -22,28 +23,34 @@ export class SidenavComponent {
   sidenav:any= false;
   nombre:any="";
   datos_perfil:any=[];
-  foto_perfil:any;
+  id:any;
+  foto_perfil:any="";
 
-  constructor(private router: Router, private serviceAdmin:ServiceAdministradorService) {
+  constructor(private router: Router, private serviceAdmin:ServiceAdministradorService, private http:HttpClient) {
     this.user_admin = JSON.parse(localStorage.getItem('user') || 'null') || null;
     try{
       this.id_rol = this.user_admin.rol.id;
       this.rol_user=this.id_rol;
       this.nombre=this.user_admin.nombre;
-      this.foto_perfil=this.user_admin.foto;
+      this.id=this.user_admin.id;
 
       this.sidenav=true;
+
+      this.http.get(`http://localhost:3000/api/users/usuario/${this.id}`).subscribe((data:any)=>{
+        this.foto_perfil=data;
+      })
     }catch (error){
       
       console.log('error');
     }
    
+
   }
 
 
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = true;
+  collapsed = false;
   screenWidth = 0;
   navData = navbarData;
   navbarData_solicitante=navbarData_solicitante;
@@ -81,11 +88,11 @@ export class SidenavComponent {
   }
 
   get_datos() {
-    this.serviceAdmin.get_datos_perfil().subscribe((data: any) => {
-      this.datos_perfil = data;
-      console.log(this.datos_perfil);
+    // this.serviceAdmin.get_datos_perfil().subscribe((data: any) => {
+    //   this.datos_perfil = data;
+    //   console.log(this.datos_perfil);
       
-    })
+    // })
   }
 
 

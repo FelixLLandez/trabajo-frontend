@@ -15,7 +15,9 @@ export class PerfilRolAdminComponent {
 
   datos_perfil: any = [];
   Editadmin: FormGroup;
-  Editpassword: FormGroup;
+  enableInputs: boolean = false; 
+  nombre: string = ''; 
+  edad: number | null = null; 
 
   imagePreview: string | ArrayBuffer | null = null;
 
@@ -27,23 +29,19 @@ export class PerfilRolAdminComponent {
       edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
       email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-      calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+      calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.dirección)]],
       estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
-      numero: ['', [Validators.required, Validators.pattern(this.edadynumero)]],
       municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-      localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
+      
       foto: ['', [Validators.required]]
     });
-
-    this.Editpassword = this.fb.group({
-      password_anterior: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
-      password2: ['', [Validators.required,]]
-    }, {
-      validators: [this.camposIguales('password', 'password2')]
-    }
-    )
   }
+
+  Editpassword: FormGroup = this.fb.group({
+    password_anterior: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+    password2: ['', [Validators.required]]
+  });
 
   ngOnInit(): void {
     this.get_datos();
@@ -70,6 +68,7 @@ export class PerfilRolAdminComponent {
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
   edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  dirección = "[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9# ]+";
 
 
   nombrevalido() {
@@ -177,6 +176,8 @@ export class PerfilRolAdminComponent {
 
   cambiar_contrasena() {
     console.log(this.Editpassword.value);
+    
+    console.log(this.Editpassword.value);
   }
 
   onFileSelected(event: any): void {
@@ -218,5 +219,9 @@ export class PerfilRolAdminComponent {
     })
   }
 
+  handleChangeCheckbox() {
+    // Cambia el valor de enableInputs al valor actual del checkbox
+    this.enableInputs = !this.enableInputs;
+  }
 
 }
