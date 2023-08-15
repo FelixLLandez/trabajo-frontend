@@ -2,20 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceSolicitanteService } from '../../../../services/administrador-service/service-solicitante.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
+
+interface Trabajo {
+  nombre: string;
+  title: string;
+  description: string;
+  // Otras propiedades...
+}
 
 @Component({
   selector: 'app-ver-solicitante-rol-admin',
   templateUrl: './ver-solicitante-rol-admin.component.html',
   styleUrls: ['./ver-solicitante-rol-admin.component.css']
 })
-export class VerSolicitanteRolAdminComponent implements OnInit{
+export class VerSolicitanteRolAdminComponent implements OnInit {
 
   id_user: any;
   datos_solicitante: any = [];
+  task_solicitante:Trabajo[]=[];
 
   btnUp: HTMLElement | null = null;
 
-  constructor(private route:ActivatedRoute, private serviceSolicitante: ServiceSolicitanteService, public modalRef: BsModalRef,) {}
+  constructor(private route: ActivatedRoute, private serviceSolicitante: ServiceSolicitanteService, public modalRef: BsModalRef,) { }
 
   ngOnInit(): void {
     const btnUp = document.getElementById("btnUp");
@@ -52,39 +61,53 @@ export class VerSolicitanteRolAdminComponent implements OnInit{
         this.btnUp.classList.remove("show");
       }
     }
-  }
-
-  items: any[] = [
-    { nombre: 'Limpieza de hogar', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'reparacion de tubos', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'pasteleria', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'albañeria', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'plomeria', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'carpinteria', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'electricista', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'mecanico', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'panadero', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'plomeria', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-    { nombre: 'chofer', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-  ];
+  }  
 
   nombreBusqueda: string = '';
 
   obtenerItemsFiltrados() {
     if (!this.nombreBusqueda) {
-      return this.items; // Si no hay búsqueda, muestra todos los elementos
+      return this.task_solicitante; // Si no hay búsqueda, muestra todos los elementos
     }
-    return this.items.filter(item => item.nombre.toLowerCase().includes(this.nombreBusqueda.toLowerCase()));
+    
+    return this.task_solicitante.filter(item => {
+      if (item.title) {
+        return item.title.toLowerCase().includes(this.nombreBusqueda.toLowerCase());
+      }
+      return false;
+    });
   }
+  
 
   obtener_datos() {
     this.serviceSolicitante.get_solic(this.id_user).subscribe((data: any) => {
       this.datos_solicitante = data;
+      this.task_solicitante=data.task;
+      console.log(this.task_solicitante);
+      
     })
   }
 
   closeModal() {
     this.modalRef.hide();
+  }
+
+  eliminartrabajito() {
+    Swal.fire({
+      title: 'Estás seguro de desactivar este trabajito?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+
+      }
+    })
   }
 
 }

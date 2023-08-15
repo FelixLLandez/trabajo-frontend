@@ -3,7 +3,7 @@
     <!-- Sección para cuando el sidenav está colapsado -->
     <div class="profile-container" *ngIf="collapsed">
         <div class="profile-image" >
-            <img src="{{foto_perfil}}" alt="Profile Image">
+            <img src="{{foto_perfil.foto}}" alt="Profile Image">
         </div>
         <div class="profile-info">
             <p class="welcome-text">Bienvenid@,</p>
@@ -18,7 +18,7 @@
     <!-- Sección para cuando el sidenav está expandido -->
     <div class="profile-container" *ngIf="!collapsed" >
         <div >
-            <img src="{{foto_perfil}}" style=" padding: 5px;width: 80px; height: 80px ;object-fit: cover; cursor: pointer; border-radius: 50%;" alt="Profile Image"  (click)="toggleCollapse()">
+            <img src="{{foto_perfil.foto}}" style=" padding: 5px;width: 80px; height: 80px ;object-fit: cover; cursor: pointer; border-radius: 50%;" alt="Profile Image"  (click)="toggleCollapse()">
         </div>
         
     </div>
