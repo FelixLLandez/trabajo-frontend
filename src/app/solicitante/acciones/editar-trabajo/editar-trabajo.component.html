@@ -40,6 +40,7 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="estadoTrabajo">Estado actual del trabajo:</label>
             <select id="estadoTrabajoId" name="estadoTrabajoId" class="form-control" formControlName="estadoTrabajoId">
                 <option *ngFor="let estado of estadosTrabajos" [value]="estado.id.toString()">{{ estado.nombre }}
                 </option>
