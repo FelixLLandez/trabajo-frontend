@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   
-  trabajos: any[] = [];
+  trabajos: string[] = [];
   searchText: string = '';
 
   constructor(
