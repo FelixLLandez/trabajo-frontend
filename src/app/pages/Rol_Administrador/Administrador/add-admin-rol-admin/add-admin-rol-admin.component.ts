@@ -36,6 +36,7 @@ export class AddAdminRolAdminComponent {
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
   edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  dirección = "[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9# ]+";
 
   Addadmin: FormGroup = this.fb.group({
 
@@ -45,7 +46,7 @@ export class AddAdminRolAdminComponent {
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.dirección)]],
     estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     foto: ['', [Validators.required]],

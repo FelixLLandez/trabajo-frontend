@@ -1,48 +1,66 @@
 .titulo-principal {
-    font-size: 35px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-size: 35px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
-body{
-    background-color: transparent;
+
+body {
+  background-color: transparent;
 }
 
 
 .card {
-    width: auto;
-    margin: 0 auto;
-    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .card-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
+  width: auto;
+  margin: 0 auto;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+  background-color: #e8f1f2;
+}
 
-  label {
-    font-weight: bold;
-  }
-  
-  .btn-guardar {
-      align-items: end;
-      background-color: #484f57;
-      color: #fff;
-  }
+.card-body {
+  padding: 20px;
+}
 
-  .alerta-boostrap{
-    height: 5px;
-  }
+.card-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .icono-alerta{
-    width: 20px;
-    height:240px;
-  }
+.form-group {
+  margin-bottom: 20px;
+}
 
-  
+label {
+  font-weight: bold;
+}
+
+.btn-guardar {
+  align-items: end;
+  background-color: #fe7f0c;
+  color: #fff;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.btn-guardar:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+}
+
+.alerta-boostrap {
+  height: 5px;
+}
+
+.icono-alerta {
+  width: 20px;
+  height: 240px;
+}
+
+.btn-perfil {
+  align-items: end;
+  background-color: #484f578e;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.btn-perfil:hover {
+  background-color: #484f57be;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+}

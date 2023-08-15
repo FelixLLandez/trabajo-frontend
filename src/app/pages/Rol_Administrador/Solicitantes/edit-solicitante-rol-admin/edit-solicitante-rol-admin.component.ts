@@ -13,6 +13,7 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
 
   id_user: any;
   datos_solicitante: any = [];
+  imagePreview: string | ArrayBuffer | null = null;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private serviceSolicitante: ServiceSolicitanteService, private router:Router) { }
 
@@ -44,6 +45,7 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
   nombreyapellido: string = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+";
   edadynumero = '[0-9]+';
   correo_v = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  dirección = "[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9# ]+";
 
   Editsolicitante: FormGroup = this.fb.group({
 
@@ -51,16 +53,15 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
     apellidos: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     sexo: ['', [Validators.required]],
     municipio: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
-    localidad: ['', [Validators.required, Validators.pattern(this.nombreyapellido), Validators.minLength(3), Validators.maxLength(45)]],
     edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
     // password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     // password2: ['', [Validators.required,]],
     // foto: ['', [Validators.required,]],
-    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
+    calle: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.dirección)]],
     estado: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45), Validators.pattern(this.nombreyapellido)]],
-    numero: ['', [Validators.required,Validators.pattern(this.edadynumero)]],
+    foto: ['', [Validators.required]],
   }, {
     validators: [this.camposIguales('password', 'password2')]
   }
@@ -80,10 +81,6 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
 
   municipiovalido() {
     return this.Editsolicitante.controls?.['municipio']?.errors && this.Editsolicitante.controls?.['municipio']?.touched
-  }
-
-  localidadvalida() {
-    return this.Editsolicitante.controls?.['localidad']?.errors && this.Editsolicitante.controls?.['localidad']?.touched
   }
 
   edadvalida() {
@@ -119,13 +116,9 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
     return this.Editsolicitante.controls?.['estado']?.errors && this.Editsolicitante.controls?.['estado']?.touched
   }
 
-  numerovalido() {
-    return this.Editsolicitante.controls?.['numero']?.errors && this.Editsolicitante.controls?.['numero']?.touched
-  }
-
   modificar() {
     Swal.fire({
-      title: 'Estás seguro de modificar la informacion?',
+      title: 'Estás seguro de modificar la información?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -135,13 +128,21 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const id = parseInt(this.route.snapshot.paramMap.get('id') || '');
-        this.serviceSolicitante.modificar_solicitante(id,this.Editsolicitante.value).subscribe((data: any) => {
-          this.router.navigateByUrl('/ver-solicitantes')
+        this.serviceSolicitante.modificar_solicitante(id, this.Editsolicitante.value).subscribe((data: any) => {
+          this.router.navigateByUrl('/ver-usuarios')
           Swal.fire({
             icon: 'success',
             title: 'Usuario modificado correctamente',
           })
 
+        }, (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Hubo un problema al actualizar la información',
+            text: 'Por favor, verifica su información e intenta de nuevo.',
+            confirmButtonText: 'Aceptar',
+            showConfirmButton: true,
+          })
         })
       }
     })
@@ -152,6 +153,18 @@ export class EditSolicitanteRolAdminComponent implements OnInit {
     this.serviceSolicitante.get_solic(this.id_user).subscribe((data: any) => {
       this.Editsolicitante.patchValue(data)
       this.datos_solicitante = data;
+      this.imagePreview = data.foto;
     })
+  }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+      this.Editsolicitante.patchValue({ foto: reader.result });
+    };
+    reader.readAsDataURL(file);
   }
 }

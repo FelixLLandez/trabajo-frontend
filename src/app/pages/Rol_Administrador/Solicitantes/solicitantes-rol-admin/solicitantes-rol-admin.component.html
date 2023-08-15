@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="d-flex align-items-center justify-content-between">
-                <h4 class="titulo-principal">SOLICITANTES</h4>
+                <h4 class="titulo-principal">USUARIOS</h4>
                 <button (click)="salir()" title="Salir" class="btn boton-salir"><i
                         class="fa-solid fa-arrow-right-from-bracket"></i>
                     Salir</button>
@@ -36,8 +36,8 @@
                     <th scope="col">Apellidos</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Teléfono</th>
-                    <th scope="col">Edad</th>
                     <th scope="col">Sexo</th>
+                    <th scope="col">Registro</th>
                     <th scope="col" class="opciones">Opciones</th>
                 </tr>
             </thead>
@@ -47,9 +47,9 @@
                     <td>{{item.nombre}}</td>
                     <td>{{item.apellidos}}</td>
                     <td>{{item.email}}</td>
-                    <td>{{item.telefono}}</td>
-                    <td>{{item.edad}}</td>
-                    <td>{{item.sexo}}</td>
+                    <td align="center">{{item.telefono}}</td>
+                    <td align="center">{{item.sexo}}</td>
+                    <td align="center">{{item.fecharegistro  | date:'dd/MM/yyyy'}}</td>
                     <td class="opciones-botones">
                         <button (click)="ver_solicitante(item.id)" type="button" title="Ver información"
                             class="btn boton-ver"><i class="fa-regular fa-eye"></i></button>
