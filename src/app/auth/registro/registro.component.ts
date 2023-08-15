@@ -34,28 +34,16 @@ export class RegistroComponent implements OnInit {
       estado: ['', [Validators.required]],
       municipio: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      rol: ['', Validators.required]
     });
   }
 
   registrarse() {
     if (this.registroForm.valid) {
-      if (!this.selectedRol) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Por favor, seleccione un rol válido.'
-        });
-        return;
-      }
-
       const formData = this.registroForm.value;
-      if (this.selectedRol === '1') {
-        delete formData.rol;
-      } else {
-        formData.rolId = this.selectedRol;
-        delete formData.rol;
-      }
+
+      // se asigna automáticamente el valor del rol solo para usuarios
+      formData.rolId = 2;
+      delete formData.rol;
 
       this.solicitanteS.registro(formData).subscribe(
         (data) => {
@@ -80,12 +68,13 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+
   roles: any[] = [];
   getRoles() {
     this.solicitanteS.getRoles().subscribe(
       (data: any) => {
-        // En este caso filtre los roles para eliminar el rol del administrador (ID: 1) y solo mostrar los dos restantes
-        this.roles = data.filter((rol: any) => rol.id !== 1);
+        // En este caso filtre los roles para eliminar el rol del administrador (ID: 1) y solo mostrar el rol del solici
+        this.roles = data.filter((rol: any) => rol.id !== 1 && rol.id !== 2);
       },
       (error: any) => {
         console.error(error);

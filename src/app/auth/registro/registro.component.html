@@ -102,16 +102,6 @@
                         con al menos 8 caracteres.</div>
                 </div>
 
-                <div class="registro-form-column" *ngIf="selectedRol !== '1'">
-                    <label for="rol">Rol:</label>
-                    <select class="form-select" aria-label="Default select example" name="rol" id="rol"
-                        formControlName="rol" (change)="rolSeleccionado($event)">
-                        <option value="" disabled selected>Seleccione una opción...</option>
-                        <option *ngFor="let rol of roles" [value]="rol.id">{{rol.nombre}}</option>
-                    </select>
-                    <div *ngIf="isRolInvalid()" class="error-message">Por favor, seleccione una opción válida.</div>
-                </div>
-
                 <br>
                 <button class="registro-button" type="submit">Registrarse</button>
             </div>
