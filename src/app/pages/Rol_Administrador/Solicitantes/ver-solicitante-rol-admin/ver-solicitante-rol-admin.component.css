@@ -1,14 +1,3 @@
-body {
-    background-size: cover;
-    height: 100vh;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    font-size: 12pt;
-    color: #2A293E;
-    border-radius: 15px;
-}
-
 .titulo-principal {
     font-size: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
@@ -237,9 +226,6 @@ label {
     margin-right: 10px;
 }
 
-.div-cards {
-    margin: 10px;
-}
 
 .img-fluid {
     width: 100%;
