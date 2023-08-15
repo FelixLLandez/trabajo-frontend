@@ -22,7 +22,7 @@
 </header>
 
 <body>
-    <div class="card mb-3">
+    <!-- <div class="card mb-3">
         <div class="row g-0 div-datos-personales">
             <div class="col-md-4 col-sm-4">
                 <img src="/assets/perfil.jpg" class="img-fluid rounded-start" alt="...">
@@ -35,39 +35,103 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <label for="input1">Nombre</label>
-                            <p class="datos-personales">{{infoPostulante.nombre}}</p>
+                            <p class="datos-personales">{{datos_postulante.nombre}}</p>
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <label for="input1">Apellidos</label>
-                            <p class="datos-personales">{{infoPostulante.apellidos}}</p>
+                            <p class="datos-personales">Salvador Jiménez</p>
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <label for="input1">Sexo</label>
-                            <p class="datos-personales">{{infoPostulante.sexo}}</p>
+                            <p class="datos-personales">Masculino</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <label for="input1">Teléfono</label>
-                            <p class="datos-personales">{{infoPostulante.telefono}}</p>
+                            <p class="datos-personales">9513545268</p>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <label for="input1">Edad</label>
-                            <p class="datos-personales">{{infoPostulante.edad}}</p>
+                            <p class="datos-personales">21</p>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <label for="input1">Correo</label>
-                            <p class="datos-personales">{{infoPostulante.email}}</p>
+                            <p class="datos-personales">
+                                isidronoesalvadorjimene9@gmail.com</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <label for="input1">Dirección</label>
-                            <p class="datos-personales">{{infoPostulante.calle}}, {{infoPostulante.localidad}}</p>
+                            <p class="datos-personales">C. Marcelino Carrizosa #607,
+                                Barrio San Juan</p>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <label for="input1">Municipio</label>
-                            <p class="datos-personales">{{infoPostulante.municipio}}, {{infoPostulante.estado}}</p>
+                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="cards-container">
+        <div class="section_our_solution">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="our_solution_category">
+                        <div class="solution_cards_box">
+                            <div class="solution_card">
+                                <div class="hover_color_bubble"></div>
+                                <div align="center">
+                                    <img src="/assets/perfil.jpg" class="so_top_icon" alt="...">
+                                </div><br>
+                                <div class="solu_description">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <label for="input1">Nombre</label>
+                                            <p class="datos-personales"><!--{{datos_postulante.nombre}}-->Isidro</p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <label for="input1">Apellidos</label>
+                                            <p class="datos-personales">Salvador Jiménez</p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <label for="input1">Sexo</label>
+                                            <p class="datos-personales">Masculino</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <label for="input1">Teléfono</label>
+                                            <p class="datos-personales">9513545268</p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            <label for="input1">Edad</label>
+                                            <p class="datos-personales">21</p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="input1">Correo</label>
+                                            <p class="datos-personales">
+                                                isidronoesalvadorjimene9@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="input1">Dirección</label>
+                                            <p class="datos-personales">C. Marcelino Carrizosa #607,
+                                                Barrio San Juan</p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="input1">Municipio</label>
+                                            <p class="datos-personales">Zimatlán de Álvarez</p>
+                                        </div>
+                                        <button class="read_more_btn" type="button">Ver más</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,7 +139,8 @@
         </div>
     </div>
 
-    <hr class="division">
+
+    <hr>
 
     <div class="row div-segundo-titulo">
         <label class="text-center titulo-historial-laboral">HISTORIAL LABORAL</label>
@@ -92,7 +157,7 @@
         <div class="row g-0 ">
             <div class="col-sm-12">
                 <div class="row titulos-card">
-                    <label class="text-center">DETALLES DEL TRABAJO</label>
+                    <label class="text-center"><p></p>DETALLES DEL TRABAJO</label><p></p>
                 </div>
                 <div class="card-body-trabajo">
                     <div class="row">
@@ -138,7 +203,7 @@
                     </div>
                 </div>
                 <div class="row titulos-card">
-                    <label class="text-center">DETALLES DEL SOLICITANTE</label>
+                    <label class="text-center"><p></p>DETALLES DEL SOLICITANTE<p></p></label>
                 </div>
                 <div class="card-body-trabajo">
                     <div class="row">
@@ -157,7 +222,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
