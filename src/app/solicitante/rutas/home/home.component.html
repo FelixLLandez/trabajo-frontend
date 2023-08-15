@@ -6,16 +6,18 @@
 
 <div class="home-container">
     <div class="card-list">
-        <div class="card">
-            <img src="assets/ejemplo-trabajo.jpg" alt="Trabajo 1">
-            <h3>Trabajo 1</h3>
-            <p>Descripción del Trabajo 1.</p>
-        </div>
+      <div *ngFor="let trabajo of trabajos" class="card">
+        <h3>{{ trabajo.nombre }}</h3>
+        <p>{{ trabajo.descripcion }}</p>
+      </div>
 
         <div class="card">
             <img src="assets/ejemplo-trabajo2.jpg" alt="Trabajo 2">
             <h3>Trabajo 2</h3>
             <p>Descripción del Trabajo 2.</p>
+            <button class="postular-button">Solicitar</button>
+            
         </div>
+        
     </div>
 </div>

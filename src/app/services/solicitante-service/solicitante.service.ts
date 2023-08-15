@@ -10,6 +10,8 @@ export class SolicitanteService {
   constructor(private http: HttpClient) { }
 
   apiurl = 'http://localhost:3000/api'; // Ruta global
+  apiUrll = 'http://127.0.0.1:3000/api/trabajos';
+  
 
   token_solicitante: any = "";
   user_solicitante: any = {};
@@ -92,6 +94,11 @@ export class SolicitanteService {
   //FUNCIONES DEL MÓDULO DE "TRABAJOS ARCHIVADOS" DEL ROL SOLICITANTE
   activar_trabajo(id: number): Observable<any> {
     return this.http.patch<any>(`http://localhost:3000/api/trabajos/activar_trabajo/${id}`, { estate: true });
+  }
+  
+  getTrabajosDisponibles(): Observable<any[]> {
+    const url = `${this.apiUrll}/allTrabajos`;
+    return this.http.get<any[]>(url);
   }
 
 }

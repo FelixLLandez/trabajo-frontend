@@ -1,15 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
+import { SolicitanteService } from 'src/app/services/solicitante-service/solicitante.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  
+  trabajos: any[] = [];
+  searchText: string = '';
 
-  constructor(private router:Router){}
+  constructor(
+    private soliservi: SolicitanteService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.getTrabajos();
+  }
+
+  getTrabajos(): void {
+    this.soliservi.getTrabajosDisponibles()
+      .subscribe(
+        trabajos => {
+          this.trabajos = trabajos;
+          console.log('Trabajos obtenidos:', trabajos);
+        },
+        error => console.error('Error al obtener trabajos:', error)
+      );
+  }
 
   salir() {
     Swal.fire({
@@ -35,5 +59,4 @@ export class HomeComponent {
       }
     });
   }
-
 }
