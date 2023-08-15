@@ -26,14 +26,11 @@
     <div class="col-sm-12 col-md-4" style="display: flex; flex-direction: column; align-items: center;">
       <div
         style="box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2); width: 250px; height: 250px; border-radius: 50%; overflow: hidden;">
-        <!-- Mostrar la vista previa de la imagen seleccionada -->
         <img *ngIf="vistaPreviaURL" [src]="vistaPreviaURL" class="card-img-top" alt="..."
           style="width: 100%; height: 100%; object-fit: cover;">
       </div>
-      <!-- Botón para abrir el selector de imágenes -->
       <button type="button" class="btn btn-guardar" style="margin-top: 5%;" (click)="abrirSelectorDeImagen()">Cambiar
         imagen</button>
-      <!-- Input invisible para seleccionar archivo -->
       <input type="file" accept="image/*" (change)="cambiarImagen($event)" style="display: none;">
     </div>
 
@@ -47,13 +44,18 @@
                 <div class="form-group">
                   <label for="input1">Nombre</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre">
-                  <!--AQUI VA EL ALERTA Y DEMAS ABAJO-->
+                  <div *ngIf="campoTocado('nombre') && campoInvalido('nombre')" class="text-danger">
+                    El nombre es obligatorio y debe tener al menos 3 caracteres.
+                  </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                   <label for="input2">Apellidos</label>
                   <input type="text" class="form-control" id="apellidos" name="apellidos" formControlName="apellidos">
+                  <div *ngIf="campoTocado('apellidos') && campoInvalido('apellidos')" class="text-danger">
+                    El apellido es obligatorio y debe tener al menos 3 caracteres.
+                  </div>
                 </div>
               </div>
             </div>
@@ -67,18 +69,27 @@
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
                   </select>
+                  <div *ngIf="campoTocado('sexo') && campoInvalido('sexo')" class="text-danger">
+                    Seleccione una opción válida.
+                  </div>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="input2">Edad</label>
                   <input type="number" class="form-control" id="edad" name="edad" formControlName="edad">
+                  <div *ngIf="campoTocado('edad') && campoInvalido('edad')" class="text-danger">
+                    La edad es requerida y debe ser válida.
+                  </div>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="input3">Teléfono</label>
                   <input type="text" class="form-control" id="telefono" name="telefono" formControlName="telefono">
+                  <div *ngIf="campoTocado('telefono') && campoInvalido('telefono')" class="text-danger">
+                    El numero de telefono es obligatorio y debe tener 10 caracteres.
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,18 +100,27 @@
                   <select class="form-select" required id="estado" name="estado" formControlName="estado">
                     <option *ngFor="let estado of estados" value="{{ estado }}">{{ estado }}</option>
                   </select>
+                  <div *ngIf="campoTocado('estado') && campoInvalido('estado')" class="text-danger">
+                    Por favor, selecciona una opción válida.
+                  </div>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="input2">Municipio</label>
                   <input type="text" class="form-control" id="municipio" name="municipio" formControlName="municipio">
+                  <div *ngIf="campoTocado('municipio') && campoInvalido('municipio')" class="text-danger">
+                    El municipio es obligatorio y debe tener al menos 5 caracteres.
+                  </div>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="input1">Calle</label>
                   <input type="text" class="form-control" id="calle" name="calle" formControlName="calle">
+                  <div *ngIf="campoTocado('calle') && campoInvalido('calle')" class="text-danger">
+                    El nombre de la calle es obligatorio y debe tener al menos 5 caracteres.
+                  </div>
                 </div>
               </div>
             </div>
@@ -109,26 +129,35 @@
                 <div class="form-group">
                   <label for="input1">Correo</label>
                   <input type="email" class="form-control" id="email" name="email" formControlName="email">
+                  <div *ngIf="campoTocado('email') && campoInvalido('email')" class="text-danger">
+                    El correo electrónico es obligatorio y debe ser válido.
+                  </div>
                 </div>
               </div>
-              <div class="col-sm-4">
+              <!--div class="col-sm-4">
                 <div class="form-group">
                   <label for="input2">Contraseña</label>
                   <input type="password" class="form-control" id="password" name="password" formControlName="password">
+                  <div *ngIf="campoTocado('password') && campoInvalido('password')" class="text-danger">
+                    La contraseña es obligatoria y debe ser válida.
+                  </div>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="input3">Confirmar constraseña</label>
+                  <label for="input3">Confirmar contraseña</label>
                   <input type="password" class="form-control" id="password2" name="password2"
                     formControlName="password2">
+                  <div *ngIf="campoTocado('password2') && campoInvalido('password2')" class="text-danger">
+                    La contraseña es obligatoria y debe ser válida.
+                  </div>
                 </div>
-              </div>
+              </div-->
             </div>
             <div class="form-group d-flex justify-content-end">
-              <button class="btn btn-guardar" [disabled]="Edit_Mi_Info.invalid" title="Modifcar administrador">
-                <i class="fa-regular fa-pen-to-square"></i> Guardar cambios
-              </button>
+              <div class="submit-container">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+              </div>
             </div>
           </form>
         </div>

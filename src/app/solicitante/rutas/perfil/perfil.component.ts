@@ -49,10 +49,10 @@ export class PerfilComponent implements OnInit {
     localidad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
     numero: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3), Validators.min(1), Validators.max(100), Validators.pattern(this.edadynumero)]],
     email: ['', [Validators.required, Validators.pattern(this.correo_v)]],
-    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
-    password2: ['', [Validators.required]],
+    // password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+    //password2: ['', [Validators.required]],
   }, {
-    validators: [this.camposIguales('password', 'password2')]
+    //  validators: [this.camposIguales('password', 'password2')]
   });
 
   ngOnInit(): void {
@@ -66,7 +66,7 @@ export class PerfilComponent implements OnInit {
         edad: this.usuario.edad,
         telefono: this.usuario.telefono,
         email: this.usuario.email,
-        password: this.usuario.password,
+        // password: this.usuario.password,
         estado: this.usuario.estado,
         calle: this.usuario.calle,
         municipio: this.usuario.municipio,
@@ -79,7 +79,6 @@ export class PerfilComponent implements OnInit {
   editarPerfil() {
     const formData = this.Edit_Mi_Info.value;
 
-    formData.password = null;
     const dataToUpdate = {
       ...formData
     };
@@ -91,6 +90,7 @@ export class PerfilComponent implements OnInit {
         this.usuario.edad = formData.edad;
         this.usuario.telefono = formData.telefono;
         this.usuario.email = formData.email;
+        //this.usuario.password = formData.password;
         this.usuario.calle = formData.calle;
         this.usuario.estado = formData.estado;
         this.usuario.municipio = formData.municipio;
@@ -196,13 +196,18 @@ export class PerfilComponent implements OnInit {
     const files = event.target.files;
     if (files && files.length > 0) {
       this.imagenSeleccionada = files[0];
-
-      // aqui se verifics si imagenSeleccionada no es nula antes de crear la URL
       if (this.imagenSeleccionada) {
         this.vistaPreviaURL = URL.createObjectURL(this.imagenSeleccionada);
       }
     }
   }
 
+  campoInvalido(campo: string) {
+    return this.Edit_Mi_Info.get(campo)?.invalid;
+  }
+
+  campoTocado(campo: string) {
+    return this.Edit_Mi_Info.get(campo)?.touched || this.Edit_Mi_Info.get(campo)?.dirty;
+  }
 
 }
