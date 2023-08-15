@@ -30,29 +30,20 @@ export class RegistroComponent implements OnInit {
       edad: ['', [Validators.required, Validators.min(1), Validators.max(100), Validators.maxLength(100), Validators.minLength(1)]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      rol: ['', Validators.required]
+      calle: ['', [Validators.required, Validators.minLength(5)]],
+      estado: ['', [Validators.required]],
+      municipio: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   registrarse() {
     if (this.registroForm.valid) {
-      if (!this.selectedRol) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Por favor, seleccione un rol válido.'
-        });
-        return;
-      }
-
       const formData = this.registroForm.value;
-      if (this.selectedRol === '1') {
-        delete formData.rol;
-      } else {
-        formData.rolId = this.selectedRol; 
-        delete formData.rol; 
-      }
+
+      // se asigna automáticamente el valor del rol solo para usuarios
+      formData.rolId = 2;
+      delete formData.rol;
 
       this.solicitanteS.registro(formData).subscribe(
         (data) => {
@@ -77,12 +68,13 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+
   roles: any[] = [];
   getRoles() {
     this.solicitanteS.getRoles().subscribe(
       (data: any) => {
-        // En este caso filtre los roles para eliminar el rol del administrador (ID: 1) y solo mostrar los dos restantes
-        this.roles = data.filter((rol: any) => rol.id !== 1);
+        // En este caso filtre los roles para eliminar el rol del administrador (ID: 1) y solo mostrar el rol del solici
+        this.roles = data.filter((rol: any) => rol.id !== 1 && rol.id !== 2);
       },
       (error: any) => {
         console.error(error);
@@ -121,6 +113,22 @@ export class RegistroComponent implements OnInit {
     return campoTelefono?.invalid && campoTelefono?.touched;
   }
 
+  isCalleInvalid() {
+    const campoCalle = this.registroForm.get('calle');
+    return campoCalle?.invalid && campoCalle?.touched;
+  }
+  //------
+
+  isEstadoInvalid() {
+    const campoEstado = this.registroForm.get('estado');
+    return campoEstado?.invalid && campoEstado?.touched;
+  }
+
+  isMunicipioInvalid() {
+    const campoMunicipio = this.registroForm.get('municipio');
+    return campoMunicipio?.invalid && campoMunicipio?.touched;
+  }
+
   isEmailInvalid() {
     const campoEmail = this.registroForm.get('email');
     return campoEmail?.invalid && campoEmail?.touched;
@@ -135,4 +143,39 @@ export class RegistroComponent implements OnInit {
     const campoRol = this.registroForm.get('rol');
     return campoRol?.invalid && campoRol?.touched;
   }
+
+  estados = [
+    'Aguascalientes',
+    'Baja California',
+    'Baja California Sur',
+    'Campeche',
+    'Chiapas',
+    'Chihuahua',
+    'Coahuila de Zaragoza',
+    'Colima',
+    'Ciudad de México',
+    'Durango',
+    'Guanajuato',
+    'Guerrero',
+    'Hidalgo',
+    'Jalisco',
+    'Estado de Mexico',
+    'Michoacan de Ocampo',
+    'Morelos',
+    'Nayarit',
+    'Nuevo Leon',
+    'Oaxaca',
+    'Puebla',
+    'Queretaro de Arteaga',
+    'Quintana Roo',
+    'San Luis Potosi',
+    'Sinaloa',
+    'Sonora',
+    'Tabasco',
+    'Tamaulipas',
+    'Tlaxcala',
+    'Veracruz de Ignacio de la Llave',
+    'Yucatan',
+    'Zacatecas',
+  ];
 }

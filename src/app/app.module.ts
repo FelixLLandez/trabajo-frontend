@@ -41,6 +41,8 @@ import { TrabajosArchivadosComponent } from './solicitante/rutas/trabajos-archiv
 import { ArchivadosAdministradorComponent } from './pages/Rol_Administrador/Archivados/archivados-administrador/archivados-administrador.component';
 import { ArchivadosSolicitanteComponent } from './pages/Rol_Administrador/Archivados/archivados-solicitante/archivados-solicitante.component';
 import { ArchivadosPostulanteComponent } from './pages/Rol_Administrador/Archivados/archivados-postulante/archivados-postulante.component';
+import { InfoPostulantesRolSolicitanteComponent } from './solicitante/rutas/info-postulantes/info-postulantes-rol-solicitante.component';
+import { HomeComponent } from './solicitante/rutas/home/home.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { ArchivadosPostulanteComponent } from './pages/Rol_Administrador/Archiva
     TrabajosArchivadosComponent,
     ArchivadosAdministradorComponent,
     ArchivadosSolicitanteComponent,
-    ArchivadosPostulanteComponent
+    ArchivadosPostulanteComponent,
+    InfoPostulantesRolSolicitanteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,6 @@ import { ArchivadosPostulanteComponent } from './pages/Rol_Administrador/Archiva
     ReactiveFormsModule,
     DataTablesModule,
     BrowserAnimationsModule,
-    DataTablesModule,
     HttpClientModule,
     ModalModule.forRoot()
   ],

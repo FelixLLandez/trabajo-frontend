@@ -11,7 +11,7 @@
             <input type="text" id="nombre" name="nombre" class="form-control"
                 placeholder="Ingrese el nombre del trabajo" required formControlName="nombre">
             <div *ngIf="nombreTocado() && !nombreValido()" class="text-danger">
-                El nombre es obligatorio.
+                El nombre es obligatorio y debe tener al menos 5 caracteres.
             </div>
         </div>
 
@@ -20,7 +20,7 @@
             <input type="text" id="direccion" name="direccion" class="form-control"
                 placeholder="Ingrese la dirección del trabajo" required formControlName="direccion">
             <div *ngIf="direccionTocada() && !direccionValida()" class="text-danger">
-                La dirección es obligatoria.
+                La dirección es obligatoria y debe tener al menos 5 caracteres.
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <textarea id="descripcion" name="descripcion" class="form-control"
                 placeholder="Ingrese la descripción del trabajo" required formControlName="descripcion"></textarea>
             <div *ngIf="descripcionTocada() && !descripcionValida()" class="text-danger">
-                La descripción es obligatoria.
+                La descripción es obligatoria y debe tener al menos 5 caracteres.
             </div>
         </div>
 
@@ -38,7 +38,7 @@
             <input type="number" id="precio" name="precio" class="form-control" placeholder="$" required
                 formControlName="precio">
             <div *ngIf="precioTocado() && !precioValido()" class="text-danger">
-                El precio es obligatorio.
+                El precio es obligatorio y debe ser una cantidad positiva.
             </div>
         </div>
 

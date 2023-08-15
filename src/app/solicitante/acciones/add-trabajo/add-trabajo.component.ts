@@ -14,7 +14,7 @@ export class AddTrabajoComponent {
 
   constructor(private router: Router, private fb: FormBuilder, private soliSer: SolicitanteService) {
     this.trabajoForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      nombre: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       descripcion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       precio: ['', [Validators.required, Validators.min(1), Validators.maxLength(10)]]

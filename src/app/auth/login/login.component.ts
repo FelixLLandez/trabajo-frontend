@@ -30,7 +30,7 @@ export class LoginComponent {
             'Bienvenido...',
             'success'
           );
-          this.router.navigateByUrl('/trabajitos');
+          this.router.navigateByUrl('/home');
         } else {
           console.log("Error");
           Swal.fire({

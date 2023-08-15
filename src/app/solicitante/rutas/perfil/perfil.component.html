@@ -1,103 +1,143 @@
-<div class="header-container">
-  <h1>INFORMACIÓN DE MI PERFIL</h1>
-  <a class="back-button" href="/trabajitos"><b><i class="fas fa-arrow-left"></i> Regresar </b></a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="content-container">
-  <div class="profile-card">
-    <h2 class="text-center">MI INFORMACIÓN</h2>
-    <hr>
-    <div class="profile-image" (mouseover)="showEditMessage = true" (mouseout)="showEditMessage = false"
-      (click)="openFileInput()">
-      <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" id="fileInput">
-      <img src="assets/perfil.jpg" alt="Foto de perfil">
-      <span class="edit-text" *ngIf="showEditMessage">Editar foto</span>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<header>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <h4 class="titulo-principal">Mi Perfil</h4>
+        <button title="Salir" class="btn boton-salir" (click)="salir()"><i class="fas fa-sign-out-alt"></i>
+          Cerrar sesión</button>
+      </div>
     </div>
-    <div class="user-info">
-      <br>
-      <h1>{{ usuario.nombre }} {{ usuario.apellidos }}</h1>
-      <br>
-      <p><strong>Rol:</strong> {{ usuario.rol.nombre }}</p>
-      <p><strong>Sexo:</strong> {{ usuario.sexo }}</p>
-      <p><strong>Edad:</strong> {{ usuario.edad }}</p>
-      <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
-      <p><strong>Correo:</strong> {{ usuario.email }}</p>
+  </div>
+  <hr>
+</header>
+
+<body>
+  <div class="row row-cols-1 row-cols-md-2 g-4" style="display: flex; justify-content: center; margin-top: 1%;">
+
+    <div class="col-sm-12 col-md-4" style="display: flex; flex-direction: column; align-items: center;">
+      <div
+        style="box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2); width: 250px; height: 250px; border-radius: 50%; overflow: hidden;">
+        <!-- Mostrar la vista previa de la imagen seleccionada -->
+        <img *ngIf="vistaPreviaURL" [src]="vistaPreviaURL" class="card-img-top" alt="..."
+          style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <!-- Botón para abrir el selector de imágenes -->
+      <button type="button" class="btn btn-guardar" style="margin-top: 5%;" (click)="abrirSelectorDeImagen()">Cambiar
+        imagen</button>
+      <!-- Input invisible para seleccionar archivo -->
+      <input type="file" accept="image/*" (change)="cambiarImagen($event)" style="display: none;">
+    </div>
+
+
+    <div class="col-sm-12 col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="Edit_Mi_Info" (ngSubmit)="editarPerfil()">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="input1">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre">
+                  <!--AQUI VA EL ALERTA Y DEMAS ABAJO-->
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="input2">Apellidos</label>
+                  <input type="text" class="form-control" id="apellidos" name="apellidos" formControlName="apellidos">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input1">Sexo</label>
+                  <select class="form-select" required aria-label="Default select example" id="sexo" name="sexo"
+                    formControlName="sexo">
+                    <option value="">Seleccionar...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input2">Edad</label>
+                  <input type="number" class="form-control" id="edad" name="edad" formControlName="edad">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input3">Teléfono</label>
+                  <input type="text" class="form-control" id="telefono" name="telefono" formControlName="telefono">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <select class="form-select" required id="estado" name="estado" formControlName="estado">
+                    <option *ngFor="let estado of estados" value="{{ estado }}">{{ estado }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input2">Municipio</label>
+                  <input type="text" class="form-control" id="municipio" name="municipio" formControlName="municipio">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input1">Calle</label>
+                  <input type="text" class="form-control" id="calle" name="calle" formControlName="calle">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input1">Correo</label>
+                  <input type="email" class="form-control" id="email" name="email" formControlName="email">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input2">Contraseña</label>
+                  <input type="password" class="form-control" id="password" name="password" formControlName="password">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="input3">Confirmar constraseña</label>
+                  <input type="password" class="form-control" id="password2" name="password2"
+                    formControlName="password2">
+                </div>
+              </div>
+            </div>
+            <div class="form-group d-flex justify-content-end">
+              <button class="btn btn-guardar" [disabled]="Edit_Mi_Info.invalid" title="Modifcar administrador">
+                <i class="fa-regular fa-pen-to-square"></i> Guardar cambios
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <div class="form-container">
-    <h2 class="text-center">EDITAR MI INFORMACIÓN</h2>
-    <hr>
-    <form [formGroup]="Edit_Mi_Info_Postulante">
-      <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" class="form-control" formControlName="nombre"
-          [value]="usuario.nombre">
-        <small class="form-text text-danger" *ngIf="campoValido('nombre')">{{ getErrorMessage('nombre') }}</small>
-      </div>
 
-      <div class="form-group">
-        <label for="apellidos">Apellidos:</label>
-        <input type="text" id="apellidos" name="apellidos" class="form-control" formControlName="apellidos"
-          [value]="usuario.apellidos">
-        <small class="form-text text-danger" *ngIf="campoValido('apellidos')">{{ getErrorMessage('apellidos')
-          }}</small>
-      </div>
+</body>
 
-      <div class="form-group">
-        <label for="sexo">Sexo:</label>
-        <select id="sexo" name="sexo" class="form-control" formControlName="sexo">
-          <option [value]="usuario.sexo" selected>{{ usuario.sexo }}</option>
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-        </select>
-        <small class="form-text text-danger" *ngIf="campoValido('sexo')">{{ getErrorMessage('sexo') }}</small>
-      </div>
-
-      <div class="form-group">
-        <label for="edad">Edad:</label>
-        <input type="number" id="edad" name="edad" class="form-control" formControlName="edad" [value]="usuario.edad">
-        <small class="form-text text-danger" *ngIf="campoValido('edad')">{{ getErrorMessage('edad') }}</small>
-      </div>
-
-      <div class="form-group">
-        <label for="telefono">Número de Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" class="form-control" formControlName="telefono"
-          [value]="usuario.telefono">
-        <small class="form-text text-danger" *ngIf="campoValido('telefono')">{{ getErrorMessage('telefono') }}</small>
-      </div>
-
-      <div class="form-group">
-        <label for="correo">Correo Electrónico:</label>
-        <input type="email" id="correo" name="correo" class="form-control" formControlName="correo"
-          [value]="usuario.email">
-        <small class="form-text text-danger" *ngIf="campoValido('correo')">{{ getErrorMessage('correo') }}</small>
-      </div>
-
-      <div class="form-group">
-        <label for="contrasena">Contraseña actual:</label>
-        <div class="password-input">
-          <input type="password" id="contrasena-actual" name="contrasena" class="form-control"
-            formControlName="password" [value]="usuario.password">
-          <i class="toggle-password fas fa-eye" (click)="visibilidadContrasennia('contrasena-actual')"></i>
-        </div>
-        <small class="form-text text-danger" *ngIf="campoValido('password')">{{ getErrorMessage('password') }}</small>
-      </div>
-
-      <div class="form-group">
-        <label for="contrasena">Contraseña nueva:</label>
-        <div class="password-input">
-          <input type="password" id="contrasena-nueva" name="contrasena" class="form-control"
-            formControlName="password2">
-          <i class="toggle-password fas fa-eye" (click)="visibilidadContrasennia('contrasena-nueva')"></i>
-        </div>
-        <small class="form-text text-danger" *ngIf="campoValido('password2')">{{ getErrorMessage('password2') }}</small>
-      </div>
-
-      <div class="btn-container">
-        <button type="submit" class="btn btn-save" (click)="editarPerfil()"><b><i class="fas fa-save"></i> Guardar
-            cambios</b></button>
-      </div>
-    </form>
-  </div>
-</div>
+</html>

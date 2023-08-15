@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { ServiceAdministradorService } from '../services/administrador-service/service-administrador.service';
-import { ServiceSolicitanteService } from '../services/administrador-service/service-solicitante.service';
 import { SolicitanteService } from '../services/solicitante-service/solicitante.service';
 
 @Injectable({

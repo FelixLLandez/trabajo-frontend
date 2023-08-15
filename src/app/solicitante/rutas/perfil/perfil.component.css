@@ -1,166 +1,37 @@
-body {
-  background-color: #E8F1F2;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.header-container {
-  background-color: #7A9E7E;
-  color: #FFF;
-  padding: 20px;
+.titulo-principal {
+  font-size: 35px;
   text-align: center;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  display: flex;
-  justify-content: space-between;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-.header-container h1 {
-  font-size: 24px;
-  margin: 0;
+.boton-salir {
+  background-color: #e03625;
+  color: #fff;
 }
 
-.back-button {
-  background-color: #1b2ccb;
-  border: none;
-  color: #FFF;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
+.boton-salir:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
 }
 
-.close-button:hover {
-  background-color: #000;
-  opacity: 0.8;
+body{
+  background-color: transparent;
 }
 
-.content-container {
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+
+.card {
+  width: auto;
+  margin: 0 auto;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+  background-color: #e8f1f2;
 }
 
-.profile-card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  margin-right: 20px;
-}
-
-.profile-card .profile-image img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.form-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+.card-body {
   padding: 20px;
 }
 
-h1 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.profile-info {
-  display: flex;
-  margin-top: 20px;
-}
-
-.profile-image {
-  margin-right: 20px;
-}
-
-.profile-image img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.btn {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 8px 16px;
+.card-title {
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Estilos para el botón "Cambiar imagen" */
-.btn-edit-profile {
-  background-color: #2196F3;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Estilos para el botón "Cambiar imagen" al pasar el mouse sobre él */
-.btn-edit-profile:hover {
-  background-color: #1976D2;
-  /* Puedes ajustar el color al pasar el mouse */
-}
-
-/* Estilos para la disposición de la imagen y el botón */
-.profile-info {
-  display: flex;
-  margin-top: 20px;
-}
-
-.profile-image {
-  margin-right: 20px;
-}
-
-.profile-image img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  /* Sombra para la imagen */
-}
-
-/* Estilos para el contenedor del botón "Cambiar imagen" */
-.edit-img-container {
-  text-align: center;
-  margin-top: 10px;
-  /* Ajusta el espacio entre la imagen y el botón */
-}
-
-.btn-save {
-  background-color: #FF9800;
-}
-
-.form-container {
-  flex-grow: 1;
+  margin-bottom: 20px;
 }
 
 .form-group {
@@ -171,116 +42,19 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="tel"],
-input[type="email"],
-input[type="password"],
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #adafaf;
-  border-radius: 4px;
-  font-size: 14px;
+.btn-guardar {
+    align-items: end;
+    background-color: #484f57;
+    color: #fff;
 }
 
-input[type="text"]:hover,
-input[type="number"]:hover,
-input[type="tel"]:hover,
-input[type="email"]:hover,
-input[type="password"]:hover,
-select:hover {
-  border-color: #2196F3;
+.alerta-boostrap{
+  height: 5px;
 }
 
-button[type="submit"] {
-  width: 100%;
+.icono-alerta{
+  width: 20px;
+  height:240px;
 }
 
-button[type="submit"]:hover {
-  background-color: #FF9800;
-}
 
-/* Estilos para la transición entre la tarjeta y el formulario */
-.profile-card, .form-container {
-  transition: flex-grow 0.3s;
-  overflow: hidden;
-  width: 300px;
-}
-
-/* Estilos para la tarjeta */
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  margin-right: 20px;
-}
-
-.edit-img-container {
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* estilos adicionales para el formulario */
-.form-container {
-  display: flex;
-  flex-direction: column;
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-}
-
-.profile-image {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-}
-
-input[type="file"] {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.edit-text {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #FFF;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 5px;
-  border-radius: 4px;
-  display: none;
-}
-
-.profile-image:hover .edit-text {
-  display: block;
-  cursor: pointer;
-}
-
-.password-input {
-  position: relative;
-}
-
-.toggle-password {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.toggle-password:hover {
-  opacity: 0.7;
-}
